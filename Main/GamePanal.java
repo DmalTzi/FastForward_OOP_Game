@@ -2,8 +2,12 @@ package Main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+
+import backgroundMana.backgroundManager;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
@@ -13,37 +17,29 @@ import javax.swing.ImageIcon;
 
 
 public class GamePanal extends JPanel implements Runnable{
-    final int screenWidth = 1280;
-    final int screenHeight = 720;
+    public final int screenWidth = 1280;
+    public final int screenHeight = 720;
     ImageIcon background ; 
     Thread gameThread;
+    backgroundManager backg = new backgroundManager(this);
     // flexible 
     int FPS = 60;
     
 
     public GamePanal(){
 
-        this.loadedblackground();
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
-        this.setFocusable(true);
+        // this.setFocusable(true);
      
     }
 
     public void StartGameThread(){ 
-       
         gameThread = new Thread(this);
-        gameThread.start(); // tell run 
-
+        gameThread.start(); // tell run
     }
 
 
-     
 
-
-    public void loadedblackground(){
-
-        background = new ImageIcon(this.getClass().getResource("/res/Background/back_01.jpg"));
-    }
 
  @Override
     public void run(){
@@ -62,7 +58,6 @@ public class GamePanal extends JPanel implements Runnable{
 
             if(delta >= 1 ){
                 update();
-        
                 repaint();
                 delta -- ; 
                 drawCount ++;
@@ -76,12 +71,14 @@ public class GamePanal extends JPanel implements Runnable{
         }
     }
 
+    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(background.getImage(), 0, 0, screenWidth, screenHeight, null);
+        Graphics2D g2 = (Graphics2D) g;
+        backg.draw(g2);
+
+
 }
-
-
     public void update() {
 
 
