@@ -1,11 +1,7 @@
 package Main;
 
 public class events {
-    public double Time = 0; 
-    
-
-
-
+    public double Time = 0;
 
 
 

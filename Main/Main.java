@@ -9,7 +9,7 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ปิดแล้วโปรแกรมหยุดทำงาน
         window.setResizable(false); // ล๊อคจอ
         window.setTitle("NO time to see you because am work hard I sus");
-        GamePanal gamepanal = new GamePanal();
+        GamePanel gamepanal = new GamePanel();
         window.add(gamepanal);
         window.pack();
         window.setLocationRelativeTo(null); // กลางจอ

@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 
 
 
-public class GamePanal extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable{
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
     ImageIcon background ; 
@@ -29,7 +29,7 @@ public class GamePanal extends JPanel implements Runnable{
     int FPS = 60;
     
 
-    public GamePanal(){
+    public GamePanel(){
 
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         // this.setFocusable(true);
@@ -82,7 +82,6 @@ public class GamePanal extends JPanel implements Runnable{
 
 }
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา  ควรใช้อันนี้
-
         ev.update();
         backg.updateblackground();
 
