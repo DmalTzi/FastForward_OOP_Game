@@ -21,7 +21,10 @@ public class GamePanal extends JPanel implements Runnable{
     public final int screenHeight = 720;
     ImageIcon background ; 
     Thread gameThread;
-    backgroundManager backg = new backgroundManager(this);
+    
+    public events ev = new events();
+    backgroundManager backg = new backgroundManager(this,ev);
+    ActionHandler aHandler = new ActionHandler(this) ;
     // flexible 
     int FPS = 60;
     
@@ -30,19 +33,18 @@ public class GamePanal extends JPanel implements Runnable{
 
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         // this.setFocusable(true);
-     
+        this.setLayout(null);
+        
+
     }
 
-    public void StartGameThread(){ 
+    public void StartGameThread(){  // ตัวเกมจ้า ตัวรันๆ
         gameThread = new Thread(this);
         gameThread.start(); // tell run
     }
 
-
-
-
  @Override
-    public void run(){
+    public void run(){ // run fps don't touch ib
         double drawInterval = 1000000000 / (FPS); // วาดทุก 0.016 second
         double delta  = 0 ;
         long lasttime  =System.nanoTime();
@@ -72,16 +74,17 @@ public class GamePanal extends JPanel implements Runnable{
     }
 
     
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g){ // วาดตลาดเวลา ไม่ต้องห่วง
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         backg.draw(g2);
-
+        
 
 }
-    public void update() {
+    public void update() { // อะไรที่ต้องการเช็คตลอดเวลา  ควรใช้อันนี้
 
-
+        ev.update();
+        backg.updateblackground();
 
     }
 }
