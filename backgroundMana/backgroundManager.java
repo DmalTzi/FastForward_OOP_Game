@@ -19,14 +19,14 @@ public class backgroundManager {
     int indexBack;
 
 
-    public backgroundManager(GamePanel gp,events ev){
+    public backgroundManager(GamePanel gp, events ev){
         this.gp = gp;
         this.ev = ev;
         backg = new Image[10];
         generateScreen();
     }
 
-    public void loadBackground(int index , String File){
+    public void loadBackground(int index, String File){
         try{
             backg[index] =  new ImageIcon(this.getClass().getResource(File)).getImage();
             
@@ -42,11 +42,11 @@ public class backgroundManager {
     }
 
 
-    public void createObject(int index , int x ,int y , int obWidth,int obHeight,String File){
+    public void createObject(int index, int x, int y, int objWidth, int objHeight, String File){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
-        obj[index].setBounds(x, y, obWidth, obHeight);
+        obj[index].setBounds(x, y, objWidth, objHeight);
         build[index] = new ImageIcon(getClass().getResource(File));
         obj[index].setIcon(build[index]);
         gp.add(obj[index]); 
