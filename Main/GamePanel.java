@@ -20,11 +20,11 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = 720;
     ImageIcon background;
     Thread gameThread;
-
-    public Menu menu;;
+    public Menu menu;
     // ActionHandler aHandler = new ActionHandler(this);
     // flexible
     //set up 
+    public events ev = new events(this);
     backgroundManager backg = new backgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     // flexible 

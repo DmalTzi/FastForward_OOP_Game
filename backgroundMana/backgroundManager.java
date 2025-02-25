@@ -63,7 +63,7 @@ public class backgroundManager {
         if(gp.ev.Time > 12){
             indexBack = 1;
         }else{
-            indexBack = 1;
+            indexBack = 0;
         }
     }
 
