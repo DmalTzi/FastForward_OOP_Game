@@ -16,7 +16,7 @@ public class backgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp ;
-    events ev ;
+    public events ev ;
     int indexBack;
     public Image[] backg ; 
 
