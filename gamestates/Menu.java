@@ -24,14 +24,12 @@ public class Menu extends State {
 	}
 
     public void draw(Graphics g) {
-
 		g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
 	}
 
     public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER)
 			Gamestate.state = Gamestate.PLAYING;
-
 	}
 
     public void keyReleased(KeyEvent e) {

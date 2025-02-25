@@ -6,12 +6,14 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import backgroundMana.backgroundManager;
+import backgroundMana.BackgroundManager;
+import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import gamestates.Gamestate;
 import gamestates.Menu;
 import inputs.KeyHandler;
+import inputs.MouseHandler;
 
 public class GamePanel extends JPanel implements Runnable {
     public final int SCALE = 1;
@@ -20,12 +22,15 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = 720;
     ImageIcon background;
     Thread gameThread;
-
-    public events ev = new events(this);
-    public Menu menu;;
-    backgroundManager backg = new backgroundManager(this);
+    public Menu menu;
     // ActionHandler aHandler = new ActionHandler(this);
     // flexible
+    //set up 
+    public Events ev = new Events(this);
+    BackgroundManager backg = new BackgroundManager(this);
+    ActionHandler aHandler = new ActionHandler(this) ;
+    public MouseHandler mHandler = new MouseHandler(this);
+    // flexible 
     int FPS = 60;
 
     public GamePanel() {
@@ -34,7 +39,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
         this.setLayout(null);
         menu = new Menu(this);
-
     }
 
     public void StartGameThread() { // ตัวเกมจ้า ตัวรันๆ
@@ -65,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                // System.out.println("FPS "+drawCount);
+                // System.out.println("FPS " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -102,7 +106,7 @@ public class GamePanel extends JPanel implements Runnable {
         return menu;
     }
 
-    public backgroundManager getBackg() {
+    public BackgroundManager getBackg() {
         return backg;
     }
 }

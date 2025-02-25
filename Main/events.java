@@ -1,20 +1,20 @@
 package Main;
 
-public class events {
+public class Events {
     public double Time = 0;
-    GamePanel gp ; 
+    GamePanel gp; 
 
-    public events(GamePanel gp){
-        this.gp = gp ;
+    public Events(GamePanel gp){
+        this.gp = gp;
     }
 
 
 
     public void update(){
         Time += 0.1;
-        System.out.println(Time);
+        // System.out.println(Time);
         if((int)Time == 24){
-            Time  = 0 ;
+            Time = 0;
         }
         
     }
