@@ -1,13 +1,12 @@
 package Main;
 
 public class events {
-    public double Time = 0; 
-    
+    public double Time = 0;
+    GamePanel gp ; 
 
-
-
-
-
+    public events(GamePanel gp){
+        this.gp = gp ;
+    }
 
 
 

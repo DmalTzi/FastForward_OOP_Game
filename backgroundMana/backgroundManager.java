@@ -2,31 +2,26 @@ package backgroundMana;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import Main.GamePanal;
-import Main.events;
+import Main.GamePanel;
 
 public class backgroundManager {
-    public  JLabel[] Ob  = new JLabel[10];
+    public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
     public ImageIcon[] build =new ImageIcon[10];
-    GamePanal gp ;
-    events ev ;
+    GamePanel gp ;
     public Image[] backg ; 
     int indexBack;
 
 
-    public backgroundManager(GamePanal gp,events ev){
-        this.gp =gp;
-        this.ev = ev;
-        backg =new Image[10];
+    public backgroundManager(GamePanel gp){
+        this.gp = gp;
+        backg = new Image[10];
         generateScreen();
     }
 
-    public void loadedblackground(int index , String File){
+    public void loadBackground(int index , String File){
         try{
             backg[index] =  new ImageIcon(this.getClass().getResource(File)).getImage();
             
@@ -42,33 +37,35 @@ public class backgroundManager {
     }
 
 
-    public void createobject(int index , int x ,int y , int obWidth,int obHeight,String File){
-        if (Ob[index] == null) { 
-            Ob[index] = new JLabel();
+    public void createObject(int index , int x ,int y , int obWidth,int obHeight,String File){
+        if (obj[index] == null) { 
+            obj[index] = new JLabel();
         }
-        Ob[index].setBounds(x, y, obWidth, obHeight);
+        obj[index].setBounds(x, y, obWidth, obHeight);
         build[index] = new ImageIcon(getClass().getResource(File));
-        Ob[index].setIcon(build[index]);
-        gp.add(Ob[index]); 
+
+        obj[index].setIcon(build[index]);
+
+        gp.add(obj[index]); 
         
    
     }
 
-    public void updateblackground(){
-        if(ev.Time > 12){
+    public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
+        if(gp.ev.Time > 12){
             indexBack = 1;
         }else{
             indexBack =0;
         }
     }
 
-    public void generateScreen(){
-        loadedblackground(0, "/res/Background/back_01.jpg");
-        loadedblackground(1, "/res/Background/Uselesspic.png");
+    public void generateScreen(){ //สร้าง object สถานที่และ bg
+        loadBackground(0, "/res/Background/back_01.jpg");
+        loadBackground(1, "/res/Background/Uselesspic.png");
 
-        createobject(1, 600, 200, 300, 300, "/res/Building/B1.png");
-        createobject(0, 100, 100, 450, 300, "/res/Building/camp.png");
-        createobject(2, 500, 450, 300, 300, "/res/Building/grass.png");
+        createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
+        createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
+        createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
         // createobject(3, 1, 450, 300, 300, "/res/Building/B1.png");
 
 

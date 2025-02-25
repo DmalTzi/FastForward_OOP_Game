@@ -3,11 +3,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
 
 import backgroundMana.backgroundManager;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
@@ -16,20 +14,20 @@ import javax.swing.ImageIcon;
 
 
 
-public class GamePanal extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable{
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
     ImageIcon background ; 
     Thread gameThread;
-    
-    public events ev = new events();
-    backgroundManager backg = new backgroundManager(this,ev);
+    //set up 
+    public events ev = new events(this);
+    backgroundManager backg = new backgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     // flexible 
     int FPS = 60;
     
 
-    public GamePanal(){
+    public GamePanel(){
 
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         // this.setFocusable(true);
@@ -82,7 +80,6 @@ public class GamePanal extends JPanel implements Runnable{
 
 }
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา  ควรใช้อันนี้
-
         ev.update();
         backg.updateblackground();
 
