@@ -57,6 +57,7 @@ public class BackgroundManager {
 
         obj[index].setIcon(build[index]);
         obj[index].addMouseListener(new MouseHandler(gp));
+
         // obj[index].addMouseListener(new MouseListener() {
         //     @Override
         //     public void mouseClicked(MouseEvent e) {
@@ -98,6 +99,7 @@ public class BackgroundManager {
         loadBackground(0, "/res/Background/back_01.jpg");
         loadBackground(1, "/res/Background/backni_02.jpg");
         createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
+        createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
         // createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
         // createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
