@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.awt.Image;
 
 import java.awt.event.KeyEvent;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,14 +20,11 @@ public class backgroundManager {
     int indexBack;
     public Image[] backg ; 
 
-    public backgroundManager (GamePanel gp){
-        this.gp = gp ; 
+    public backgroundManager(GamePanel gp){
+        this.gp = gp;
         backg = new Image[10];
         generateScreen();
     }
-
-
-  
 
     public void loadBackground(int index , String File){
         try{
@@ -55,6 +51,7 @@ public class backgroundManager {
         }
         obj[index].setBounds(x, y, obWidth, obHeight);
         build[index] = new ImageIcon(getClass().getResource(File));
+
         obj[index].setIcon(build[index]);
 
         gp.add(obj[index]); 
@@ -64,7 +61,7 @@ public class backgroundManager {
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
         if(gp.ev.Time > 12){
-            indexBack = 0;
+            indexBack = 1;
         }else{
             indexBack = 1;
         }

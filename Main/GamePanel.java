@@ -3,10 +3,10 @@ package Main;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
 
 import backgroundMana.backgroundManager;
+import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import gamestates.Gamestate;
@@ -21,11 +21,13 @@ public class GamePanel extends JPanel implements Runnable {
     ImageIcon background;
     Thread gameThread;
 
-    public events ev = new events();
     public Menu menu;;
-    backgroundManager backg = new backgroundManager(this);
     // ActionHandler aHandler = new ActionHandler(this);
     // flexible
+    //set up 
+    backgroundManager backg = new backgroundManager(this);
+    ActionHandler aHandler = new ActionHandler(this) ;
+    // flexible 
     int FPS = 60;
 
     public GamePanel() {
