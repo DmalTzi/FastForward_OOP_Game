@@ -3,7 +3,7 @@ package backgroundMana;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.awt.Image;
-<<<<<<< HEAD
+
 import java.awt.event.KeyEvent;
 
 import javax.imageio.ImageIO;
@@ -18,30 +18,19 @@ public class backgroundManager {
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp ;
     events ev ;
-=======
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import Main.GamePanal;
-
-public class backgroundManager {
-
-    GamePanal gp ;
->>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
+    int indexBack;
     public Image[] backg ; 
 
-    public backgroundManager(GamePanal gp){
-
-<<<<<<< HEAD
-    public backgroundManager(GamePanel gp,events ev){
-        this.gp = gp;
-        this.ev = ev;
+    public backgroundManager (GamePanel gp){
+        this.gp = gp ; 
         backg = new Image[10];
         generateScreen();
     }
 
+
+  
+
     public void loadBackground(int index , String File){
-=======
-        this.gp =gp;
         backg =new Image[10];
         loadedblackground();
     }
@@ -49,7 +38,7 @@ public class backgroundManager {
 
     public void loadedblackground(){
 
->>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
+
         try{
 
             backg[0] =  new ImageIcon(this.getClass().getResource("/res/Background/back_01.jpg")).getImage();
@@ -68,7 +57,7 @@ public class backgroundManager {
     }
 
 
-<<<<<<< HEAD
+
     public void createObject(int index , int x ,int y , int obWidth,int obHeight,String File){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
@@ -82,7 +71,7 @@ public class backgroundManager {
     }
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(ev.Time > 12){
+        if(gp.ev.Time > 12){
             indexBack = 1;
         }else{
             indexBack =0;
@@ -116,6 +105,6 @@ public class backgroundManager {
 
 	}
 
-=======
->>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
+
+
 }
