@@ -3,11 +3,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
 import javax.swing.JPanel;
 
 import backgroundMana.backgroundManager;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
@@ -21,8 +19,8 @@ public class GamePanel extends JPanel implements Runnable{
     public final int screenHeight = 720;
     ImageIcon background ; 
     Thread gameThread;
-    
-    public events ev = new events();
+    //set up 
+    public events ev = new events(this);
     backgroundManager backg = new backgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     // flexible 
