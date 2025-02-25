@@ -20,7 +20,7 @@ public class MouseHandler implements MouseListener {
         System.out.println("Clicked!");
         gp.py.x = e.getXOnScreen();
         gp.py.y =e.getYOnScreen();
-        System.out.println(e.getYOnScreen() +"   "+ e.getXOnScreen());
+        System.out.println("X :"+e.getXOnScreen() +"   Y : "+ e.getYOnScreen());
         Gamestate.state = Gamestate.MENU;
     }
 
