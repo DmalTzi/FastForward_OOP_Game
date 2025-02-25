@@ -11,9 +11,9 @@ public class events {
 
 
     public void update(){
-        Time += 0.5;
+        Time += 0.1;
         System.out.println(Time);
-        if(Time == 24){
+        if((int)Time == 24){
             Time  = 0 ;
         }
         
