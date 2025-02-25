@@ -9,6 +9,7 @@ import Main.GamePanel;
 import gamestates.Gamestate;
 
 public class MouseHandler implements MouseListener {
+
     GamePanel gp;
     public MouseHandler(GamePanel gp) {
         this.gp = gp;
@@ -17,6 +18,9 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("Clicked!");
+        gp.py.x = e.getXOnScreen();
+        gp.py.y =e.getYOnScreen();
+        System.out.println(e.getYOnScreen() +"   "+ e.getXOnScreen());
         Gamestate.state = Gamestate.MENU;
     }
 

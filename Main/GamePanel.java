@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import Player.Player;
 import backgroundMana.BackgroundManager;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -30,6 +31,9 @@ public class GamePanel extends JPanel implements Runnable {
     BackgroundManager backg = new BackgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     public MouseHandler mHandler = new MouseHandler(this);
+    public Player py = new Player(this);
+
+
     // flexible 
     int FPS = 60;
 
@@ -85,15 +89,18 @@ public class GamePanel extends JPanel implements Runnable {
 			break;
 		case PLAYING:
             backg.draw(g2);
+           
 			break;
 		default:
 			break;
 		}
+        py.draw(g2);
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         // ev.update();
         // backg.updateblackground();
+        py.update();
 
     }
 

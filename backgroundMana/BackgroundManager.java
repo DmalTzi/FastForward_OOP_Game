@@ -58,30 +58,7 @@ public class BackgroundManager {
         obj[index].setIcon(build[index]);
         obj[index].addMouseListener(new MouseHandler(gp));
 
-        // obj[index].addMouseListener(new MouseListener() {
-        //     @Override
-        //     public void mouseClicked(MouseEvent e) {
-        //         System.out.println("Clicked!");
-        //         Gamestate.state = Gamestate.MENU;
-        //     }
-
-        //     @Override
-        //     public void mousePressed(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseReleased(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseEntered(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseExited(MouseEvent e) {
-        //         Gamestate.state = Gamestate.PLAYING;
-        //     }
-        // });
+       
 
         gp.add(obj[index]);
     }
@@ -99,7 +76,7 @@ public class BackgroundManager {
         loadBackground(0, "/res/Background/back_01.jpg");
         loadBackground(1, "/res/Background/backni_02.jpg");
         createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
-        createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
+        createObject(1, 600, 500, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
         // createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
         // createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
