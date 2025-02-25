@@ -2,13 +2,14 @@ package backgroundMana;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
+import java.awt.event.KeyEvent;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Main.GamePanel;
 import Main.events;
+import gamestates.Gamestate;
 
 public class backgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
@@ -70,9 +71,23 @@ public class backgroundManager {
         createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
         createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
         // createobject(3, 1, 450, 300, 300, "/res/Building/B1.png");
-
-
-        
     }
+
+    // TEST
+
+	public void keyPressed(KeyEvent e) {
+        System.out.println("Halo");
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_BACK_SPACE:
+                Gamestate.state = Gamestate.MENU;
+			break;
+        }
+    }
+    
+    // TEST
+    public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
