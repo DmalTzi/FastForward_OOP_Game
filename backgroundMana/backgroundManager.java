@@ -2,26 +2,21 @@ package backgroundMana;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Main.GamePanel;
-import Main.events;
 
 public class backgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp ;
-    events ev ;
     public Image[] backg ; 
     int indexBack;
 
 
-    public backgroundManager(GamePanel gp,events ev){
+    public backgroundManager(GamePanel gp){
         this.gp = gp;
-        this.ev = ev;
         backg = new Image[10];
         generateScreen();
     }
@@ -48,14 +43,16 @@ public class backgroundManager {
         }
         obj[index].setBounds(x, y, obWidth, obHeight);
         build[index] = new ImageIcon(getClass().getResource(File));
+
         obj[index].setIcon(build[index]);
+
         gp.add(obj[index]); 
         
    
     }
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(ev.Time > 12){
+        if(gp.ev.Time > 12){
             indexBack = 1;
         }else{
             indexBack =0;

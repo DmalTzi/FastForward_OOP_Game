@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     
     public events ev = new events();
-    backgroundManager backg = new backgroundManager(this,ev);
+    backgroundManager backg = new backgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     // flexible 
     int FPS = 60;
