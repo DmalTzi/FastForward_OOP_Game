@@ -21,6 +21,7 @@ public class BackgroundManager {
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp;
     Events ev;
+
     int indexBack;
     public Image[] backg ; 
 

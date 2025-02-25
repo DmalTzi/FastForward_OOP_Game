@@ -3,6 +3,7 @@ package Main;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
 import backgroundMana.BackgroundManager;
@@ -91,8 +92,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        ev.update();
-        backg.updateblackground();
+        // ev.update();
+        // backg.updateblackground();
 
     }
 
