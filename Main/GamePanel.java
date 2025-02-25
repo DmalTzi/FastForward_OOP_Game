@@ -88,8 +88,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        // ev.update();
-        // backg.updateblackground();
+        ev.update();
+        backg.updateblackground();
 
     }
 

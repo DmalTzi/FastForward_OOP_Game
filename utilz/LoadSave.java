@@ -15,6 +15,8 @@ public class LoadSave {
         String path = Paths.get(".").toAbsolutePath().normalize().toString();
 		try {
 			img = ImageIO.read(new File(path+"/res/Background/" +fileName));
+		
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();

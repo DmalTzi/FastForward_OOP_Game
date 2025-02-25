@@ -31,28 +31,19 @@ public class backgroundManager {
   
 
     public void loadBackground(int index , String File){
-        backg =new Image[10];
-        loadedblackground();
-    }
-
-
-    public void loadedblackground(){
-
-
         try{
-
-            backg[0] =  new ImageIcon(this.getClass().getResource("/res/Background/back_01.jpg")).getImage();
+            backg[index] =  new ImageIcon(this.getClass().getResource(File)).getImage();
 
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
+
+
 
     public void draw(Graphics2D g2){
 
-        g2.drawImage(backg[0], 0, 0, gp.screenWidth, gp.screenHeight, null);
-
+        g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
 
     }
 
@@ -65,6 +56,7 @@ public class backgroundManager {
         obj[index].setBounds(x, y, obWidth, obHeight);
         build[index] = new ImageIcon(getClass().getResource(File));
         obj[index].setIcon(build[index]);
+
         gp.add(obj[index]); 
         
    
@@ -72,26 +64,26 @@ public class backgroundManager {
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
         if(gp.ev.Time > 12){
-            indexBack = 1;
+            indexBack = 0;
         }else{
-            indexBack =0;
+            indexBack = 1;
         }
     }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
         loadBackground(0, "/res/Background/back_01.jpg");
-        loadBackground(1, "/res/Background/Uselesspic.png");
+        loadBackground(1, "/res/Background/backni_02.jpg");
 
-        createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
-        createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
-        createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
+        // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
+        // createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
+        // createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
         // createobject(3, 1, 450, 300, 300, "/res/Building/B1.png");
     }
 
     // TEST
 
 	public void keyPressed(KeyEvent e) {
-        System.out.println("Halo");
+        // System.out.println("Halo");
         switch (e.getKeyCode()) {
             case KeyEvent.VK_BACK_SPACE:
                 Gamestate.state = Gamestate.MENU;
