@@ -1,7 +1,9 @@
 package backgroundMana;
 
 import java.awt.Graphics2D;
+import java.io.IOException;
 import java.awt.Image;
+<<<<<<< HEAD
 import java.awt.event.KeyEvent;
 
 import javax.imageio.ImageIO;
@@ -16,10 +18,20 @@ public class backgroundManager {
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp ;
     events ev ;
+=======
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import Main.GamePanal;
+
+public class backgroundManager {
+
+    GamePanal gp ;
+>>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
     public Image[] backg ; 
-    int indexBack;
 
+    public backgroundManager(GamePanal gp){
 
+<<<<<<< HEAD
     public backgroundManager(GamePanel gp,events ev){
         this.gp = gp;
         this.ev = ev;
@@ -28,9 +40,20 @@ public class backgroundManager {
     }
 
     public void loadBackground(int index , String File){
+=======
+        this.gp =gp;
+        backg =new Image[10];
+        loadedblackground();
+    }
+
+
+    public void loadedblackground(){
+
+>>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
         try{
-            backg[index] =  new ImageIcon(this.getClass().getResource(File)).getImage();
-            
+
+            backg[0] =  new ImageIcon(this.getClass().getResource("/res/Background/back_01.jpg")).getImage();
+
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -38,11 +61,14 @@ public class backgroundManager {
     }
 
     public void draw(Graphics2D g2){
-        g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+
+        g2.drawImage(backg[0], 0, 0, gp.screenWidth, gp.screenHeight, null);
+
 
     }
 
 
+<<<<<<< HEAD
     public void createObject(int index , int x ,int y , int obWidth,int obHeight,String File){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
@@ -90,4 +116,6 @@ public class backgroundManager {
 
 	}
 
+=======
+>>>>>>> parent of 39a309a (ผมว่าพอได้มั้ง)
 }
