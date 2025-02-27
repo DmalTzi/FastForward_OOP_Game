@@ -18,8 +18,8 @@ import inputs.MouseHandler;
 public class GamePanel extends JPanel implements Runnable {
     public final int SCALE = 1;
 
-    public final int screenWidth = 1280;
-    public final int screenHeight = 720;
+    public final int screenWidth = 1280/2;
+    public final int screenHeight = 720/2;
     ImageIcon background;
     Thread gameThread;
     public Menu menu;
