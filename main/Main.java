@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import javax.swing.JFrame;
 
@@ -10,10 +10,12 @@ public class Main {
         window.setResizable(false); // ล๊อคจอ
         window.setTitle("NO time to see you because I'm working hard I sus");
         GamePanel gamepanal = new GamePanel();
+        gamepanal.loadGameEvents();
+        
         window.add(gamepanal);
         window.pack();
         window.setLocationRelativeTo(null); // กลางจอ
         window.setVisible(true); // ให้เห็น
-        gamepanal.StartGameThread();
+        // gamepanal.StartGameThread();
     }
 }

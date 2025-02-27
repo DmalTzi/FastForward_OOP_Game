@@ -5,8 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import Main.GamePanel;
-import gamestates.Gamestate;
+import main.GamePanel;
 
 public class MouseHandler implements MouseListener {
     GamePanel gp;
@@ -17,7 +16,6 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("Clicked!");
-        Gamestate.state = Gamestate.MENU;
     }
 
     @Override

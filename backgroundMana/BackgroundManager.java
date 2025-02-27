@@ -11,10 +11,10 @@ import java.awt.event.MouseListener;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import Main.GamePanel;
-import Main.Events;
-import gamestates.Gamestate;
+
 import inputs.MouseHandler;
+import main.Events;
+import main.GamePanel;
 
 public class BackgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
@@ -48,7 +48,7 @@ public class BackgroundManager {
 
 
 
-    public void createObject(int index , int x ,int y , int objWidth,int objHeight,String File){
+    public void createObject(int index , int x ,int y , int objWidth, int objHeight,String File){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
@@ -86,20 +86,20 @@ public class BackgroundManager {
         gp.add(obj[index]);
     }
 
-    public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(gp.ev.Time > 12){
-            indexBack = 1;
-        }
-        else {
-            indexBack = 0;
-        }
-    }
+    // public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
+    //     if(gp.ev.Time > 12){
+    //         indexBack = 1;
+    //     }
+    //     else {
+    //         indexBack = 0;
+    //     }
+    // }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
-        loadBackground(0, "/res/Background/back_01.jpg");
-        loadBackground(1, "/res/Background/backni_02.jpg");
-        createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
-        createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
+        // loadBackground(0, "/res/Background/back_01.jpg");
+        // loadBackground(1, "/res/Background/backni_02.jpg");
+        // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
+        // createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
         // createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
         // createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
@@ -107,15 +107,6 @@ public class BackgroundManager {
     }
 
     // TEST
-
-	public void keyPressed(KeyEvent e) {
-        // System.out.println("Halo");
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_BACK_SPACE:
-                Gamestate.state = Gamestate.MENU;
-			break;
-        }
-    }
     
     // TEST
     public void keyReleased(KeyEvent e) {
