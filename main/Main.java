@@ -16,6 +16,6 @@ public class Main {
         window.pack();
         window.setLocationRelativeTo(null); // กลางจอ
         window.setVisible(true); // ให้เห็น
-        // gamepanal.StartGameThread();
+        gamepanal.StartGameThread();
     }
 }

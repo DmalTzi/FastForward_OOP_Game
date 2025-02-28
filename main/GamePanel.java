@@ -16,11 +16,13 @@ import javax.swing.ImageIcon;
 import inputs.MouseHandler;
 import menus.SuperMenu;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Runnable{
     public final int SCALE = 1;
 
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
+    public final int xScreenCenter = screenWidth/2;
+    public final int yScreenCenter = screenHeight/2;
 
     ImageIcon background;
     Thread gameThread;
@@ -29,10 +31,10 @@ public class GamePanel extends JPanel {
 
     
     //set up 
-    // public Events ev = new Events(this);
-    // BackgroundManager backg = new BackgroundManager(this);
-    // ActionHandler aHandler = new ActionHandler(this) ;
-    // public MouseHandler mHandler = new MouseHandler(this);
+    public Events ev = new Events(this);
+    BackgroundManager backg = new BackgroundManager(this);
+    ActionHandler aHandler = new ActionHandler(this) ;
+    public MouseHandler mHandler = new MouseHandler(this);
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
     private EventSetter eSetter = new EventSetter(this);
@@ -49,57 +51,55 @@ public class GamePanel extends JPanel {
     public void loadGameEvents() {
         eSetter.setUpEvent();
         this.add(events[0].getBtn());
-        this.add(menus[0].getMenu());
-        this.add(events[1].getBtn());
-        this.add(menus[1].getMenu());
+        this.add(events[0].getMenu());
     }
 
-    // public void StartGameThread() { // ตัวเกมจ้า ตัวรันๆ
-    //     gameThread = new Thread(this);
-    //     gameThread.start(); // tell run
-    // }
+    public void StartGameThread() { // ตัวเกมจ้า ตัวรันๆ
+        gameThread = new Thread(this);
+        gameThread.start(); // tell run
+    }
 
-    // @Override
-    // public void run() { // run fps don't touch ib
-    //     double drawInterval = 1000000000 / (FPS); // วาดทุก 0.016 second
-    //     double delta = 0;
-    //     long lasttime = System.nanoTime();
-    //     long currentTime;
-    //     long timer = 0;
-    //     int drawCount = 0;
+    @Override
+    public void run() { // run fps don't touch ib
+        double drawInterval = 1000000000 / (FPS); // วาดทุก 0.016 second
+        double delta = 0;
+        long lasttime = System.nanoTime();
+        long currentTime;
+        long timer = 0;
+        int drawCount = 0;
 
-    //     while (gameThread != null) {
-    //         currentTime = System.nanoTime();
-    //         delta += (currentTime - lasttime) / drawInterval;
-    //         timer += (currentTime - lasttime);
-    //         lasttime = currentTime;
+        while (gameThread != null) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lasttime) / drawInterval;
+            timer += (currentTime - lasttime);
+            lasttime = currentTime;
 
-    //         if (delta >= 1) {
-    //             // update();
-    //             repaint();
-    //             delta--;
-    //             drawCount++;
-    //         }
+            if (delta >= 1) {
+                update();
+                repaint();
+                delta--;
+                drawCount++;
+            }
 
-    //         if (timer >= 1000000000) {
-    //             // System.out.println("FPS " + drawCount);
-    //             drawCount = 0;
-    //             timer = 0;
-    //         }
-    //     }
-    // }
+            if (timer >= 1000000000) {
+                System.out.println("FPS " + drawCount);
+                drawCount = 0;
+                timer = 0;
+            }
+        }
+    }
 
-    // public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
-    //     super.paintComponent(g);
-    //     Graphics2D g2 = (Graphics2D) g;
-    //     backg.draw(g2);
-    // }
+    public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        backg.draw(g2);
+    }
 
-    // public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-    //     // ev.update();
-    //     // backg.updateblackground();
+    public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
+        ev.update();
+        backg.updateblackground();
 
-    // }
+    }
 
     // Test
     public GamePanel getGamePanel(){

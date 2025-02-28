@@ -1,9 +1,11 @@
 package events;
 
 import java.awt.Component;
+import java.awt.Container;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLayeredPane;
 
 import main.GamePanel;
 import menus.SuperMenu;
@@ -34,12 +36,16 @@ public abstract class SuperEvents {
         this.menu = menu;
     }
 
-    public SuperMenu getMenu() {
+    public SuperMenu getSuperMenu() {
         return menu;
     }
 
-    public void setVisible(boolean v) {
-        menu.setVisible(v);
+    public JLayeredPane getMenu() {
+        return menu.getMenu();
+    }
+
+    public void setMenuVisible(boolean v) {
+        menu.setMenuVisible(v);
     }
 
     public JButton getBtn() {

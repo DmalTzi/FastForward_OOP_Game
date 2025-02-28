@@ -2,6 +2,7 @@ package backgroundMana;
 
 import java.awt.Graphics2D;
 import java.io.IOException;
+import java.security.KeyStore.LoadStoreParameter;
 import java.awt.Image;
 
 import java.awt.event.KeyEvent;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import inputs.MouseHandler;
 import main.Events;
 import main.GamePanel;
+import utilz.LoadSave;
 
 public class BackgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
@@ -33,7 +35,7 @@ public class BackgroundManager {
 
     public void loadBackground(int index, String File){
         try {
-            backg[index] = new ImageIcon(this.getClass().getResource(File)).getImage();
+            backg[index] = LoadSave.GetSprite("backgrounds", File);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -86,18 +88,18 @@ public class BackgroundManager {
         gp.add(obj[index]);
     }
 
-    // public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-    //     if(gp.ev.Time > 12){
-    //         indexBack = 1;
-    //     }
-    //     else {
-    //         indexBack = 0;
-    //     }
-    // }
+    public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
+        if(gp.ev.Time > 12){
+            indexBack = 1;
+        }
+        else {
+            indexBack = 0;
+        }
+    }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
-        // loadBackground(0, "/res/Background/back_01.jpg");
-        // loadBackground(1, "/res/Background/backni_02.jpg");
+        loadBackground(0, "back_01.jpg");
+        loadBackground(1, "backni_02.jpg");
         // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");

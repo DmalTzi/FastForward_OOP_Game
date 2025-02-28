@@ -1,10 +1,5 @@
 package menus;
 
-import java.awt.Button;
-import java.awt.Component;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,10 +9,10 @@ import main.GamePanel;
 import utilz.LoadSave;
 
 public abstract class SuperMenu {
-    private GamePanel gp;
-    private JLayeredPane menu;
-    private JLabel bg;
-    private JButton buttonExit;
+    protected GamePanel gp;
+    protected JLayeredPane menu;
+    protected JLabel bg;
+    protected JButton buttonExit;
 
     public SuperMenu(GamePanel gp) {
         this.gp = gp;
@@ -42,20 +37,16 @@ public abstract class SuperMenu {
     }
 
     public void setBound(int x, int y, int width, int height) {
-        menu.setBounds(x, y, width, height);
-        bg.setBounds(x, y, width, height);
-        buttonExit.setBounds(x,y, 20, 20);
+        menu.setBounds(x*gp.SCALE, y*gp.SCALE, width*gp.SCALE, height*gp.SCALE);
+        bg.setBounds(0, 0, width*gp.SCALE, height*gp.SCALE);
+        buttonExit.setBounds((width-30)*gp.SCALE, 30*gp.SCALE, 20, 20);
     }
 
-    public void setBackground(String des, String fileName) {
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite(des, fileName)));
+    public void setImage(String des, String fileName, JLabel c) {
+        c.setIcon(new ImageIcon(LoadSave.GetSprite(des, fileName)));
     }
 
-    public void addButton(Component btn) {
-        menu.add(btn, Integer.valueOf(2));
-    }
-
-    public void setVisible(boolean v) {
+    public void setMenuVisible(boolean v) {
         menu.setVisible(v);
     }
 
