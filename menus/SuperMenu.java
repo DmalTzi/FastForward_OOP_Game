@@ -20,7 +20,6 @@ public abstract class SuperMenu {
         menu = new JLayeredPane();
 
         bg = new JLabel();
-        bg.setOpaque(true);
 
         menu.add(bg, Integer.valueOf(0));
         menu.setVisible(false);
@@ -31,7 +30,6 @@ public abstract class SuperMenu {
             menu.setVisible(false);
         });
 
-        buttonExit.setOpaque(true);
         menu.add(buttonExit, Integer.valueOf(1));
 
     }

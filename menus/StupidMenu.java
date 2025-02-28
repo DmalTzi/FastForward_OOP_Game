@@ -13,7 +13,7 @@ public class StupidMenu extends SuperMenu{
 
         JLabel title = new JLabel();
         title.setText("Stupid Menus");
-        title.setOpaque(true);
+        title.setBounds(0, 0, 100, 100);
         menu.add(title, Integer.valueOf(2));
     }
 }
