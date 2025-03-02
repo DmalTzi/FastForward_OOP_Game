@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,38 +7,50 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import backgroundMana.BackgroundManager;
-import javax.swing.JLabel;
+import events.SuperEvents;
+
 import javax.swing.ImageIcon;
 
-import gamestates.Gamestate;
-import gamestates.Menu;
-import inputs.KeyHandler;
 import inputs.MouseHandler;
+import menus.SuperMenu;
 
-public class GamePanel extends JPanel implements Runnable {
+public class GamePanel extends JPanel implements Runnable{
     public final int SCALE = 1;
 
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
+
     ImageIcon background;
     Thread gameThread;
-    public Menu menu;
     // ActionHandler aHandler = new ActionHandler(this);
-    // flexible
+    
     //set up 
-    public Events ev = new Events(this);
+    public Earth ev = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     public MouseHandler mHandler = new MouseHandler(this);
+    private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
+    private SuperEvents[] events = new SuperEvents[10];
+    private EventSetter eSetter = new EventSetter(this);
+
     // flexible 
     int FPS = 60;
+    private boolean showEvent = true;
 
     public GamePanel() {
-        addKeyListener(new KeyHandler(this));
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setFocusable(true);
         this.setLayout(null);
-        menu = new Menu(this);
+    }
+
+    public void loadGameEvents() {
+        eSetter.setUpEvent();
+        for (int i = 0; i < 10; i++) {
+            if (events[i] != null) {
+                this.add(events[i].getMenu());
+                this.add(events[i].getBtn());
+            }
+        }
     }
 
     public void StartGameThread() { // ตัวเกมจ้า ตัวรันๆ
@@ -69,7 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             if (timer >= 1000000000) {
-                // System.out.println("FPS " + drawCount);
+                System.out.println("FPS " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -79,21 +91,22 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        switch (Gamestate.state) {
-		case MENU:
-			menu.draw(g);
-			break;
-		case PLAYING:
-            backg.draw(g2);
-			break;
-		default:
-			break;
-		}
+        backg.draw(g2);
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        // ev.update();
-        // backg.updateblackground();
+        ev.update();
+        backg.updateblackground();
+        for (SuperEvents e : events) {
+            if (e != null) {
+                // เช็คว่าเมนูไหนเปิดอยู่
+                if (showEvent) {
+                    e.getBtn().setVisible(true);
+                }else {
+                    e.getBtn().setVisible(false);
+                }
+            }
+        }
 
     }
 
@@ -102,11 +115,27 @@ public class GamePanel extends JPanel implements Runnable {
         return this;
     }
 
-    public Menu getMenu() {
-        return menu;
+    // public BackgroundManager getBackg() {
+    //     return backg;
+    // }
+
+    public void addMenus(int i, SuperMenu m) {
+        menus[i] = m;
     }
 
-    public BackgroundManager getBackg() {
-        return backg;
+    public SuperMenu getMenus(int i) {
+        return menus[i];
+    }
+
+    public void addEvents(int i, SuperEvents e) {
+        events[i] = e;
+    }
+
+    public SuperEvents getEvents(int i) {
+        return events[i];
+    }
+
+    public void setShowEvent(boolean showEvent) {
+        this.showEvent = showEvent;
     }
 }
