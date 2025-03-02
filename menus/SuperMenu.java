@@ -19,8 +19,6 @@ public abstract class SuperMenu {
     protected JButton buttonExit;
     protected int menuWidth;
     protected int menuHeight;
-    protected int menuPosX;
-    protected int menuPosy;
 
     public SuperMenu(GamePanel gp) {
         this.gp = gp;
@@ -34,7 +32,6 @@ public abstract class SuperMenu {
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
 
 
-        menu.add(bg, JLayeredPane.POPUP_LAYER);
         menu.setVisible(false);
         menu.setBounds(45*gp.SCALE, 100*gp.SCALE, menuWidth, menuHeight);
 
@@ -59,8 +56,10 @@ public abstract class SuperMenu {
             public void mousePressed(MouseEvent e) {}
             
         });
-        
-        menu.add(buttonExit, JLayeredPane.DRAG_LAYER);
+
+
+        menu.add(bg, Integer.valueOf(0));
+        menu.add(buttonExit, Integer.valueOf(1));
     }
 
     public void setMenuVisible(boolean v) {

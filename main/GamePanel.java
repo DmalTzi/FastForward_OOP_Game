@@ -25,8 +25,6 @@ public class GamePanel extends JPanel implements Runnable{
     ImageIcon background;
     Thread gameThread;
     // ActionHandler aHandler = new ActionHandler(this);
-    // flexible
-
     
     //set up 
     public Earth ev = new Earth(this);
