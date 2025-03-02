@@ -1,24 +1,41 @@
 package events;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
+import javax.swing.border.LineBorder;
 
 import main.GamePanel;
 import menus.SuperMenu;
 import utilz.LoadSave;
 
 public abstract class SuperEvents {
-    GamePanel gp;
-    JButton btn;
-    SuperMenu menu;
+    protected GamePanel gp;
+    protected JButton btn;
+    protected SuperMenu menu;
 
     public SuperEvents(GamePanel gp) {
         this.gp = gp;
         btn = new JButton();
+        btn.setOpaque(false);
+        // btn.addFocusListener(new FocusListener() {
+
+        //     @Override
+        //     public void focusGained(FocusEvent e) {
+        //     btn.setBorder(new LineBorder(Color.RED));
+        //     }
+
+        //     @Override
+        //     public void focusLost(FocusEvent e) {
+        //     btn.setBorder(new LineBorder(Color.WHITE));
+        //     }
+        // });
     }
 
     /*

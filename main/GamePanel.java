@@ -21,8 +21,6 @@ public class GamePanel extends JPanel implements Runnable{
 
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
-    public final int xScreenCenter = screenWidth/2;
-    public final int yScreenCenter = screenHeight/2;
 
     ImageIcon background;
     Thread gameThread;
@@ -31,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     
     //set up 
-    public Events ev = new Events(this);
+    public Earth ev = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
     public MouseHandler mHandler = new MouseHandler(this);
@@ -41,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // flexible 
     int FPS = 60;
+    private boolean showEvent = true;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -50,8 +49,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void loadGameEvents() {
         eSetter.setUpEvent();
-        this.add(events[0].getBtn());
-        this.add(events[0].getMenu());
+        for (int i = 0; i < 10; i++) {
+            if (events[i] != null) {
+                this.add(events[i].getMenu());
+                this.add(events[i].getBtn());
+            }
+        }
     }
 
     public void StartGameThread() { // ตัวเกมจ้า ตัวรันๆ
@@ -98,6 +101,16 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         ev.update();
         backg.updateblackground();
+        for (SuperEvents e : events) {
+            if (e != null) {
+                // เช็คว่าเมนูไหนเปิดอยู่
+                if (showEvent) {
+                    e.getBtn().setVisible(true);
+                }else {
+                    e.getBtn().setVisible(false);
+                }
+            }
+        }
 
     }
 
@@ -124,5 +137,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public SuperEvents getEvents(int i) {
         return events[i];
+    }
+
+    public void setShowEvent(boolean showEvent) {
+        this.showEvent = showEvent;
     }
 }

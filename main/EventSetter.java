@@ -3,9 +3,9 @@ package main;
 import javax.swing.JButton;
 
 import events.GeniusEvent;
-import events.StupidEvent;
+import events.HomeEvent;
 import menus.GeniusMenu;
-import menus.StupidMenu;
+import menus.HomeMenu;
 
 public class EventSetter {
     GamePanel gp;
@@ -16,8 +16,8 @@ public class EventSetter {
 
     public void setUpEvent() {
 
-        StupidMenu stupidMenu = new StupidMenu(gp);
-        StupidEvent btnEvent = new StupidEvent(gp);
+        HomeMenu stupidMenu = new HomeMenu(gp);
+        HomeEvent btnEvent = new HomeEvent(gp);
         btnEvent.addMenu(stupidMenu);
         
         gp.addEvents(0, btnEvent);
@@ -25,7 +25,21 @@ public class EventSetter {
 
         gp.getEvents(0).getBtn().addActionListener((e) -> {
             System.out.println("Stupid Event");
-            gp.getEvents(0).setMenuVisible(true);;
+            gp.getEvents(0).setMenuVisible(true);
+            gp.setShowEvent(false);
+        });
+
+        GeniusMenu geniusMenu = new GeniusMenu(gp);
+        GeniusEvent btnMenu = new GeniusEvent(gp);
+        btnMenu.addMenu(geniusMenu);
+        
+        gp.addEvents(1, btnMenu);
+        gp.addMenus(1, geniusMenu);
+
+        gp.getEvents(1).getBtn().addActionListener((e) -> {
+            System.out.println("Genius Event");
+            gp.getEvents(1).setMenuVisible(true);
+            gp.setShowEvent(false);
         });
         
     }

@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import inputs.MouseHandler;
-import main.Events;
+import main.Earth;
 import main.GamePanel;
 import utilz.LoadSave;
 
@@ -22,7 +22,7 @@ public class BackgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
     public ImageIcon[] build =new ImageIcon[10];
     GamePanel gp;
-    Events ev;
+    Earth ev;
 
     int indexBack;
     public Image[] backg ; 
@@ -41,8 +41,6 @@ public class BackgroundManager {
             e.printStackTrace();
         }
     }
-
-
 
     public void draw(Graphics2D g2){
         g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
