@@ -1,15 +1,10 @@
 package backgroundMana;
 
 import java.awt.Graphics2D;
-import java.io.IOException;
-import java.security.KeyStore.LoadStoreParameter;
 import java.awt.Image;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 

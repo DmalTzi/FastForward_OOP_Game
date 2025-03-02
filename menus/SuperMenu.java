@@ -1,6 +1,5 @@
 package menus;
 
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -54,7 +53,6 @@ public abstract class SuperMenu {
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
-            
         });
 
 

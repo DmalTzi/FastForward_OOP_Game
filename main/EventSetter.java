@@ -1,7 +1,5 @@
 package main;
 
-import javax.swing.JButton;
-
 import events.GeniusEvent;
 import events.HomeEvent;
 import menus.GeniusMenu;

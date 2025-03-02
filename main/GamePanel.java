@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import backgroundMana.BackgroundManager;
 import events.SuperEvents;
 
-import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import inputs.MouseHandler;
