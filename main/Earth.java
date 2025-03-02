@@ -1,14 +1,12 @@
-package Main;
+package main;
 
-public class Events {
+public class Earth {
     public double Time = 0;
     GamePanel gp; 
 
-    public Events(GamePanel gp){
+    public Earth(GamePanel gp){
         this.gp = gp;
     }
-
-
 
     public void update(){
         Time += 0.1;
@@ -16,6 +14,5 @@ public class Events {
         if((int)Time == 24){
             Time = 0;
         }
-        
     }
 }

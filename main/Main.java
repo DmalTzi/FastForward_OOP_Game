@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 import javax.swing.JFrame;
 
@@ -7,9 +7,11 @@ public class Main {
 
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ปิดแล้วโปรแกรมหยุดทำงาน
-        window.setResizable(false); // ล๊อคจอ
+        // window.setResizable(false); // ล๊อคจอ
         window.setTitle("NO time to see you because I'm working hard I sus");
         GamePanel gamepanal = new GamePanel();
+        gamepanal.loadGameEvents();
+        
         window.add(gamepanal);
         window.pack();
         window.setLocationRelativeTo(null); // กลางจอ
