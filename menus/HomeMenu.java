@@ -43,7 +43,9 @@ public class HomeMenu extends SuperMenu{
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("You Click top left");
+            }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -51,14 +53,18 @@ public class HomeMenu extends SuperMenu{
 
         btns[1].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("You Click top middle");
+            }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
         });
 
         btns[2].addMouseListener(new MouseListener() {
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("You Click top right");
+            }
             public void mouseReleased(MouseEvent e) {}
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
@@ -67,7 +73,9 @@ public class HomeMenu extends SuperMenu{
 
         btns[3].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("You Click bottom left");
+            }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -75,7 +83,9 @@ public class HomeMenu extends SuperMenu{
 
         btns[4].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("You Click bottom middle");
+            }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -83,7 +93,9 @@ public class HomeMenu extends SuperMenu{
 
         btns[5].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("You Click bottom right");
+            }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
