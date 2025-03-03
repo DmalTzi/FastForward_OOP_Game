@@ -75,6 +75,7 @@ public class HomeMenu extends SuperMenu{
             public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
                 System.out.println("You Click bottom left");
+                gp.ev.setTime(3);
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}

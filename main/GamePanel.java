@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable{
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
     private EventSetter eSetter = new EventSetter(this);
-
+    
     // flexible 
     int FPS = 60;
     private boolean showEvent = true;
@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setFocusable(true);
         this.setLayout(null);
+        loadGameEvents();
     }
 
     public void loadGameEvents() {
@@ -97,6 +98,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         ev.update();
         backg.updateblackground();
+       
         for (SuperEvents e : events) {
             if (e != null) {
                 // เช็คว่าเมนูไหนเปิดอยู่

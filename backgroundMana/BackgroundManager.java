@@ -53,36 +53,13 @@ public class BackgroundManager {
         obj[index].setIcon(build[index]);
         obj[index].addMouseListener(new MouseHandler(gp));
 
-        // obj[index].addMouseListener(new MouseListener() {
-        //     @Override
-        //     public void mouseClicked(MouseEvent e) {
-        //         System.out.println("Clicked!");
-        //         Gamestate.state = Gamestate.MENU;
-        //     }
-
-        //     @Override
-        //     public void mousePressed(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseReleased(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseEntered(MouseEvent e) {
-        //     }
-
-        //     @Override
-        //     public void mouseExited(MouseEvent e) {
-        //         Gamestate.state = Gamestate.PLAYING;
-        //     }
-        // });
+       
 
         gp.add(obj[index]);
     }
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(gp.ev.Time > 12){
+        if(gp.ev.getTime() > 12){
             indexBack = 1;
         }
         else {
