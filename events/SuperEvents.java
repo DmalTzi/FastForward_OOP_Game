@@ -17,18 +17,7 @@ public abstract class SuperEvents {
         this.gp = gp;
         btn = new JButton();
         btn.setOpaque(false);
-        // btn.addFocusListener(new FocusListener() {
-
-        //     @Override
-        //     public void focusGained(FocusEvent e) {
-        //     btn.setBorder(new LineBorder(Color.RED));
-        //     }
-
-        //     @Override
-        //     public void focusLost(FocusEvent e) {
-        //     btn.setBorder(new LineBorder(Color.WHITE));
-        //     }
-        // });
+        btn.setContentAreaFilled(false);
     }
 
     /*
