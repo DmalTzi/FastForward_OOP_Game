@@ -1,7 +1,8 @@
 package main;
 
 public class Earth {
-    private double Time = 0;
+    private double Time = 0; //1440
+    
     GamePanel gp; 
 
     public Earth(GamePanel gp){
