@@ -9,7 +9,7 @@ public class Earth {
     }
 
     public void update(){
-        Time += 0.1;
+        // Time += 0.1;
         // System.out.println(Time);
         if((int)Time == 24){
             Time = 0;
