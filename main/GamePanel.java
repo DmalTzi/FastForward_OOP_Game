@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     // flexible 
     int FPS = 60;
     private boolean showEvent = true;
+    GameState gamest = GameState.Gameplay;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -90,9 +91,17 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
+        
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        backg.draw(g2);
+        // backg.draw(g2);
+        if(gamest == GameState.Title){
+            showEvent = false;
+        }else{
+            showEvent =true;
+            backg.draw(g2);
+        }
+    
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
