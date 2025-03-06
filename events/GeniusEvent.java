@@ -12,7 +12,7 @@ public class GeniusEvent extends SuperEvents {
         super.setIcon("events", "supermarket.png");
         super.btn.setContentAreaFilled(false);
         super.btn.setBorder(null);
-        super.setBound(500, 500, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
+        super.setBound(600, 175, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
     }
     
 }

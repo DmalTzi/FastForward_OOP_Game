@@ -1,12 +1,15 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import backgroundMana.BackgroundManager;
+import Ui.BackgroundManager;
+import Ui.KeyHandler;
+import Ui.Title;
 import events.SuperEvents;
 
 import javax.swing.ImageIcon;
@@ -31,17 +34,27 @@ public class GamePanel extends JPanel implements Runnable{
     public MouseHandler mHandler = new MouseHandler(this);
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
+    public Title title = new Title(this);
     private EventSetter eSetter = new EventSetter(this);
+    private KeyHandler keyH = new KeyHandler(this);
     
+
+
+
+
+
     // flexible 
     int FPS = 60;
     private boolean showEvent = true;
-    GameState gamest = GameState.Gameplay;
+    GameState gamest = GameState.Title; //เปลี่ยน state
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setFocusable(true);
         this.setLayout(null);
+        this.setBackground(Color.black);
+        this.addKeyListener(keyH);
+        this.setFocusable(true);
         loadGameEvents();
     }
 
@@ -94,12 +107,13 @@ public class GamePanel extends JPanel implements Runnable{
         
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        // backg.draw(g2);
-        if(gamest == GameState.Title){
+
+        if(gamest == GameState.Title){ //เข็คสภานะเกมส์
             showEvent = false;
-        }else{
-            showEvent =true;
+            title.draw(g2);
+        }else if(gamest == GameState.Gameplay){
             backg.draw(g2);
+            showEvent =true;
         }
     
     }
@@ -120,6 +134,11 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
     }
+
+
+
+
+
 
     // Test
     public GamePanel getGamePanel(){
@@ -148,5 +167,11 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setShowEvent(boolean showEvent) {
         this.showEvent = showEvent;
+    }
+    public GameState getgameState(){
+        return gamest ; 
+    }
+    public void setgameState(GameState s){
+       gamest =  s;
     }
 }
