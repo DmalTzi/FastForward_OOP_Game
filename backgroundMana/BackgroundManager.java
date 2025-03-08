@@ -91,8 +91,8 @@ public class BackgroundManager {
     }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
-        loadBackground(0, "back_01.jpg");
-        loadBackground(1, "backni_02.jpg");
+        loadBackground(0, "menu_background_morning.png");
+        loadBackground(1, "menu_background_night.png");
         // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
         // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
