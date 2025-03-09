@@ -14,6 +14,7 @@ public class Earth {
     public Earth(GamePanel gp){
         this.gp = gp;
     }
+    
     public double getTime(){
         return Time;
     }
@@ -22,8 +23,6 @@ public class Earth {
     }
 
     public void update(){
-        // Time += 0.1;
-        // System.out.println(Time);
         if((int)Time == 24){
             Time = 0;
         }
