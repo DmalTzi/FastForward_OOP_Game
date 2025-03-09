@@ -34,7 +34,7 @@ public class Player {
     public void loadPlayer(){
 
          try{
-            playerIm = ImageIO.read(getClass().getResourceAsStream("/res/player/pngegg.png"));
+            playerIm = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset_78.png"));
            
         }catch(IOException e){
   

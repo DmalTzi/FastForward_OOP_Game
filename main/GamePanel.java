@@ -2,11 +2,14 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
 
+import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Title;
@@ -37,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eSetter = new EventSetter(this);
     private KeyHandler keyH = new KeyHandler(this);
-    
+    private Player py = new Player(this);
 
 
 
@@ -96,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
             if (timer >= 1000000000) {
-                System.out.println("FPS " + drawCount);
+                // System.out.println("FPS " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -107,13 +110,13 @@ public class GamePanel extends JPanel implements Runnable{
         
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
         if(gamest == GameState.Title){ //เข็คสภานะเกมส์
             showEvent = false;
             title.draw(g2);
         }else if(gamest == GameState.Gameplay){
             backg.draw(g2);
             showEvent =true;
+            py.draw(g2);
         }
     
     }
@@ -121,7 +124,17 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         ev.update();
         backg.updateblackground();
-       
+        // ============ This part should have lived in player ==============
+        for (int i = 0; i < 4; i++) {
+            // find the position for enable bus that location
+            int pos = Arrays.asList(ev.getLocation()).indexOf(ev.getCurrentPosition());
+            // System.out.println(pos);
+            // if current position == in list of bus btn, the bus btn will enable
+            if (i == pos) events[i].getBtn().setEnabled(true);
+            // all of else is diable
+            else events[i].getBtn().setEnabled(false);
+        }
+        // =================================================================
         for (SuperEvents e : events) {
             if (e != null) {
                 // เช็คว่าเมนูไหนเปิดอยู่
@@ -135,19 +148,10 @@ public class GamePanel extends JPanel implements Runnable{
 
     }
 
-
-
-
-
-
-    // Test
+    // Fucking Getters Setters
     public GamePanel getGamePanel(){
         return this;
     }
-
-    // public BackgroundManager getBackg() {
-    //     return backg;
-    // }
 
     public void addMenus(int i, SuperMenu m) {
         menus[i] = m;

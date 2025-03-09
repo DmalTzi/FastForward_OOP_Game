@@ -68,19 +68,14 @@ public class BackgroundManager {
     }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
-        loadBackground(0, "morning.png");
-        loadBackground(1, "night.png");
+        loadBackground(0, "menu_background_morning.png");
+        loadBackground(1, "menu_background_night.png");
         // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png")
     }
 
-    // TEST
-    
     // TEST
     public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
 	}
-
-
-
 }

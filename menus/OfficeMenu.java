@@ -10,12 +10,9 @@ import java.awt.event.MouseEvent;
 import main.GamePanel;
 import utilz.LoadSave;
 
-public class HomeMenu extends SuperMenu{
+public class OfficeMenu extends SuperMenu{
 
-    private JLabel title;
-    private JLabel profile;
-
-    public HomeMenu(GamePanel gp) {
+    public OfficeMenu(GamePanel gp) {
         super(gp);
 
         bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office.png")));
@@ -24,7 +21,6 @@ public class HomeMenu extends SuperMenu{
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
         menu.setSize(menuWidth, menuHeight);
         buttonExit.setLocation((menuWidth-150)*gp.SCALE, 175*gp.SCALE);
-
 
         setUpBtns();
         setUpActionBtns();
@@ -42,7 +38,7 @@ public class HomeMenu extends SuperMenu{
         btns[0].addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
-                System.out.println("You Click top left");
+                System.out.println("Working 1hr+");
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
@@ -52,7 +48,8 @@ public class HomeMenu extends SuperMenu{
 
     private void setUpBtns() {
         btns[0] = new JButton();
-        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_sub_btn.png")));
+        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working.png")));
         btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+        btns[0].setLocation(550, menuHeight-200);
     }
 }
