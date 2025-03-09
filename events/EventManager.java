@@ -20,6 +20,8 @@ public class EventManager {
 
     public int goToNextEvent(int cur, int next, String moveBy) {
         int time = 0;
+        // เช็คว่าอยู่ที่เดิม
+        if (cur == next) return 0;
         switch (moveBy) {
             case "bus":
                 time = paths[cur][next];

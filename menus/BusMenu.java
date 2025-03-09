@@ -107,7 +107,7 @@ public class BusMenu extends SuperMenu{
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getEarth().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[1]), "bus"));
+                                .indexOf(gp.getEarth().getLocation()[2]), "bus"));
 
                 gp.getEarth().setCurrentPosition(gp.getEarth().getLocation()[2]);
                 menu.setVisible(false);
