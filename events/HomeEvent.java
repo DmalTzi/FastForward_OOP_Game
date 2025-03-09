@@ -14,18 +14,22 @@ public class HomeEvent extends SuperEvents {
 
     public HomeEvent(GamePanel gp) {
         super(gp);
-        super.setIcon("events", "home.png");
+        super.setIcon("events", "event_home.png");
         super.btn.setContentAreaFilled(false);
         super.btn.setBorder(null);
-        super.setBound(500, 100, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
+        super.setBound(1123, 410, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
         super.btn.addMouseListener(new MouseListener() {
-                public void mouseEntered(MouseEvent e) {}
-                public void mouseReleased(MouseEvent e) {
-                    System.out.println("Home Event");
-                    setMenuVisible(true);
-                    gp.setShowEvent(false);
+            public void mouseReleased(MouseEvent e) {
+                gp.ev.setCurrentPosition("home");
+                setMenuVisible(true);
+                gp.setShowEvent(false);
+            }
+                public void mouseEntered(MouseEvent e) {
+                    setIcon("events", "event_home_hover.png");
                 }
-                public void mouseExited(MouseEvent e) {}
+                public void mouseExited(MouseEvent e) {
+                    setIcon("events", "event_home.png");
+                }
                 public void mouseClicked(MouseEvent e) {}
                 public void mousePressed(MouseEvent e) {}
         });
