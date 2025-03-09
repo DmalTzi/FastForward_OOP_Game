@@ -59,7 +59,7 @@ public class BackgroundManager {
     }
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(gp.ev.getTime() > 12){
+        if(gp.getEarth().getTime() > 18*60){
             indexBack = 1;
         }
         else {

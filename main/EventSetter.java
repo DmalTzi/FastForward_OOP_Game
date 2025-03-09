@@ -1,6 +1,10 @@
 package main;
 
-import events.*;
+import events.BusEvent;
+import events.HomeEvent;
+import events.MarketEvent;
+import events.OfficeEvent;
+import events.SuperMarketEvent;
 import menus.*;
 
 public class EventSetter {
@@ -15,8 +19,8 @@ public class EventSetter {
         int i = 0;
         int pos = 0;
         while (i < 4) {
-            BusEvent busEvent = new BusEvent(gp, gp.ev.getBusLocation()[i]);
-            busEvent.addMenu(new BusMenu(gp, gp.ev.getLocation()[i++]));
+            BusEvent busEvent = new BusEvent(gp, gp.getEarth().getBusLocation()[i]);
+            busEvent.addMenu(new BusMenu(gp, gp.getEarth().getLocation()[i++]));
             gp.addEvents(pos++, busEvent);
         }
 
