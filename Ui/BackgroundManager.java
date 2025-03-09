@@ -1,4 +1,4 @@
-package backgroundMana;
+package Ui;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -68,14 +68,9 @@ public class BackgroundManager {
     }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
-        loadBackground(0, "back_01.jpg");
-        loadBackground(1, "backni_02.jpg");
-        // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png");
-        // createObject(1, 200, 200, 100, 100, "/res/ISAG_Logo_sq.png");
-        // createObject(1, 600, 200, 300, 300, "/res/Building/B1.png");
-        // createObject(0, 100, 100, 450, 300, "/res/Building/camp.png");
-        // createObject(2, 500, 450, 300, 300, "/res/Building/grass.png");
-        // createobject(3, 1, 450, 300, 300, "/res/Building/B1.png");
+        loadBackground(0, "morning.png");
+        loadBackground(1, "night.png");
+        // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png")
     }
 
     // TEST

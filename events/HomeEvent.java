@@ -17,17 +17,6 @@ public class HomeEvent extends SuperEvents {
         super.setIcon("events", "home.png");
         super.btn.setContentAreaFilled(false);
         super.btn.setBorder(null);
-        super.setBound(500, 100, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
-        super.btn.addMouseListener(new MouseListener() {
-                public void mouseEntered(MouseEvent e) {}
-                public void mouseReleased(MouseEvent e) {
-                    System.out.println("Home Event");
-                    setMenuVisible(true);
-                    gp.setShowEvent(false);
-                }
-                public void mouseExited(MouseEvent e) {}
-                public void mouseClicked(MouseEvent e) {}
-                public void mousePressed(MouseEvent e) {}
-        });
+        super.setBound(1120, 405, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
     }
 }
