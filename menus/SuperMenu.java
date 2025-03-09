@@ -18,27 +18,22 @@ public abstract class SuperMenu {
     protected JButton buttonExit;
     protected int menuWidth;
     protected int menuHeight;
+    protected JButton btns[] = new JButton[10];
 
     public SuperMenu(GamePanel gp) {
         this.gp = gp;
 
         menu = new JLayeredPane();
-
         bg = new JLabel();
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bg.png")));
-        menuWidth = bg.getIcon().getIconWidth();
-        menuHeight = bg.getIcon().getIconHeight();
-        bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
-
+        buttonExit = new JButton();
 
         menu.setVisible(false);
-        menu.setBounds(45*gp.SCALE, 100*gp.SCALE, menuWidth, menuHeight);
+        menu.setLocation(0*gp.SCALE, 0*gp.SCALE);
 
-        buttonExit = new JButton();
         buttonExit.setBorder(null);
         buttonExit.setContentAreaFilled(false);
         buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));
-        buttonExit.setBounds((menuWidth-100)*gp.SCALE, 30*gp.SCALE, buttonExit.getIcon().getIconWidth(), buttonExit.getIcon().getIconHeight());
+        buttonExit.setSize(buttonExit.getIcon().getIconWidth(), buttonExit.getIcon().getIconHeight());
 
         buttonExit.addMouseListener(new MouseListener() {
             public void mouseEntered(MouseEvent e) {

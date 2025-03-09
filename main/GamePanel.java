@@ -2,8 +2,10 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
 
@@ -121,7 +123,16 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         ev.update();
         backg.updateblackground();
-       
+        // ============ This part should have lived in player ==============
+        for (int i = 0; i < 4; i++) {
+            // find the position for enable bus that location
+            int pos = Arrays.asList(ev.getLocation()).indexOf(ev.getCurrentPosition());
+            // if current position == in list of bus btn, the bus btn will enable
+            if (i == pos) events[i].getBtn().setEnabled(true);
+            // all of else is diable
+            else events[i].getBtn().setEnabled(false);
+        }
+        // =================================================================
         for (SuperEvents e : events) {
             if (e != null) {
                 // เช็คว่าเมนูไหนเปิดอยู่
@@ -135,19 +146,10 @@ public class GamePanel extends JPanel implements Runnable{
 
     }
 
-
-
-
-
-
-    // Test
+    // Fucking Getters Setters
     public GamePanel getGamePanel(){
         return this;
     }
-
-    // public BackgroundManager getBackg() {
-    //     return backg;
-    // }
 
     public void addMenus(int i, SuperMenu m) {
         menus[i] = m;
