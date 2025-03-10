@@ -2,6 +2,7 @@ package events;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
 import main.GamePanel;
 
@@ -9,15 +10,21 @@ public class MarketEvent extends SuperEvents {
 
     public MarketEvent(GamePanel gp) {
         super(gp);
+        super.title = "market";
         super.setIcon("events", "event_market.png");
         super.btn.setContentAreaFilled(false);
         super.btn.setBorder(null);
         super.setBound(335, 580, btn.getIcon().getIconWidth(), btn.getIcon().getIconHeight());
         super.btn.addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                setMenuVisible(true);
-                gp.ev.setCurrentPosition("market");
+                gp.getEarth().increaseTime(gp.getEventManager()
+                .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
+                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                Arrays.asList(gp.getEarth().getLocation())
+                                .indexOf(title), gp.getEarth().getMoveWith()));
+                gp.getEarth().setCurrentPosition(title);
                 gp.setShowEvent(false);
+                setMenuVisible(true);
             }
             public void mouseEntered(MouseEvent e) {
                 setIcon("events", "event_market_hover.png");

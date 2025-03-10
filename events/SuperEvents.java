@@ -12,6 +12,7 @@ public abstract class SuperEvents {
     protected GamePanel gp;
     protected JButton btn;
     protected SuperMenu menu;
+    protected String title;
 
     public SuperEvents(GamePanel gp) {
         this.gp = gp;

@@ -13,6 +13,9 @@ public class Player {
     public BufferedImage playerIm;
     public int x ;
     public int y;
+    private double coin;
+    private double emotion = 100;
+    private int workHr = 0;
     
     public Player (GamePanel gp){
         this.gp = gp ;
@@ -48,5 +51,26 @@ public class Player {
      
         g2.drawImage(playerIm, x,y, 60,60,null);
        
-    } 
+    }
+    
+    public double getPlayerCoin() {
+        return this.coin;
+    }
+    public void setPlayerCoin(double coin) {
+        this.coin += coin;
+    }
+
+    public double getPlayerEmo() {
+        return this.emotion;
+    }
+    public void setPlayerEmo(double emo) {
+        this.emotion -= emo;
+    }
+
+    public int getWorkHr() {
+        return this.workHr;
+    }
+    public void setWorkHr(int hr) {
+        this.workHr += hr;
+    }
 }
