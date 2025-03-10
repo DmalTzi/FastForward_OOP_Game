@@ -9,10 +9,10 @@ import java.util.Arrays;
 
 import javax.swing.JPanel;
 
-import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Title;
+import events.EventManager;
 import events.SuperEvents;
 
 import javax.swing.ImageIcon;
@@ -31,24 +31,19 @@ public class GamePanel extends JPanel implements Runnable{
     // ActionHandler aHandler = new ActionHandler(this);
     
     //set up 
-    public Earth ev = new Earth(this);
+    private Earth earth = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
-    public MouseHandler mHandler = new MouseHandler(this);
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
     public Title title = new Title(this);
-    private EventSetter eSetter = new EventSetter(this);
+    private EventSetter eventSetter = new EventSetter(this);
+    private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
-    private Player py = new Player(this);
-
-
-
-
 
     // flexible 
     int FPS = 60;
-    private boolean showEvent = true;
+    private boolean showEvent = false;
     GameState gamest = GameState.Title; //เปลี่ยน state
 
     public GamePanel() {
@@ -58,11 +53,15 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.black);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        loadGameEvents();
+        loadEventAsset();
     }
 
-    public void loadGameEvents() {
-        eSetter.setUpEvent();
+    public void setStart() {
+        showEvent = true;
+    }
+
+    public void loadEventAsset() {
+        eventSetter.setUpEvent();
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
                 this.add(events[i].getMenu());
@@ -110,25 +109,29 @@ public class GamePanel extends JPanel implements Runnable{
         
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
         if(gamest == GameState.Title){ //เข็คสภานะเกมส์
-            showEvent = false;
             title.draw(g2);
         }else if(gamest == GameState.Gameplay){
             backg.draw(g2);
-            showEvent =true;
-            py.draw(g2);
+            g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,50F));
+            int m = earth.getTime()%60;
+            int h = earth.getTime()/60;
+            g2.getFontMetrics().getStringBounds(Integer.toString(h)+":"+Integer.toString(m), g2).getWidth();
+            g2.draw(getBounds());
+            g2.setColor(Color.RED);
+            g2.drawString(Integer.toString(h)+":"+Integer.toString(m), 600, 100);
+
         }
     
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        ev.update();
         backg.updateblackground();
         // ============ This part should have lived in player ==============
         for (int i = 0; i < 4; i++) {
             // find the position for enable bus that location
-            int pos = Arrays.asList(ev.getLocation()).indexOf(ev.getCurrentPosition());
-            // System.out.println(pos);
+            int pos = Arrays.asList(earth.getLocation()).indexOf(earth.getCurrentPosition());
             // if current position == in list of bus btn, the bus btn will enable
             if (i == pos) events[i].getBtn().setEnabled(true);
             // all of else is diable
@@ -177,5 +180,13 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void setgameState(GameState s){
        gamest =  s;
+    }
+
+    public Earth getEarth() {
+        return earth;
+    }
+
+    public EventManager getEventManager() {
+        return eventManager;
     }
 }
