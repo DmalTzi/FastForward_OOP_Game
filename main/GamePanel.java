@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import javax.swing.JPanel;
 
+import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Title;
@@ -45,6 +46,8 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS = 60;
     private boolean showEvent = false;
     GameState gamest = GameState.Title; //เปลี่ยน state
+
+    public Player player = new Player(getGamePanel());
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));

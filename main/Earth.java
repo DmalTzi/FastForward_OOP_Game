@@ -14,6 +14,8 @@ public class Earth {
     private String currentPosition = "home";
     private String moveWith = "legs";
 
+    private double co2 = 0;
+
     public Earth(GamePanel gp){
         this.gp = gp;
     }
@@ -60,5 +62,12 @@ public class Earth {
 
     public String getMoveWith() {
         return moveWith;
+    }
+
+    public double getEarthCO2() {
+        return this.co2;
+    }
+    public void setEarthCO2(double co2) {
+        this.co2 += co2;
     }
 }
