@@ -29,7 +29,7 @@ public class Player {
 
 
     public void update(){ //walk check bulid
- 
+        
     
   
     }
@@ -48,7 +48,7 @@ public class Player {
     
 
     public void draw(Graphics2D g2){ // วาดตัวละคร
-     
+        
         g2.drawImage(playerIm, x,y, 60,60,null);
        
     } 
