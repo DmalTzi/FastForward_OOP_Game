@@ -2,7 +2,6 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Arrays;
@@ -39,15 +38,16 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eSetter = new EventSetter(this);
     private KeyHandler keyH = new KeyHandler(this);
-    private GameState gamest = GameState.Title;
+    
+
 
 
 
 
     // flexible 
     int FPS = 60;
-    private boolean showEvent = false;
-
+    private boolean showEvent = true;
+    GameState gamest = GameState.Title; //เปลี่ยน state
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -56,10 +56,14 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.black);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        loadGameEvents();
+        loadEventAsset();
     }
 
-    public void loadGameEvents() {
+    public void setStart() {
+        showEvent = true;
+    }
+
+    public void loadEventAsset() {
         eSetter.setUpEvent();
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
@@ -107,17 +111,18 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-       
-        if(gamest == GameState.Gameplay){
-            backg.draw(g2);
-        }else{
+
+        if(gamest == GameState.Title){ //เข็คสภานะเกมส์
+            showEvent = false;
             title.draw(g2);
+        }else if(gamest == GameState.Gameplay){
+            backg.draw(g2);
+          
         }
       
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        ev.update();
         backg.updateblackground();
         // ============ This part should have lived in player ==============
         for (int i = 0; i < 4; i++) {

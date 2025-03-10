@@ -12,9 +12,6 @@ import utilz.LoadSave;
 
 public class HomeMenu extends SuperMenu{
 
-    private JLabel title;
-    private JLabel profile;
-
     public HomeMenu(GamePanel gp) {
         super(gp);
 

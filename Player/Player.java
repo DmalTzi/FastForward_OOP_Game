@@ -13,6 +13,9 @@ public class Player {
     public BufferedImage playerIm;
     public int x ;
     public int y;
+    private int money = 0;
+    private Double stress = 0.0;
+    private String[] inventory = new String[2];
     
     public Player (GamePanel gp){
         this.gp = gp ;
