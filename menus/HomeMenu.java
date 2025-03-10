@@ -40,6 +40,7 @@ public class HomeMenu extends SuperMenu{
             public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
                 System.out.println("You Click top left");
+                // gp.player.setPlayerEmo(-20); // ขอเทสหน้าอารมณ์ 
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
