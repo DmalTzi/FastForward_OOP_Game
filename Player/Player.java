@@ -64,7 +64,7 @@ public class Player {
             remem =  playerIm3;
         }
         // System.out.println(emotion);
-        g2.drawImage(remem, x,y, 60,60,null);
+        g2.drawImage(remem, x,y, 80,80,null);
        
     }
     
