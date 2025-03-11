@@ -30,8 +30,6 @@ public class Title{
         g2.setColor(Color.YELLOW);
         g2.drawString(text, x, y);
 
-
-
         //Menu
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,35F));
         g2.setColor(Color.BLACK);

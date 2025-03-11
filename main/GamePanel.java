@@ -122,20 +122,16 @@ public class GamePanel extends JPanel implements Runnable{
             title.draw(g2);
         }else if(gamest == GameState.Gameplay){
             backg.draw(g2);
-            g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,50F));
-            int m = earth.getTime()%60;
-            int h = earth.getTime()/60;
-            g2.getFontMetrics().getStringBounds(Integer.toString(h)+":"+Integer.toString(m), g2).getWidth();
-            g2.draw(getBounds());
-            g2.setColor(Color.RED);
-            g2.drawString(Integer.toString(h)+":"+Integer.toString(m), 600, 100);
-
+            earth.draw(g2);
+            player.draw(g2);
         }
       
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
+        player.update();
+
         // ============ This part should have lived in player ==============
         for (int i = 0; i < 4; i++) {
             // find the position for enable bus that location
