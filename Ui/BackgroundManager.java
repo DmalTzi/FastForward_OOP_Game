@@ -82,6 +82,8 @@ public class BackgroundManager {
     public void generateScreen(){ //สร้าง object สถานที่และ bg
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
+        loadBackground(2, "end.png");
+
         createObject(0, 691, 15 , 59, 59, "/res/ui/coin.png");
         createObject(1, 377, 19, 303, 64, "/res/ui/earth_val.png");
         createObject(2, 310, -3, 95, 94, "/res/ui/earth.png");

@@ -125,6 +125,9 @@ public class GamePanel extends JPanel implements Runnable{
             backg.draw(g2);
             earth.draw(g2);
             player.draw(g2);
+        }else if(gamest == GameState.Endgame){
+            showEvent = false;
+            backg.draw(g2);
         }
       
     }
@@ -132,11 +135,8 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
-<<<<<<< HEAD
-=======
         backg.checkObj(showEvent);
         
->>>>>>> ab2c3b01b35991533dc58fb08d3e7b7803c95466
         // ============ This part should have lived in player ==============
         
         // =================================================================

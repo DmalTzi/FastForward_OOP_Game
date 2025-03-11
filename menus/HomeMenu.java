@@ -38,10 +38,6 @@ public class HomeMenu extends SuperMenu{
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-<<<<<<< HEAD
-                System.out.println("You Click top left");
-                // gp.player.setPlayerEmo(-20); // ขอเทสหน้าอารมณ์ 
-=======
                 gp.getPlayer().activity("Movie");
             }
             public void mouseEntered(MouseEvent e) {
@@ -131,7 +127,6 @@ public class HomeMenu extends SuperMenu{
             public void mouseExited(MouseEvent e) {
                 btns[5].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_home_sleep.png")));
                 btns[5].setSize(btns[5].getIcon().getIconWidth(), btns[5].getIcon().getIconHeight());
->>>>>>> ab2c3b01b35991533dc58fb08d3e7b7803c95466
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}

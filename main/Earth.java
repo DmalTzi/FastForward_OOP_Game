@@ -11,9 +11,13 @@ public class Earth {
     private String[] location = {"market", "office", "supermarket", "home"};
     // bus location actual location x y
     private int[][] busLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
-    private int[][] playerLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
+    private int[][] playerLocation = {{590, 540}, {320, 420}, {720, 300}, {1159, 530}};
     private int worldHeat = 0;
     // set currentpostion
+    private String currentPosition = "home";
+    private String moveWith = "legs";
+
+  
 
     public Earth(GamePanel gp){
         this.gp = gp;
@@ -30,9 +34,9 @@ public class Earth {
             int m = getTime()%60;
             int h = getTime()/60;
             if(h == 24){
-                if(currentPosition != "home"){ //ถ้าไม่อยู่บ้าน
+                if(currentPosition .equals("home") ){ //ถ้าไม่อยู่บ้าน
                     gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
-                    gp.player.setPlayerEmo((int)(Math.random()*20)); 
+                    gp.player.setPlayerEmo(-(int)(Math.random()*20)); 
                 }
                 time  = 0;
                 h = 0;
@@ -66,11 +70,22 @@ public class Earth {
         return location;
     }
 
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     public int[][] getBusLocation() {
         return busLocation;
     }   
     public int[] getPlayerLocation(int i){
         return playerLocation[i];
+    }
+    public String getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public String getMoveWith() {
+        return moveWith;
     }
 
     public int getEarthHeat() {
