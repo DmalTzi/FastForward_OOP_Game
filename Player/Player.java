@@ -7,7 +7,10 @@ import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
+import events.SuperEvents;
 import main.GamePanel;
+import main.GameState;
+import menus.SuperMenu;
 
 public class Player {
     GamePanel gp;
@@ -20,8 +23,6 @@ public class Player {
     
     public Player (GamePanel gp){
         this.gp = gp ;
-         x  = gp.screenWidth/2;
-         y = gp.screenHeight/2;
 
         loadPlayer();
     }
@@ -32,7 +33,8 @@ public class Player {
     public void update(){ //walk check bulid
          x = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition()))[0];
          y = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition()))[1];
-         
+        emotioncheck();
+
         
     }
 
@@ -66,6 +68,14 @@ public class Player {
         // System.out.println(emotion);
         g2.drawImage(remem, x,y, 80,80,null);
        
+    }
+    private void emotioncheck(){
+        // System.out.println(emotion);
+        if(emotion <= 0 ){
+            gp.setgameState(GameState.Endgame);
+            // gp.getMenus(3).setMenuVisible(false); //เซ็นให้หน่อย
+            
+        }
     }
     
     public double getPlayerCoin() {

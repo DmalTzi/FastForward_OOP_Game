@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import inputs.MouseHandler;
 import main.Earth;
 import main.GamePanel;
+import main.GameState;
 import utilz.LoadSave;
 
 public class BackgroundManager {
@@ -38,7 +39,11 @@ public class BackgroundManager {
     }
 
     public void draw(Graphics2D g2){
-        g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        if(gp.getgameState() == GameState.Endgame){
+            g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }else{
+            g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }
     }
 
 
@@ -70,6 +75,8 @@ public class BackgroundManager {
     public void generateScreen(){ //สร้าง object สถานที่และ bg
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
+        loadBackground(2, "end.png");
+
         // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png")
     }
 
