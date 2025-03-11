@@ -24,6 +24,8 @@ public class Player {
     private int workHr = 0;
     private int speedup = 0 ;
     private String[] inventory = new String[2];
+    private String currentPosition = "home";
+    private String moveWith = "legs";
     private Map<String,int[]> activityHome = new HashMap<>();
     private Map<String,int[]> activityMarket = new HashMap<>();
     private Map<String,int[]> activitySuper = new HashMap<>();
@@ -35,21 +37,24 @@ public class Player {
         loadAsset();
     }
 
-
-
-
     public void update(){ //walk check bulid
         MoveTo();
         emotioncheck();
-
-        System.out.println( coin);
+        for (int i = 0; i < 4; i++) {
+            // find the position for enable bus that location
+            int pos = Arrays.asList(gp.getEarth().getLocation()).indexOf(currentPosition);
+            // if current position == in list of bus btn, the bus btn will enable
+            if (i == pos) gp.getEvents(i).getBtn().setEnabled(true);
+            // all of else is diable
+            else gp.getEvents(i).getBtn().setEnabled(false);
+        }
     }   
     public void loadAsset(){
-        activityHome.put("Movie",new int[]{20,25,-60}); // emo 1 c02  2 coin
-        activityHome.put("Exercise",new int[]{10,15,-10});
-        activityHome.put("Game",new int[]{20,30,-50});
-        activityHome.put("Plante",new int[]{25,-20,-5});
-        activityHome.put("ReadBk",new int[]{15,10,-10});
+        activityHome.put("Movie",new int[]{20,25,-60, 120}); // emo 1 c02  2 coin
+        activityHome.put("Exercise",new int[]{10,15,-10, 30});
+        activityHome.put("Game",new int[]{20,30,-50, 60});
+        activityHome.put("Plante",new int[]{25,-20,-5, 30});
+        activityHome.put("ReadBk",new int[]{15,10,-10, 60});
         activityHome.put("Sleep",new int[]{25,5,0});
 
         activityMarket.put("Apple", new int[]{5,5,-10});
@@ -101,18 +106,17 @@ public class Player {
         g2.drawImage(remem, x,y, 80,80,null);
        
     }
+
     private void emotioncheck(){
         // System.out.println(emotion);
         if(emotion <= 0 ){
             gp.setgameState(GameState.Endgame);
-            gp.getEvents(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition())+4)
-            .setMenuVisible(false); //เซ็นให้หน่อย
-            
+            Arrays.asList(gp.getAllEvent()).forEach(e -> {if (e != null) e.setMenuVisible(false);});
         }
     }
     public void MoveTo(){
-        x = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition()))[0];
-        y = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition()))[1];
+        x = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(currentPosition))[0];
+        y = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(currentPosition))[1];
     }
     
     public void buyCar(String name , int index){
@@ -126,27 +130,32 @@ public class Player {
     public void equip(String vehicle){
 
     }
-    public void Activity(String n){
+    public void activity(String n){
         if(n.equals("Movie")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
             increasePlayerEmo((activityHome.get(n)[2]));
+            gp.getEarth().increaseTime(activityHome.get(n)[3]);
         }else if(n.equals("Exercise")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
             increasePlayerEmo((activityHome.get(n)[2]));
+            gp.getEarth().increaseTime(activityHome.get(n)[3]);
         }else if(n.equals("Game")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
             increasePlayerEmo((activityHome.get(n)[2]));
+            gp.getEarth().increaseTime(activityHome.get(n)[3]);
         }else if(n.equals("Plante")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
             increasePlayerEmo((activityHome.get(n)[2]));
+            gp.getEarth().increaseTime(activityHome.get(n)[3]);
         }else if(n.equals("ReadBk")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
             increasePlayerEmo((activityHome.get(n)[2]));
+            gp.getEarth().increaseTime(activityHome.get(n)[3]);
         }else if(n.equals("Sleep")){
             setPlayerEmo(activityHome.get(n)[0]);
             gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
@@ -214,5 +223,21 @@ public class Player {
     }
     public void setWorkHr(int hr) {
         this.workHr += hr;
+    }
+
+    public double getCoin() {
+        return coin;
+    }
+
+    public String getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public String getMoveWith() {
+        return moveWith;
+    }
+
+    public void setCurrentPosition(String currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }

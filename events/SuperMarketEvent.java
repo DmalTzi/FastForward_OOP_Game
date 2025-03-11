@@ -19,10 +19,10 @@ public class SuperMarketEvent extends SuperEvents {
             public void mouseReleased(MouseEvent e) {
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(title), gp.getEarth().getMoveWith()));
-                gp.getEarth().setCurrentPosition(title);
+                                .indexOf(title), gp.getPlayer().getMoveWith()));
+                gp.getPlayer().setCurrentPosition(title);
                 gp.setShowEvent(false);
                 setMenuVisible(true);
             }
