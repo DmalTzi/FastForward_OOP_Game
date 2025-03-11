@@ -52,13 +52,13 @@ public class BusMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getEarth().getLocation()[0]), "bus"));
 
                 // after you select location where you want to go
                 // set new position to current position
-                gp.getEarth().setCurrentPosition(gp.getEarth().getLocation()[0]);
+                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[0]);
                 // disable menu
                 menu.setVisible(false);
                 // show all locatin aka. event
@@ -81,11 +81,11 @@ public class BusMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getEarth().getLocation()[1]), "bus"));
 
-                gp.getEarth().setCurrentPosition(gp.getEarth().getLocation()[1]);
+                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[1]);
                 menu.setVisible(false);
                 gp.setShowEvent(true);
             }
@@ -105,11 +105,11 @@ public class BusMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getEarth().getLocation()[2]), "bus"));
 
-                gp.getEarth().setCurrentPosition(gp.getEarth().getLocation()[2]);
+                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[2]);
                 menu.setVisible(false);
                 gp.setShowEvent(true);
             }
@@ -129,10 +129,10 @@ public class BusMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getEarth().getLocation()[3]), "bus"));
-                gp.getEarth().setCurrentPosition(gp.getEarth().getLocation()[3]);
+                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[3]);
                 gp.setShowEvent(true);
                 menu.setVisible(false);
             }

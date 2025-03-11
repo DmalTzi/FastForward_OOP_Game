@@ -23,10 +23,10 @@ public class HomeEvent extends SuperEvents {
                 // use increaseTime ขั้นแรก หาตำแหน่งปัจุบันของเรา ด้วยการ getCUrrentPosition ขั้นสอง หาตำแหน่งของที่นี่ผ่าน title แล้วเอาไปเทียบตำแหน่ง index ที่ทำเอาไว้
                 gp.getEarth().increaseTime(gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getCurrentPosition()), 
+                                .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(title), gp.getEarth().getMoveWith()));
-                gp.getEarth().setCurrentPosition(title);
+                                .indexOf(title), gp.getPlayer().getMoveWith()));
+                gp.getPlayer().setCurrentPosition(title);
                 gp.setShowEvent(false);
                 setMenuVisible(true);
             }

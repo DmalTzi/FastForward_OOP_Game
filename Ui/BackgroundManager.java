@@ -68,6 +68,17 @@ public class BackgroundManager {
         }
     }
 
+    public void checkObj(boolean show) {
+        for (JLabel o : obj) {
+            if (o != null) {
+                if (show)
+                    o.setVisible(true);
+                else
+                    o.setVisible(false);
+            }
+        }
+    }
+
     public void generateScreen(){ //สร้าง object สถานที่และ bg
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
@@ -87,4 +98,8 @@ public class BackgroundManager {
 		// TODO Auto-generated method stub
 
 	}
+
+    public JLabel[] getObj() {
+        return obj;
+    }
 }

@@ -17,6 +17,7 @@ import events.EventManager;
 import events.SuperEvents;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import inputs.MouseHandler;
 import menus.SuperMenu;
@@ -129,16 +130,10 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
+        backg.checkObj(showEvent);
         
         // ============ This part should have lived in player ==============
-        for (int i = 0; i < 4; i++) {
-            // find the position for enable bus that location
-            int pos = Arrays.asList(earth.getLocation()).indexOf(earth.getCurrentPosition());
-            // if current position == in list of bus btn, the bus btn will enable
-            if (i == pos) events[i].getBtn().setEnabled(true);
-            // all of else is diable
-            else events[i].getBtn().setEnabled(false);
-        }
+        
         // =================================================================
         for (SuperEvents e : events) {
             if (e != null) {
@@ -174,6 +169,10 @@ public class GamePanel extends JPanel implements Runnable{
         return events[i];
     }
 
+    public SuperEvents[] getAllEvent() {
+        return events;
+    }
+
     public void setShowEvent(boolean showEvent) {
         this.showEvent = showEvent;
     }
@@ -190,5 +189,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public EventManager getEventManager() {
         return eventManager;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }
