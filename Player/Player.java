@@ -19,7 +19,7 @@ public class Player {
     public BufferedImage playerIm,playerIm1,playerIm2,playerIm3, remem;
     public int x ;
     public int y;
-    private double coin;
+    private int coin;
     private double emotion = 100;
     private int workHr = 0;
     private int speedup = 0 ;
@@ -220,7 +220,7 @@ public class Player {
 
 
 
-    public double getPlayerCoin() {
+    public int getPlayerCoin() {
         return this.coin;
     }
     public void setPlayerCoin(int coin) {
