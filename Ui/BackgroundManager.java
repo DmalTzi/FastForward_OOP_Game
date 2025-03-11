@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import inputs.MouseHandler;
 import main.Earth;
 import main.GamePanel;
+import main.GameState;
 import utilz.LoadSave;
 
 public class BackgroundManager {
@@ -38,7 +39,11 @@ public class BackgroundManager {
     }
 
     public void draw(Graphics2D g2){
-        g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        if(gp.getgameState() == GameState.Endgame){
+            g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }else{
+            g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }
     }
 
     public void createObject(int index , int x ,int y , int objWidth, int objHeight,String File){
@@ -72,6 +77,9 @@ public class BackgroundManager {
         createObject(3, 30, -1, 74, 244, "/res/ui/emo_val.png");
         createObject(4, 13, 220, 118, 117, "/res/ui/face3.png");
         createObject(5, 130, 20, 64, 72, "/res/ui/bag1.png");
+        loadBackground(2, "end.png");
+
+        // createObject(0, 100, 100, 100, 100, "/res/ISAG_Logo_sq.png")
     }
 //310
     // TEST

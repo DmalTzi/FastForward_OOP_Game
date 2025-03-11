@@ -26,7 +26,7 @@ public class EventSetter {
 
         HomeEvent homeEvent = new HomeEvent(gp);
         homeEvent.addMenu(new HomeMenu(gp));
-        gp.addEvents(4, homeEvent);
+        gp.addEvents(7, homeEvent);
 
         OfficeEvent officeEvent = new OfficeEvent(gp);
         officeEvent.addMenu(new OfficeMenu(gp));
@@ -34,11 +34,11 @@ public class EventSetter {
         
         MarketEvent marketEvent = new MarketEvent(gp);
         marketEvent.addMenu(new MarketMenu(gp));
-        gp.addEvents(6, marketEvent);
+        gp.addEvents(4, marketEvent);
         
         SuperMarketEvent superMarketEvent = new SuperMarketEvent(gp);
         superMarketEvent.addMenu(new SuperMarketMenu(gp));
-        gp.addEvents(7, superMarketEvent);
+        gp.addEvents(6, superMarketEvent);
 
     }
 }

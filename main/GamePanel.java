@@ -119,6 +119,9 @@ public class GamePanel extends JPanel implements Runnable{
             backg.draw(g2);
             earth.draw(g2);
             player.draw(g2);
+        }else if(gamest == GameState.Endgame){
+            showEvent = false;
+            backg.draw(g2);
         }
     
     }
@@ -126,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
-
+        
         // ============ This part should have lived in player ==============
         for (int i = 0; i < 4; i++) {
             // find the position for enable bus that location
