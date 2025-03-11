@@ -9,12 +9,16 @@ import java.util.Arrays;
 
 import javax.swing.JPanel;
 
+import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Title;
+import Ui.UIManager;
+import events.EventManager;
 import events.SuperEvents;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import inputs.MouseHandler;
 import menus.SuperMenu;
@@ -30,25 +34,23 @@ public class GamePanel extends JPanel implements Runnable{
     // ActionHandler aHandler = new ActionHandler(this);
     
     //set up 
-    public Earth ev = new Earth(this);
+    private Earth earth = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
     ActionHandler aHandler = new ActionHandler(this) ;
-    public MouseHandler mHandler = new MouseHandler(this);
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
     public Title title = new Title(this);
-    private EventSetter eSetter = new EventSetter(this);
+    private EventSetter eventSetter = new EventSetter(this);
+    private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
-    
-
-
-
-
+    UIManager uiMng = new UIManager(this);
 
     // flexible 
     int FPS = 60;
-    private boolean showEvent = true;
+    private boolean showEvent = false;
     GameState gamest = GameState.Title; //เปลี่ยน state
+
+    public Player player = new Player(getGamePanel());
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -57,11 +59,15 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.black);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-        loadGameEvents();
+        loadEventAsset();
     }
 
-    public void loadGameEvents() {
-        eSetter.setUpEvent();
+    public void setStart() {
+        showEvent = true;
+    }
+
+    public void loadEventAsset() {
+        eventSetter.setUpEvent();
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
                 this.add(events[i].getMenu());
@@ -98,7 +104,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
             if (timer >= 1000000000) {
-                System.out.println("FPS " + drawCount);
+                // System.out.println("FPS " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -111,27 +117,26 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D) g;
 
         if(gamest == GameState.Title){ //เข็คสภานะเกมส์
-            showEvent = false;
             title.draw(g2);
         }else if(gamest == GameState.Gameplay){
             backg.draw(g2);
-            showEvent =true;
+            earth.draw(g2);
+            player.draw(g2);
+            uiMng.draw(g2);
+        }else if(gamest == GameState.Endgame){
+            showEvent = false;
+            backg.draw(g2);
         }
     
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
-        ev.update();
         backg.updateblackground();
+        player.update();
+        backg.checkObj(showEvent);
+        
         // ============ This part should have lived in player ==============
-        for (int i = 0; i < 4; i++) {
-            // find the position for enable bus that location
-            int pos = Arrays.asList(ev.getLocation()).indexOf(ev.getCurrentPosition());
-            // if current position == in list of bus btn, the bus btn will enable
-            if (i == pos) events[i].getBtn().setEnabled(true);
-            // all of else is diable
-            else events[i].getBtn().setEnabled(false);
-        }
+        
         // =================================================================
         for (SuperEvents e : events) {
             if (e != null) {
@@ -167,6 +172,10 @@ public class GamePanel extends JPanel implements Runnable{
         return events[i];
     }
 
+    public SuperEvents[] getAllEvent() {
+        return events;
+    }
+
     public void setShowEvent(boolean showEvent) {
         this.showEvent = showEvent;
     }
@@ -175,5 +184,17 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void setgameState(GameState s){
        gamest =  s;
+    }
+
+    public Earth getEarth() {
+        return earth;
+    }
+
+    public EventManager getEventManager() {
+        return eventManager;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

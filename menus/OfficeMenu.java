@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.event.MouseEvent;
 
 import main.GamePanel;
@@ -39,6 +40,15 @@ public class OfficeMenu extends SuperMenu{
             public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
+                gp.player.work("Office");
+                if (gp.player.getWorkHr() < 8) {
+                    gp.player.setWorkHr(1);
+                    gp.player.setPlayerCoin(50);
+                }
+                else {
+                    System.out.println("work hours reached the limit.");
+                }
+                System.out.println(gp.player.getWorkHr());
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}
