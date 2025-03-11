@@ -73,7 +73,8 @@ public class Player {
         // System.out.println(emotion);
         if(emotion <= 0 ){
             gp.setgameState(GameState.Endgame);
-            // gp.getMenus(3).setMenuVisible(false); //เซ็นให้หน่อย
+            gp.getEvents(Arrays.asList(gp.getEarth().getLocation()).indexOf(gp.getEarth().getCurrentPosition())+4)
+            .setMenuVisible(false); //เซ็นให้หน่อย
             
         }
     }
