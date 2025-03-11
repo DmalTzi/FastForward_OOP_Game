@@ -11,13 +11,13 @@ public class Earth {
     private String[] location = {"market", "office", "supermarket", "home"};
     // bus location actual location x y
     private int[][] busLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
-    private int[][] playerLocation = {{530, 540}, {320, 420}, {720, 300}, {1089, 550}};
+    private int[][] playerLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
     private int worldHeat = 0;
     // set currentpostion
     private String currentPosition = "home";
     private String moveWith = "legs";
 
-    private double co2 = 0;
+  
 
     public Earth(GamePanel gp){
         this.gp = gp;
@@ -29,16 +29,6 @@ public class Earth {
         }
     }
 
-    public void draw(Graphics2D g2){
-            g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,50F));
-            int m = getTime()%60;
-            int h = getTime()/60;
-            g2.getFontMetrics().getStringBounds(Integer.toString(h)+":"+Integer.toString(m), g2).getWidth();
-            g2.draw(gp.getBounds());
-            g2.setColor(Color.RED);
-            g2.drawString(Integer.toString(h)+":"+Integer.toString(m), 600, 100);
-
-    }
     // fucking getters setters
     public void increaseHeat(int h) {
         worldHeat += h;
@@ -79,10 +69,10 @@ public class Earth {
         return moveWith;
     }
 
-    public double getEarthCO2() {
-        return this.co2;
+    public int getEarthHeat() {
+        return this.worldHeat;
     }
     public void setEarthCO2(double co2) {
-        this.co2 += co2;
+        this.worldHeat += co2;
     }
 }

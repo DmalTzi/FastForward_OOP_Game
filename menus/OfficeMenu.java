@@ -40,6 +40,7 @@ public class OfficeMenu extends SuperMenu{
             public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
+                gp.getEarth().time += 60 ;
                 if (gp.player.getWorkHr() < 8) {
                     gp.player.setWorkHr(1);
                     gp.player.setPlayerCoin(50);

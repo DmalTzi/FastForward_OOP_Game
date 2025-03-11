@@ -131,7 +131,6 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
-
         // ============ This part should have lived in player ==============
         for (int i = 0; i < 4; i++) {
             // find the position for enable bus that location
