@@ -15,7 +15,7 @@ import utilz.LoadSave;
 
 public class BackgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
-    public ImageIcon[] build =new ImageIcon[10];
+    public ImageIcon[] build = new ImageIcon[10];
     GamePanel gp;
     Earth ev;
 
@@ -41,7 +41,7 @@ public class BackgroundManager {
         g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
     }
 
-    public void createObject(int index , int x ,int y , int objWidth, int objHeight,String File){
+    public void createObject(int index , int x ,int y , int objWidth, int objHeight, String File){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
@@ -66,14 +66,14 @@ public class BackgroundManager {
     public void generateScreen(){ //สร้าง object สถานที่และ bg
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
-        createObject(0, 691, 15 , 59, 59, "/res/ui/coin.png");
-        createObject(1, 377, 19, 303, 64, "/res/ui/earth_val.png");
-        createObject(2, 310, -3, 95, 94, "/res/ui/earth.png");
-        createObject(3, 30, -1, 74, 244, "/res/ui/emo_val.png");
-        createObject(4, 13, 220, 118, 117, "/res/ui/face3.png");
-        createObject(5, 130, 20, 64, 72, "/res/ui/bag1.png");
+        // createObject(0, 691, 15 , 59, 59, " /res/ui/coin.png");
+        // createObject(1, 377, 19, 303, 64, "/res/ui/earth_val.png");
+        // createObject(2, 310, -3, 95, 94, "/res/ui/earth.png");
+        // createObject(3, 30, -1, 74, 244, "/res/ui/emo_val.png");
+        // createObject(4, 13, 220, 118, 117, "/res/ui/face3.png");
+        // createObject(5, 130, 20, 64, 72, "/res/ui/bag1.png");
     }
-//310
+
     // TEST
     public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
