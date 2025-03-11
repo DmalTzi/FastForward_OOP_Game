@@ -34,6 +34,10 @@ public class Earth {
             int m = getTime()%60;
             int h = getTime()/60;
             if(h == 24){
+                if(currentPosition != "home"){ //ถ้าไม่อยู่บ้าน
+                    gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
+                    gp.player.setPlayerEmo((int)(Math.random()*20)); 
+                }
                 time  = 0;
                 h = 0;
                 m = 0 ;
