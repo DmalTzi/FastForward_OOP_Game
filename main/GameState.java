@@ -1,5 +1,5 @@
 package main;
 
 public  enum GameState{
-    Title,Gameplay,Result,Endgame
+    Title, Gameplay, Result, Endgame, Summary
 }

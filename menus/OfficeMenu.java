@@ -42,13 +42,11 @@ public class OfficeMenu extends SuperMenu{
                 System.out.println("Working 1hr+");
                 gp.player.work("Office");
                 if (gp.player.getWorkHr() < 8) {
-                    gp.player.setWorkHr(1);
-                    gp.player.setPlayerCoin(50);
+                    System.out.println(gp.player.getWorkHr());
                 }
                 else {
-                    System.out.println("work hours reached the limit.");
+                    System.out.println("work hour reach limit");
                 }
-                System.out.println(gp.player.getWorkHr());
             }
             public void mouseExited(MouseEvent e) {}
             public void mouseClicked(MouseEvent e) {}

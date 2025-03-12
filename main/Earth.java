@@ -28,26 +28,24 @@ public class Earth {
     }
 
     public void draw(Graphics2D g2){
-        
-             min = getTime()%60;
-             hour = getTime()/60;
-            if(hour == 24){
-                increasDay(1);
-                if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
-                    gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
-                    gp.player.setPlayerEmo((int)(Math.random()*20)); 
-                }
-                time  = 0;
-                hour = 0;
-                min = 0 ;
+        min = getTime()%60;
+        hour = getTime()/60;
+        if(hour == 24) {
+            increasDay(1);
+            if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
+                gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
+                gp.player.setPlayerEmo((int)(Math.random()*20)); 
             }
-         
+            time  = 0;
+            hour = 0;
+            min = 0 ;
+        } 
     }
     // fucking getters setters
   
 
     public void increaseTime(int t) {
-        System.out.println("increase : " + t);
+        System.out.println("Time increase : " + t);
         time += t;
     }
 
