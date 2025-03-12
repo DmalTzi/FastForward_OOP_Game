@@ -1,5 +1,6 @@
 package main;
 import java.awt.Graphics2D;
+import java.util.Arrays;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -51,10 +52,18 @@ public class Earth {
         // System.out.println(worldHeat);
         if(worldHeat > 200){
             gp.setgameState(GameState.Endgame_2);
+             Arrays.asList(gp.getAllEvents()).forEach(e -> {
+                if (e != null)
+                    e.setMenuVisible(false);
+            });
         }
 
         if(Day >= 7){
             gp.setgameState(GameState.GoodEnd);
+            Arrays.asList(gp.getAllEvents()).forEach(e -> {
+                if (e != null)
+                    e.setMenuVisible(false);
+            });
         }
     }
 

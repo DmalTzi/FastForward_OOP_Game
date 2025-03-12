@@ -58,11 +58,12 @@ public class BackgroundManager {
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
+        
         obj[index].setBounds(x, y, objWidth, objHeight);
         ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
         Image originalImage = originalIcon.getImage();
         
-        // คำนวณอัตราส่วนเพื่อรักษาสัดส่วนเดิม
+        
         double aspectRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
         int newWidth = objWidth;
         int newHeight = (int) (newWidth / aspectRatio);
@@ -72,11 +73,11 @@ public class BackgroundManager {
             newWidth = (int) (newHeight * aspectRatio);
         }
         
-        // ปรับขนาดรูปให้พอดี
+       
         Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         build[index] = new ImageIcon(resizedImage);
         
-        // ตั้งค่าไอคอนให้ JLabel
+    
         obj[index].setIcon(build[index]);
         gp.add(obj[index]);
     }
