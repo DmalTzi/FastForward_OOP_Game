@@ -107,6 +107,8 @@ public class BackgroundManager {
         loadBackground(2, "end.png");
         loadBackground(3, "emoend.png");
         loadBackground(4, "goodend.png");
+       
+
 
 
     }
