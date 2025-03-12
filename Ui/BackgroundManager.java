@@ -46,7 +46,9 @@ public class BackgroundManager {
 
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
             // drawTextworld(g2);
+            // g2.drawImage(obj[6], 1000, 20);
         }
+
     }
 
     public void createObject(int index , int x ,int y , int objWidth, int objHeight,String des, String fileName){
@@ -54,11 +56,25 @@ public class BackgroundManager {
             obj[index] = new JLabel();
         }
         obj[index].setBounds(x, y, objWidth, objHeight);
-        build[index] = new ImageIcon(LoadSave.GetSprite(des, fileName));
-
+        ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
+        Image originalImage = originalIcon.getImage();
+        
+        // คำนวณอัตราส่วนเพื่อรักษาสัดส่วนเดิม
+        double aspectRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
+        int newWidth = objWidth;
+        int newHeight = (int) (newWidth / aspectRatio);
+        
+        if (newHeight > objHeight) { 
+            newHeight = objHeight;
+            newWidth = (int) (newHeight * aspectRatio);
+        }
+        
+        // ปรับขนาดรูปให้พอดี
+        Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        build[index] = new ImageIcon(resizedImage);
+        
+        // ตั้งค่าไอคอนให้ JLabel
         obj[index].setIcon(build[index]);
-        obj[index].addMouseListener(new MouseHandler(gp));
-
         gp.add(obj[index]);
     }
 

@@ -44,15 +44,15 @@ public class GamePanel extends JPanel implements Runnable{
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
+    public Player player = new Player(this);
     UIManager uiMng = new UIManager(this);
     Summary sum = new Summary(this);
 
     // flexible 
     int FPS = 60;
-    private boolean showEvent = false;
+    private boolean showEvent = true;
     GameState gamest = GameState.Title; //เปลี่ยน state
 
-    public Player player = new Player(getGamePanel());
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -119,12 +119,13 @@ public class GamePanel extends JPanel implements Runnable{
 
         if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
+            showEvent = false;
         }
         else if (gamest == GameState.Gameplay){
             backg.draw(g2);
             earth.draw(g2);
-            player.draw(g2);
             uiMng.draw(g2);
+            player.draw(g2);
         }
         else if (gamest == GameState.Endgame){
             showEvent = false;

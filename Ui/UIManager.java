@@ -1,5 +1,6 @@
 package Ui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
@@ -35,6 +36,11 @@ public class UIManager extends BackgroundManager {
         int x = 0 ;
         int y = 0 ;
         g2.setFont(B);
+        if(gp.getEarth().getHour() >= 18){
+            g2.setColor(Color.white);
+        }else{
+            g2.setColor(Color.BLACK);
+        }
         text = " " + (int)(gp.player.getCoin()) + " P"; 
         x = 800;
         y = 60;
@@ -42,13 +48,21 @@ public class UIManager extends BackgroundManager {
 
         Font Bauhaus = new Font("Bauhaus 93",Font.PLAIN, 35); // ขี้เกียจคิดละเขียนไปก่อน
         g2.setFont(Bauhaus);
+    
         if (gp.getEarth().getHour() >= 12) {
-            text = gp.getEarth().getHour() + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
+            
+            text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
+            if(gp.getEarth().getHour() >= 18){
+                g2.setColor(Color.white);
+            }else{
+                g2.setColor(Color.BLACK);
+            }
             g2.drawString(text, x, y);
         }
         else {
+          
             text = gp.getEarth().getHour() + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
             x = 1100;
             y = 110;
@@ -64,11 +78,14 @@ public class UIManager extends BackgroundManager {
     }
 
     public void UIObj() {
-        createObject(0, 745, 15 , 59, 59, "ui", "coin.png");
-        createObject(1, 377, 19, 303, 64, "ui", "earth_val.png");
+        // createObject(0, 745, 15 , 59, 59, "ui", "coin.png");
+        createObject(1, 377, 10, 350, 80, "ui", "earth_val.png");
         createObject(2, 310, -3, 95, 94, "ui", "earth.png");
         createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
-        createObject(4, 13, 220, 118, 117, "ui", "face3.png");
+        // createObject(4, 13, 220, 118, 117, "ui", "face3.png");
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
+        createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
+       
+
     }
 }

@@ -16,6 +16,10 @@ public class Earth {
     int min=0,hour=0 ; 
     int Day = 0 ;
     // set currentpostion
+    private String currentPosition = "home";
+    private String moveWith = "legs";
+
+  
 
     public Earth(GamePanel gp){
         this.gp = gp;
@@ -66,6 +70,13 @@ public class Earth {
     }   
     public int[] getPlayerLocation(int i){
         return playerLocation[i];
+    }
+    public String getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public String getMoveWith() {
+        return moveWith;
     }
 
     public int getEarthHeat() {

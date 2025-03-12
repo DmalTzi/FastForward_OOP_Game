@@ -20,13 +20,14 @@ public class Player {
     public int x ;
     public int y;
     private int coin;
-    private double emotion = 100;
+    private int emotion = 100;
     private int workHr = 0;
     private boolean canWork = true;
     private int speedUp = 0 ;
     private String[] inventory = new String[2];
     private String currentPosition = "home";
     private String moveWith = "legs";
+    private int emotionalDamage = 0 ;
     private Map<String,int[]> activityHome = new HashMap<>();
     private Map<String,int[]> activityMarket = new HashMap<>();
     private Map<String,int[]> activitySuper = new HashMap<>();
@@ -41,6 +42,7 @@ public class Player {
     }
 
     public void update(){ //walk check bulid
+        
         if (workHr >= 8*60)
             canWork = false;
         MoveTo();
@@ -53,6 +55,7 @@ public class Player {
             // all of else is diable
             else gp.getEvents(i).getBtn().setEnabled(false);
         }
+        emotionalDamage = (200-gp.getEarth().getEarthHeat()) +emotion;
     }   
     public void loadAsset(){
         activityHome.put("Movie",new int[]{20, 25, -60, 120}); // emo 1 c02  2 coin
@@ -90,25 +93,31 @@ public class Player {
 
             
         }catch(IOException e){
-  
+
             e.printStackTrace();
         }
     }
 
-    
+     
 
     public void draw(Graphics2D g2){ // วาดตัวละคร
-        if(emotion > 75){
+        
+        if(emotionalDamage > 225){
             remem = playerIm;
-        }else if (emotion >51){
+        }else if (emotionalDamage >150){
             remem = playerIm1;
-        }else if( emotion > 26){
+        }else if( emotionalDamage > 75){
             remem = playerIm2;
         }else{
             remem =  playerIm3;
         }
         // System.out.println(emotion);
+        //for player
         g2.drawImage(remem, x, y, 80, 80, null);
+
+        //for backgound
+        // g2.drawImage(remem,50, 250, 118, 117, null); // มัน อยู่ล่่างสุด
+
        
     }
 
@@ -160,7 +169,7 @@ public class Player {
                     gp.getEarth().time = 360 ;
             }
         }else{
-            if (activityHome.get(n)[2] <= getCoin()) {
+            if (-(activityHome.get(n)[2]) <= getCoin()) {
                 if(n.equals("Sleep")){
                     increasePlayerEmo(activityHome.get(n)[0]);
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
