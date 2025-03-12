@@ -131,10 +131,7 @@ public class GamePanel extends JPanel implements Runnable{
         backg.updateblackground();
         player.update();
         backg.checkObj(showEvent);
-        
-        // ============ This part should have lived in player ==============
-        
-        // =================================================================
+
         for (SuperEvents e : events) {
             if (e != null) {
                 // เช็คว่าเมนูไหนเปิดอยู่
@@ -169,7 +166,7 @@ public class GamePanel extends JPanel implements Runnable{
         return events[i];
     }
 
-    public SuperEvents[] getAllEvent() {
+    public SuperEvents[] getAllEvents() {
         return events;
     }
 

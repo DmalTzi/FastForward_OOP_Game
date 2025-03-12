@@ -22,7 +22,8 @@ public class Player {
     private double coin;
     private double emotion = 100;
     private int workHr = 0;
-    private int speedup = 0 ;
+    private boolean canWork = true;
+    private int speedUp = 0 ;
     private String[] inventory = new String[2];
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -38,6 +39,8 @@ public class Player {
     }
 
     public void update(){ //walk check bulid
+        if (workHr >= 8*60)
+            canWork = false;
         MoveTo();
         emotioncheck();
         for (int i = 0; i < 4; i++) {
@@ -111,7 +114,7 @@ public class Player {
         // System.out.println(emotion);
         if(emotion <= 0 ){
             gp.setgameState(GameState.Endgame);
-            Arrays.asList(gp.getAllEvent()).forEach(e -> {if (e != null) e.setMenuVisible(false);});
+            Arrays.asList(gp.getAllEvents()).forEach(e -> {if (e != null) e.setMenuVisible(false);});
         }
     }
     public void MoveTo(){
@@ -127,9 +130,11 @@ public class Player {
         increasePlayerEmo(-amount*15);
         gp.getEarth().setEarthCO2(amount*15);
     }
+
     public void equip(String vehicle){
 
     }
+    
     public void activity(String n){
         if(n.equals("Movie")){
             setPlayerEmo(activityHome.get(n)[0]);
@@ -198,9 +203,6 @@ public class Player {
         }
     }
 
-
-
-
     public double getPlayerCoin() {
         return this.coin;
     }
@@ -218,13 +220,6 @@ public class Player {
         this.coin = n;
     }
 
-    public int getWorkHr() {
-        return this.workHr;
-    }
-    public void setWorkHr(int hr) {
-        this.workHr += hr;
-    }
-
     public double getCoin() {
         return coin;
     }
@@ -239,5 +234,9 @@ public class Player {
 
     public void setCurrentPosition(String currentPosition) {
         this.currentPosition = currentPosition;
+    }
+
+    public boolean getCanWork() {
+        return canWork;
     }
 }

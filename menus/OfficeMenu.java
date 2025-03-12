@@ -37,20 +37,24 @@ public class OfficeMenu extends SuperMenu{
 
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
-            public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
-                System.out.println("Working 1hr+");
-                gp.getEarth().time += 60 ;
-                if (gp.player.getWorkHr() < 8) {
-                    gp.player.setWorkHr(1);
+                if (gp.getPlayer().getCanWork()) {
+                    gp.getEarth().increaseTime(60);
+                    gp.player.work(60);
                     gp.player.setPlayerCoin(50);
                 }
                 else {
-                    System.out.println("work hours reached the limit.");
+                    btns[0].setEnabled(false);
                 }
-                System.out.println(gp.player.getWorkHr());
             }
-            public void mouseExited(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working_hover.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+            }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
         });
