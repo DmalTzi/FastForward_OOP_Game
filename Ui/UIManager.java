@@ -36,7 +36,7 @@ public class UIManager extends BackgroundManager {
         int x = 0 ;
         int y = 0 ;
         g2.setFont(B);
-        if(gp.getEarth().getHour() >= 18){
+        if(gp.getEarth().getHour() > 18){
             g2.setColor(Color.white);
         }else{
             g2.setColor(Color.BLACK);
@@ -54,7 +54,7 @@ public class UIManager extends BackgroundManager {
             text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
-            if(gp.getEarth().getHour() >= 18){
+            if(gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5){
                 g2.setColor(Color.white);
             }else{
                 g2.setColor(Color.BLACK);
@@ -68,6 +68,9 @@ public class UIManager extends BackgroundManager {
             y = 110;
             g2.drawString(text, x, y);
         }
+
+
+
         Bauhaus = new Font("Bauhaus 93", Font.PLAIN, 60);
         g2.setFont(Bauhaus);
 
@@ -84,6 +87,8 @@ public class UIManager extends BackgroundManager {
         createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
         createObject(4, 13, 220, 118, 117, "ui", "face3.png");
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
+
+
         createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
        
 

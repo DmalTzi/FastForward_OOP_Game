@@ -1,5 +1,6 @@
 package main;
 import java.awt.Graphics2D;
+import java.util.Arrays;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -35,6 +36,7 @@ public class Earth {
         min = getTime()%60;
         hour = getTime()/60;
         if(hour == 24) {
+            gp.player.setWorkHr();
             increasDay(1);
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
                 gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
@@ -46,7 +48,24 @@ public class Earth {
         }
     }
     // fucking getters setters
-  
+    public void Checkworld(){
+        // System.out.println(worldHeat);
+        if(worldHeat > 200){
+            gp.setgameState(GameState.Endgame_2);
+             Arrays.asList(gp.getAllEvents()).forEach(e -> {
+                if (e != null)
+                    e.setMenuVisible(false);
+            });
+        }
+
+        if(Day >= 7){
+            gp.setgameState(GameState.GoodEnd);
+            Arrays.asList(gp.getAllEvents()).forEach(e -> {
+                if (e != null)
+                    e.setMenuVisible(false);
+            });
+        }
+    }
 
     public void increaseTime(int t) {
         System.out.println("Time increase : " + t);
