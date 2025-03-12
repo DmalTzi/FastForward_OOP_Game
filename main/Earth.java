@@ -13,6 +13,8 @@ public class Earth {
     private int[][] busLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
     private int[][] playerLocation = {{590, 540}, {320, 420}, {720, 300}, {1159, 530}};
     private int worldHeat = 0;
+    int min=0,hour=0 ; 
+    int Day = 0 ;
     // set currentpostion
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -30,36 +32,25 @@ public class Earth {
     }
 
     public void draw(Graphics2D g2){
-            g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,50F));
-            int m = getTime()%60;
-            int h = getTime()/60;
-            if(h == 24){
-                if(currentPosition .equals("home") ){ //ถ้าไม่อยู่บ้าน
-                    gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
-                    gp.player.setPlayerEmo(-(int)(Math.random()*20)); 
-                }
-                time  = 0;
-                h = 0;
-                m = 0 ;
+        min = getTime()%60;
+        hour = getTime()/60;
+        if(hour == 24) {
+            increasDay(1);
+            if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
+                gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
+                gp.player.setPlayerEmo((int)(Math.random()*20)); 
             }
-            g2.getFontMetrics().getStringBounds(Integer.toString(h)+":"+Integer.toString(m), g2).getWidth();
-            g2.draw(gp.getBounds());
-            g2.setColor(Color.RED);
-            g2.drawString(Integer.toString(h)+":"+Integer.toString(m), 600, 100);
-
+            time  = 0;
+            hour = 0;
+            min = 0 ;
+        }
     }
     // fucking getters setters
-    public void increaseHeat(int h) {
-        worldHeat += h;
-    }
+  
 
     public void increaseTime(int t) {
-        System.out.println("increase : " + t);
+        System.out.println("Time increase : " + t);
         time += t;
-    }
-
-    public int getWorldHeat() {
-        return worldHeat;
     }
 
     public int getTime() {
@@ -70,8 +61,8 @@ public class Earth {
         return location;
     }
 
-    public void setCurrentPosition(String currentPosition) {
-        this.currentPosition = currentPosition;
+    public void increaseDay(int day) {
+        Day++;
     }
 
     public int[][] getBusLocation() {
@@ -93,5 +84,17 @@ public class Earth {
     }
     public void setEarthCO2(double co2) {
         this.worldHeat += co2;
+    }
+    public int getMin(){
+        return min ; 
+    }
+    public int getHour(){
+        return hour ; 
+    }
+    public void increasDay(int n) {
+        Day +=n ;
+    }
+    public int getDay(){
+        return Day;
     }
 }

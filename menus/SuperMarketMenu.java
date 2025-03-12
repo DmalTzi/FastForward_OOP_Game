@@ -15,7 +15,9 @@ public class SuperMarketMenu extends SuperMenu{
     public SuperMarketMenu(GamePanel gp) {
         super(gp);
 
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket.png")));
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket.png"));
+        bg.setIcon(defaultBg);
+
         menuWidth = bg.getIcon().getIconWidth();
         menuHeight = bg.getIcon().getIconHeight();
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);

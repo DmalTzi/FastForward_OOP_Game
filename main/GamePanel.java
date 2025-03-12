@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
+import Ui.Summary;
 import Ui.Title;
+import Ui.UIManager;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -42,18 +44,15 @@ public class GamePanel extends JPanel implements Runnable{
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
-    
-
-
-
-
+    public Player player = new Player(this);
+    UIManager uiMng = new UIManager(this);
+    Summary sum = new Summary(this);
 
     // flexible 
     int FPS = 60;
     private boolean showEvent = true;
     GameState gamest = GameState.Title; //เปลี่ยน state
 
-    public Player player = new Player(getGamePanel());
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -118,24 +117,32 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        if(gamest == GameState.Title){ //เข็คสภานะเกมส์
-            showEvent = false;
+        if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
-        }else if(gamest == GameState.Gameplay){
+            showEvent = false;
+        }
+        else if (gamest == GameState.Gameplay){
             backg.draw(g2);
             earth.draw(g2);
+            uiMng.draw(g2);
             player.draw(g2);
-        }else if(gamest == GameState.Endgame){
+        }
+        else if (gamest == GameState.Endgame){
             showEvent = false;
             backg.draw(g2);
         }
-      
+        // else if (gamest == GameState.Summary) {
+        //     showEvent = false;
+        //     sum.draw(g2);
+        // }
+    
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
         backg.checkObj(showEvent);
+        uiMng.checkObj(showEvent);
         
         // ============ This part should have lived in player ==============
         
@@ -174,7 +181,7 @@ public class GamePanel extends JPanel implements Runnable{
         return events[i];
     }
 
-    public SuperEvents[] getAllEvent() {
+    public SuperEvents[] getAllEvents() {
         return events;
     }
 
@@ -195,6 +202,7 @@ public class GamePanel extends JPanel implements Runnable{
     public EventManager getEventManager() {
         return eventManager;
     }
+
 
     public Player getPlayer() {
         return player;

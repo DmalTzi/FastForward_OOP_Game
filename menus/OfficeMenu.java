@@ -16,7 +16,8 @@ public class OfficeMenu extends SuperMenu{
     public OfficeMenu(GamePanel gp) {
         super(gp);
 
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office.png")));
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_office.png"));
+        bg.setIcon(defaultBg);
         menuWidth = bg.getIcon().getIconWidth();
         menuHeight = bg.getIcon().getIconHeight();
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
@@ -26,31 +27,30 @@ public class OfficeMenu extends SuperMenu{
         setUpBtns();
         setUpActionBtns();
 
-        for (JButton j : btns) {
-            if (j != null) {
-                j.setBorder(null);
-                j.setContentAreaFilled(false);
-                menu.add(j, Integer.valueOf(1)); 
-            }
-        }
+        btns[0].setBorder(null);
+        btns[0].setContentAreaFilled(false);
+        menu.add(btns[0], Integer.valueOf(1));
     }
 
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
-            public void mouseEntered(MouseEvent e) {}
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
-                gp.getEarth().time += 60 ;
-                if (gp.player.getWorkHr() < 8) {
-                    gp.player.setWorkHr(1);
-                    gp.player.setPlayerCoin(50);
+                if (gp.getPlayer().getCanWork()) {
+                    gp.getPlayer().work("Office");
                 }
                 else {
-                    System.out.println("work hours reached the limit.");
+                    btns[0].setEnabled(false);
                 }
-                System.out.println(gp.player.getWorkHr());
             }
-            public void mouseExited(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+            }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
         });
@@ -58,7 +58,7 @@ public class OfficeMenu extends SuperMenu{
 
     private void setUpBtns() {
         btns[0] = new JButton();
-        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working.png")));
+        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
         btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
         btns[0].setLocation(550, menuHeight-200);
     }

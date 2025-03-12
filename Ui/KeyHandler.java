@@ -32,6 +32,7 @@ public class KeyHandler implements KeyListener  {
             if(code == KeyEvent.VK_ENTER){
                 if(gp.title.commandNum  == 0){
                     gp.setgameState(GameState.Gameplay);
+                    
                     gp.setShowEvent(true);
                 }else if(gp.title.commandNum  == 1){
                     System.exit(0);

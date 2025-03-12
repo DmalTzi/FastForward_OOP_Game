@@ -1,5 +1,6 @@
 package Ui;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
@@ -16,12 +17,12 @@ import utilz.LoadSave;
 
 public class BackgroundManager {
     public  JLabel[] obj  = new JLabel[10]; //ชื่อเก่าคือ Ob
-    public ImageIcon[] build =new ImageIcon[10];
+    public ImageIcon[] build = new ImageIcon[10];
     GamePanel gp;
     Earth ev;
 
     int indexBack;
-    public Image[] backg ; 
+    public Image[] backg; 
 
     public BackgroundManager(GamePanel gp){
         this.gp = gp;
@@ -42,20 +43,38 @@ public class BackgroundManager {
         if(gp.getgameState() == GameState.Endgame){
             g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
         }else{
+
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+            // drawTextworld(g2);
+            // g2.drawImage(obj[6], 1000, 20);
         }
+
     }
 
-    public void createObject(int index , int x ,int y , int objWidth, int objHeight,String File){
+    public void createObject(int index , int x ,int y , int objWidth, int objHeight,String des, String fileName){
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
         obj[index].setBounds(x, y, objWidth, objHeight);
-        build[index] = new ImageIcon(getClass().getResource(File));
-
+        ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
+        Image originalImage = originalIcon.getImage();
+        
+        // คำนวณอัตราส่วนเพื่อรักษาสัดส่วนเดิม
+        double aspectRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
+        int newWidth = objWidth;
+        int newHeight = (int) (newWidth / aspectRatio);
+        
+        if (newHeight > objHeight) { 
+            newHeight = objHeight;
+            newWidth = (int) (newHeight * aspectRatio);
+        }
+        
+        // ปรับขนาดรูปให้พอดี
+        Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+        build[index] = new ImageIcon(resizedImage);
+        
+        // ตั้งค่าไอคอนให้ JLabel
         obj[index].setIcon(build[index]);
-        obj[index].addMouseListener(new MouseHandler(gp));
-
         gp.add(obj[index]);
     }
 
@@ -83,16 +102,8 @@ public class BackgroundManager {
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
         loadBackground(2, "end.png");
-
-        createObject(0, 691, 15 , 59, 59, "/res/ui/coin.png");
-        createObject(1, 377, 19, 303, 64, "/res/ui/earth_val.png");
-        createObject(2, 310, -3, 95, 94, "/res/ui/earth.png");
-        createObject(3, 30, -1, 74, 244, "/res/ui/emo_val.png");
-        createObject(4, 13, 220, 118, 117, "/res/ui/face3.png");
-        createObject(5, 130, 20, 64, 72, "/res/ui/bag1.png");
     }
-//310
-//310
+
     // TEST
     public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
