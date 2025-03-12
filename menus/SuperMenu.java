@@ -19,6 +19,9 @@ public abstract class SuperMenu {
     protected int menuWidth;
     protected int menuHeight;
     protected JButton btns[] = new JButton[10];
+    protected JButton selectBtns[] = new JButton[2];
+    protected JButton workBtn;
+    ImageIcon defaultBg;
 
     public SuperMenu(GamePanel gp) {
         this.gp = gp;
@@ -42,6 +45,11 @@ public abstract class SuperMenu {
             public void mouseReleased(MouseEvent e) {
                 menu.setVisible(false);
                 gp.setShowEvent(true);
+                bg.setIcon(defaultBg);
+                if (selectBtns[0] != null && selectBtns[1] != null) {
+                    selectBtns[0].setVisible(true);
+                    selectBtns[1].setVisible(true);
+                }
             }
             public void mouseExited(MouseEvent e) {
                 buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));
