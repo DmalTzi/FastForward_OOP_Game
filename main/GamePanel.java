@@ -19,6 +19,7 @@ import events.EventManager;
 import events.SuperEvents;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import inputs.MouseHandler;
@@ -136,11 +137,10 @@ public class GamePanel extends JPanel implements Runnable{
             showEvent =false;
             backg.draw(g2);
         }
-        // else if (gamest == GameState.Summary) {
-        //     showEvent = false;
-        //     sum.draw(g2);
-        // }
-    
+        else if (gamest == GameState.Summary) {
+            showEvent = false;
+            sum.draw(g2);
+        }
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
@@ -196,6 +196,7 @@ public class GamePanel extends JPanel implements Runnable{
     public GameState getgameState(){
         return gamest ; 
     }
+
     public void setgameState(GameState s){
        gamest =  s;
     }
@@ -211,5 +212,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public Player getPlayer() {
         return player;
+    }
+
+    public BackgroundManager getBackgroundManager() {
+        return backg;
     }
 }

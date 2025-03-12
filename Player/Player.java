@@ -24,6 +24,7 @@ public class Player {
     private int workHr = 0;
     private boolean canWork = true;
     private int speedUp = 0;
+    private int dailyEarn = 0;
     private String[] inventory = new String[2];
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -143,33 +144,34 @@ public class Player {
         inventory[index] = name;
     }
 
+    public void equip(String vehicle){
+    }
+
     public void work(String n) {
         if(canWork){
-
             if (n.equals("Market")) {
                 increasWorkHr();
                 increasePlayerEmo(work.get(n)[0]);
                 gp.getEarth().setEarthCO2((work.get(n)[1]));
                 setPlayerCoin((work.get(n)[2]));
                 gp.getEarth().increaseTime(work.get(n)[3]);
+                increaseDailyEarn((work.get(n)[2]));
             } else if (n.equals("Super")) {
                 increasWorkHr();
                 increasePlayerEmo(work.get(n)[0]);
                 gp.getEarth().setEarthCO2((work.get(n)[1]));
                 setPlayerCoin((work.get(n)[2]));
                 gp.getEarth().increaseTime(work.get(n)[3]);
+                increaseDailyEarn((work.get(n)[2]));
             } else if (n.equals("Office")) {
                 increasWorkHr();
                 increasePlayerEmo(work.get(n)[0]);
                 gp.getEarth().setEarthCO2((work.get(n)[1]));
                 setPlayerCoin((work.get(n)[2]));
                 gp.getEarth().increaseTime(work.get(n)[3]);
+                increaseDailyEarn((work.get(n)[2]));
             }
         }
-    }
-
-    public void equip(String vehicle) {
-
     }
 
     public void activity(String n) {
@@ -182,20 +184,26 @@ public class Player {
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                     setPlayerCoin((activityHome.get(n)[2]));
                     gp.getEarth().increasDay(1);
+                    gp.setgameState(GameState.Summary);
                     gp.getEarth().time = 360;
+                    gp.setShowEvent(false);
+                    Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                 }
             }
         } else {
             if (-(activityHome.get(n)[2]) <= getCoin()) {
 
-                if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 *60) {
+                if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
                     if (n.equals("Sleep")) {
+                        gp.setgameState(GameState.Summary);
                         setWorkHr();
                         increasePlayerEmo(activityHome.get(n)[0]);
                         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                         setPlayerCoin((activityHome.get(n)[2]));
                         gp.getEarth().increasDay(1);
                         gp.getEarth().time = 360;
+                        gp.setShowEvent(false);
+                        Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                     }
                 }
 
@@ -322,5 +330,15 @@ public class Player {
 
     public boolean getCanWork() {
         return canWork;
+    }
+
+    public int getDailyEarn() {
+        return this.dailyEarn;
+    }
+    public void setDailyEarn(int dailyearn) {
+        this.dailyEarn = dailyearn;
+    }
+    public void  increaseDailyEarn(int dailyearn) {
+        this.dailyEarn += dailyearn;
     }
 }

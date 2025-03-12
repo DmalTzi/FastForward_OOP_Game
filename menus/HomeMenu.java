@@ -1,6 +1,7 @@
 package menus;
 
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -8,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.event.MouseEvent;
 
 import main.GamePanel;
+import main.GameState;
 import utilz.LoadSave;
 
 public class HomeMenu extends SuperMenu{
@@ -118,6 +120,7 @@ public class HomeMenu extends SuperMenu{
         btns[5].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
                 gp.getPlayer().activity("Sleep");
+                
             }
             public void mouseEntered(MouseEvent e) {
                 btns[5].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_home_sleep_hover.png")));

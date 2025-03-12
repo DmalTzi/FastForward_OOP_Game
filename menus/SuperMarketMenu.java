@@ -134,6 +134,20 @@ public class SuperMarketMenu extends SuperMenu{
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
         });
+
+        btns[0].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_pizza_hover.png")));
+
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_pizza.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
     }
 
     private void setUpBtns() {

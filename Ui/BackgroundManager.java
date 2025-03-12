@@ -20,6 +20,7 @@ public class BackgroundManager {
     public ImageIcon[] build = new ImageIcon[10];
     GamePanel gp;
     Earth ev;
+    Graphics2D g2;
 
     int indexBack;
     public Image[] backg; 
@@ -108,19 +109,18 @@ public class BackgroundManager {
         loadBackground(2, "end.png");
         loadBackground(3, "emoend.png");
         loadBackground(4, "goodend.png");
-       
-
-
-
+        loadBackground(5, "summary_bg.png");
     }
 
     // TEST
     public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
     public JLabel[] getObj() {
         return obj;
+    }
+
+    public Image getImage(int ind) {
+        return backg[ind];
     }
 }

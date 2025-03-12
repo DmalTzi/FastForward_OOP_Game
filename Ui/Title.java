@@ -11,8 +11,8 @@ import utilz.LoadSave;
 public class Title{
     GamePanel gp ; 
     Image pic ;
-    Font Bauhaus = new Font("Bauhaus 93", Font.PLAIN, 50);
-    int commandNum =  0 ; 
+    Font Bauhaus = LoadSave.GetFont();
+    int commandNum =  0; 
     public Title(GamePanel gp){
         this.gp = gp;
         loadBackground();

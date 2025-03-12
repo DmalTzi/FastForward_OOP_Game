@@ -1,23 +1,37 @@
 package utilz;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 public class LoadSave {
-    public static final String MENU_BACKGROUND = "menu_background.png";
+	static final String path = Paths.get(".").toAbsolutePath().normalize().toString();
 
     public static BufferedImage GetSprite(String des, String fileName) {
 		BufferedImage img = null;
-        String path = Paths.get(".").toAbsolutePath().normalize().toString();
 		try {
 			img = ImageIO.read(new File(String.format("%s/res/%s/%s", path, des, fileName)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return img;
+	}
+
+	public static Font GetFont() {
+		Font font = null;
+		try {
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(String.format("%s/res/%s/%s", path, "font", "Bauhaus 93 Regular.ttf")));
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return font;
 	}
 }
