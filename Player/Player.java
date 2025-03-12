@@ -23,6 +23,7 @@ public class Player {
     private double emotion = 100;
     private int workHr = 0;
     private int speedup = 0 ;
+    private int dailyEarn = 0;
     private String[] inventory = new String[2];
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -31,8 +32,6 @@ public class Player {
     private Map<String,int[]> activitySuper = new HashMap<>();
     private Map<String,int[]> work = new HashMap<>();
     
-
-
     public Player (GamePanel gp){
         this.gp = gp ;
         loadPlayer();
@@ -50,7 +49,8 @@ public class Player {
             // all of else is diable
             else gp.getEvents(i).getBtn().setEnabled(false);
         }
-    }   
+    }
+
     public void loadAsset(){
         activityHome.put("Movie",new int[]{20, 25, -60, 120}); // emo 1 c02  2 coin
         activityHome.put("Exercise",new int[]{10, 15, -10, 30});
@@ -71,7 +71,6 @@ public class Player {
        activitySuper.put("Car", new int[] {30, 20, -1200});
        activitySuper.put("Jakayan", new int[] {25, 5, -500});
        
-        
        work.put("Market",new int[] {-5, 5, 30, 60} );
        work.put("Super",new int[] {-10, 10, 40, 60} );
        work.put("Office", new int[] {-15, 15, 50,  60});
@@ -82,16 +81,12 @@ public class Player {
             playerIm = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset_78.png")); //happy
             playerIm1 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 76.png"));//min
             playerIm2 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 75.png"));//medium
-            playerIm3= ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 77.png")); //verysad
-
-            
+            playerIm3= ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 77.png")); //verysad    
         }
         catch(IOException e) {
             e.printStackTrace();
         }
     }
-
-    
 
     public void draw(Graphics2D g2){ // วาดตัวละคร
         if(emotion > 75){
@@ -125,21 +120,26 @@ public class Player {
         inventory[index] = name;
     }
     public void work(String n){
-        if(n.equals("Market")){
+        if (n.equals("Market")){
             increasePlayerEmo(work.get(n)[0]);
             gp.getEarth().setEarthCO2((work.get(n)[1]));
             setPlayerCoin((work.get(n)[2]));
             gp.getEarth().increaseTime(work.get(n)[3]);
-        }else if(n.equals("Super")){
+            increaseDailyEarn((work.get(n)[2]));
+        }
+        else if (n.equals("Super")){
             increasePlayerEmo(work.get(n)[0]);
             gp.getEarth().setEarthCO2((work.get(n)[1]));
             setPlayerCoin((work.get(n)[2]));
             gp.getEarth().increaseTime(work.get(n)[3]);
-        }else if(n.equals("Office")){
+            increaseDailyEarn((work.get(n)[2]));
+        }
+        else if (n.equals("Office")){
             increasePlayerEmo(work.get(n)[0]);
             gp.getEarth().setEarthCO2((work.get(n)[1]));
             setPlayerCoin((work.get(n)[2]));
             gp.getEarth().increaseTime(work.get(n)[3]);
+            increaseDailyEarn((work.get(n)[2]));
         }
     }
     public void equip(String vehicle){
@@ -213,9 +213,6 @@ public class Player {
         }
     }
 
-
-
-
     public int getPlayerCoin() {
         return this.coin;
     }
@@ -254,5 +251,15 @@ public class Player {
 
     public void setCurrentPosition(String currentPosition) {
         this.currentPosition = currentPosition;
+    }
+
+    public int getDailyEarn() {
+        return this.dailyEarn;
+    }
+    public void setDailyEarn(int dailyearn) {
+        this.dailyEarn = dailyearn;
+    }
+    public void  increaseDailyEarn(int dailyearn) {
+        this.dailyEarn += dailyearn;
     }
 }

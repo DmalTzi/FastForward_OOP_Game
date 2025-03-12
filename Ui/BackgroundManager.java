@@ -58,7 +58,7 @@ public class BackgroundManager {
         build[index] = new ImageIcon(LoadSave.GetSprite(des, fileName));
 
         obj[index].setIcon(build[index]);
-        obj[index].addMouseListener(new MouseHandler(gp));
+        obj[index].addMouseListener(new MouseHandler(gp)); 
 
         gp.add(obj[index]);
     }

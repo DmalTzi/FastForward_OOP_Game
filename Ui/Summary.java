@@ -14,7 +14,7 @@ import utilz.LoadSave;
 public class Summary extends BackgroundManager {
     // Font Bauhaus = new Font("Bauhaus 93", Font.PLAIN, 50);
     Font font;
-    String textTitle, textEmo;
+    String textTitle = "", textEmo = "", textEarn = "", textCO2 = "";
     
     public Summary(GamePanel gp) {
         super(gp);
@@ -22,6 +22,8 @@ public class Summary extends BackgroundManager {
     
     public void draw(Graphics2D g2) {
         g2.drawImage(gp.getBackgroundManager().getImage(3), 0, 0, gp.screenWidth, gp.screenHeight, null);
+        
+        summaryObj(g2);
 
         textTitle = "Summary of Day " + (gp.getEarth().getDay() <= 9 ? "0":"") + gp.getEarth().getDay();
         font = new Font("Bauhaus 93", Font.PLAIN, 48);
@@ -42,9 +44,18 @@ public class Summary extends BackgroundManager {
         }
         font = new Font("Bauhaus 93", Font.PLAIN, 50);
         g2.setFont(font);
-        g2.drawString(textEmo, 835, 250);
+        g2.drawString(textEmo, 835, 300);
 
-        summaryObj(g2);
+        textCO2 = gp.getEarth().getEarthHeat() + " pts.";
+        font = new Font("Bauhaus 93", Font.PLAIN, 48);
+        g2.setFont(font);
+        g2.drawString(textCO2, 880, 455);
+
+        textEarn = gp.player.getDailyEarn() + " c.";
+        font = new Font("Bauhaus 93", Font.PLAIN, 48);
+        g2.setFont(font);
+        g2.drawString(textEarn, 900, 615);
+
     }
 
     public int getXCenterPos(String text, Graphics2D g2) {

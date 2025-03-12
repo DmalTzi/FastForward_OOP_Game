@@ -117,8 +117,6 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        // sum.draw(g2);
-
         if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
         }
@@ -136,7 +134,6 @@ public class GamePanel extends JPanel implements Runnable{
             showEvent = false;
             sum.draw(g2);
         }
-    
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
