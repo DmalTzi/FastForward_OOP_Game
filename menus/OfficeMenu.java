@@ -36,10 +36,8 @@ public class OfficeMenu extends SuperMenu{
         workBtn.addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
-                gp.player.work("Office");
                 if (gp.getPlayer().getCanWork()) {
                     gp.getPlayer().work("Office");
-   
                 }
                 else {
                     workBtn.setEnabled(false);

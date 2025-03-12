@@ -159,7 +159,7 @@ public class Player {
                 gp.getEarth().time = 360 ;
             }
         }else{
-            if (activityHome.get(n)[2] >= getCoin()) {
+            if (activityHome.get(n)[2] <= getCoin()) {
                 if(n.equals("Sleep")){
                     increasePlayerEmo(activityHome.get(n)[0]);
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
