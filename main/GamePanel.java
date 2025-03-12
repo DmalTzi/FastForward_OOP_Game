@@ -130,6 +130,12 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Endgame){
             showEvent = false;
             backg.draw(g2);
+        }else if(gamest == GameState.Endgame_2){
+            showEvent =false;
+            backg.draw(g2);
+        }else if(gamest == GameState.GoodEnd){
+            showEvent =false;
+            backg.draw(g2);
         }
         // else if (gamest == GameState.Summary) {
         //     showEvent = false;
@@ -143,7 +149,7 @@ public class GamePanel extends JPanel implements Runnable{
         player.update();
         backg.checkObj(showEvent);
         uiMng.checkObj(showEvent);
-        
+        earth.Checkworld();
         // ============ This part should have lived in player ==============
         
         // =================================================================

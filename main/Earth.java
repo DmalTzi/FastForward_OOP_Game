@@ -46,7 +46,16 @@ public class Earth {
         }
     }
     // fucking getters setters
-  
+    public void Checkworld(){
+        // System.out.println(worldHeat);
+        if(worldHeat > 200){
+            gp.setgameState(GameState.Endgame_2);
+        }
+
+        if(Day >= 7){
+            gp.setgameState(GameState.GoodEnd);
+        }
+    }
 
     public void increaseTime(int t) {
         System.out.println("Time increase : " + t);

@@ -41,12 +41,15 @@ public class BackgroundManager {
 
     public void draw(Graphics2D g2){
         if(gp.getgameState() == GameState.Endgame){
-            g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
-        }else{
+            g2.drawImage(backg[3], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }else if(gp.getgameState()  == GameState.Gameplay){
 
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
-            // drawTextworld(g2);
-            // g2.drawImage(obj[6], 1000, 20);
+        
+        }else if(gp.getgameState() == GameState.Endgame_2){
+            g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
+        }else if(gp.getgameState() == GameState.GoodEnd){
+            g2.drawImage(backg[4],  0, 0, gp.screenWidth, gp.screenHeight, null);
         }
 
     }
@@ -79,7 +82,7 @@ public class BackgroundManager {
     }
 
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
-        if(gp.getEarth().getTime() > 18*60){
+        if(gp.getEarth().getTime() > 18*60 || gp.getEarth().getTime() <= 5*60 ){
             indexBack = 1;
         }
         else {
@@ -102,6 +105,10 @@ public class BackgroundManager {
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
         loadBackground(2, "end.png");
+        loadBackground(3, "emoend.png");
+        loadBackground(4, "goodend.png");
+
+
     }
 
     // TEST
