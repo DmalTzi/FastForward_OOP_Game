@@ -82,7 +82,7 @@ public class UIManager extends BackgroundManager {
         createObject(1, 377, 10, 350, 80, "ui", "earth_val.png");
         createObject(2, 310, -3, 95, 94, "ui", "earth.png");
         createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
-        // createObject(4, 13, 220, 118, 117, "ui", "face3.png");
+        createObject(4, 13, 220, 118, 117, "ui", "face3.png");
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
         createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
        
