@@ -26,30 +26,36 @@ public class Title{
         g2.setFont(Bauhaus);
         String text = "";
         int x  =  0; //สร้างไม่ได้ ใส่เข้าไปแม่งเลย ทำให้มันอยู่กลาง
-        int y =  420; 
+        int y =  440; 
 
     
         //Menu
-        g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,35F));
-        g2.setColor(Color.BLACK);
+        g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,45F));
+        g2.setColor(Color.white);
         text = "PLAY GAME" ; 
         x  =  gettextcenter(text,g2);
         y+= 100;
         g2.drawString(text, x, y);
+        g2.setColor(Color.BLACK);
+        g2.drawString(text, x-5, y);
         if(commandNum == 0){
-            g2.drawString(">", x-25, y);
+            g2.drawString(">", x-35, y);
         }
 
         text = "EXIT GAME" ; 
         x  =  gettextcenter(text,g2);
-        y+= 100;
+        y+= 90;
+        g2.setColor(Color.white);
         g2.drawString(text, x, y);
+        g2.setColor(Color.BLACK);
+        g2.drawString(text, x-5, y);
         if(commandNum == 1){
-            g2.drawString(">", x-25, y);
+            g2.drawString(">", x-35, y);
 
         }
          
     }
+
     public void loadBackground() {
         
             try {
