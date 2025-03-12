@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import Player.Player;
 import Ui.BackgroundManager;
 import Ui.KeyHandler;
+import Ui.Summary;
 import Ui.Title;
+import Ui.UIManager;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -42,6 +44,8 @@ public class GamePanel extends JPanel implements Runnable{
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
+    UIManager uiMng = new UIManager(this);
+    Summary sum = new Summary(this);
 
     // flexible 
     int FPS = 60;
@@ -110,20 +114,26 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
-        
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        if(gamest == GameState.Title){ //เข็คสภานะเกมส์
+        if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
-        }else if(gamest == GameState.Gameplay){
+        }
+        else if (gamest == GameState.Gameplay){
             backg.draw(g2);
             earth.draw(g2);
             player.draw(g2);
-        }else if(gamest == GameState.Endgame){
+            uiMng.draw(g2);
+        }
+        else if (gamest == GameState.Endgame){
             showEvent = false;
             backg.draw(g2);
         }
+        // else if (gamest == GameState.Summary) {
+        //     showEvent = false;
+        //     sum.draw(g2);
+        // }
     
     }
 
@@ -131,7 +141,11 @@ public class GamePanel extends JPanel implements Runnable{
         backg.updateblackground();
         player.update();
         backg.checkObj(showEvent);
-
+        uiMng.checkObj(showEvent);
+        
+        // ============ This part should have lived in player ==============
+        
+        // =================================================================
         for (SuperEvents e : events) {
             if (e != null) {
                 // เช็คว่าเมนูไหนเปิดอยู่

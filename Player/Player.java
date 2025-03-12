@@ -55,33 +55,29 @@ public class Player {
         }
     }   
     public void loadAsset(){
-        activityHome.put("Movie",new int[]{20,25,-60, 120}); // emo 1 c02  2 coin
-        activityHome.put("Exercise",new int[]{10,15,-10, 30});
-        activityHome.put("Game",new int[]{20,30,-50, 60});
-        activityHome.put("Plante",new int[]{25,-20,-5, 30});
-        activityHome.put("ReadBk",new int[]{15,10,-10, 60});
-        activityHome.put("Sleep",new int[]{25,5,0});
+        activityHome.put("Movie",new int[]{20, 25, -60, 120}); // emo 1 c02  2 coin
+        activityHome.put("Exercise",new int[]{10, 15, -10, 30});
+        activityHome.put("Game",new int[]{20, 30, -50, 60});
+        activityHome.put("Plante",new int[]{25, -20, -5, 30});
+        activityHome.put("ReadBk",new int[]{15, 10, -10, 60});
+        activityHome.put("Sleep",new int[]{25, 5, 0});
 
-        activityMarket.put("Apple", new int[]{5,5,-10});
-        activityMarket.put("Water", new int[]{2,5,-10});
-        activityMarket.put("Coke", new int[]{3,15,-15});
-        activityMarket.put("Mama", new int[]{10,15,-20});
-        activityMarket.put("Egg_fried", new int[]{15,20,-25});
+        activityMarket.put("Apple", new int[]{5, 5, -10});
+        activityMarket.put("Water", new int[]{2, 5, -10});
+        activityMarket.put("Coke", new int[]{3, 15, -15});
+        activityMarket.put("Mama", new int[]{10, 15, -20});
+        activityMarket.put("Egg_fried", new int[]{15, 20, -25});
 
-       activitySuper.put("Pizza", new int[] {20,30,-50});
-       activitySuper.put("Hamburger", new int[] {20,30,-50});
-       activitySuper.put("Fried", new int[] {15,25,-35});
-       activitySuper.put("Car", new int[] {30,20,-1200});
-       activitySuper.put("Jakayan", new int[] {25,5,-500});
+       activitySuper.put("Pizza", new int[] {20, 30, -50});
+       activitySuper.put("Hamburger", new int[] {20, 30, -50});
+       activitySuper.put("Fried", new int[] {15, 25, -35});
+       activitySuper.put("Car", new int[] {30, 20, -1200});
+       activitySuper.put("Jakayan", new int[] {25, 5, -500});
        
         
-       work.put("Market",new int[] {-5,5,30,60} );
-       work.put("Super",new int[] {-10,10,40,60} );
-       work.put("Office", new int[] {-15,15,50,60});
-
-
-
-
+       work.put("Market",new int[] {-5, 5, 30, 60} );
+       work.put("Super",new int[] {-10, 10, 40, 60} );
+       work.put("Office", new int[] {-15, 15, 50,  60});
     }
 
     public void loadPlayer(){
@@ -112,7 +108,7 @@ public class Player {
             remem =  playerIm3;
         }
         // System.out.println(emotion);
-        g2.drawImage(remem, x,y, 80,80,null);
+        g2.drawImage(remem, x, y, 80, 80, null);
        
     }
 
