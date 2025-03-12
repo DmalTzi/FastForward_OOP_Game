@@ -71,7 +71,18 @@ public class UIManager extends BackgroundManager {
         createObject(1, 377, 19, 303, 64, "ui", "earth_val.png");
         createObject(2, 310, -3, 95, 94, "ui", "earth.png");
         createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
-        createObject(4, 13, 220, 118, 117, "ui", "face3.png");
+        if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
+            createObject(4, 13, 220, 118, 117, "ui", "face1.png");
+        }
+        else if (gp.player.getPlayerEmo() >= 49 && gp.player.getPlayerEmo() <= 75) {
+            createObject(4, 13, 220, 118, 117, "ui", "face2.png");
+        }
+        else if (gp.player.getPlayerEmo() >= 26 && gp.player.getPlayerEmo() <= 50) {
+            createObject(4, 13, 220, 118, 117, "ui", "face3.png");
+        }
+        else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
+            createObject(4, 13, 220, 118, 117, "ui", "face4.png");
+        }
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
     }
 
