@@ -14,14 +14,13 @@ public class HomeMenu extends SuperMenu{
 
     public HomeMenu(GamePanel gp) {
         super(gp);
-
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_home.png")));
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_home.png"));
+        bg.setIcon(defaultBg);
         menuWidth = bg.getIcon().getIconWidth();
         menuHeight = bg.getIcon().getIconHeight();
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
         menu.setSize(menuWidth, menuHeight);
         buttonExit.setLocation((menuWidth-150)*gp.SCALE, 175*gp.SCALE);
-
 
         setUpBtns();
         setUpActionBtns();

@@ -22,8 +22,8 @@ public class BusMenu extends SuperMenu{
 
         this.location = location;
 
-        // Set background of bus menu
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus.png")));
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_bus.png"));
+        bg.setIcon(defaultBg);
         // setup menuwidth and height
         menuWidth = bg.getIcon().getIconWidth();
         menuHeight = bg.getIcon().getIconHeight();

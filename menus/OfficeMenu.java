@@ -16,7 +16,8 @@ public class OfficeMenu extends SuperMenu{
     public OfficeMenu(GamePanel gp) {
         super(gp);
 
-        bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office.png")));
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_office.png"));
+        bg.setIcon(defaultBg);
         menuWidth = bg.getIcon().getIconWidth();
         menuHeight = bg.getIcon().getIconHeight();
         bg.setBounds(0, 0, menuWidth*gp.SCALE, menuHeight*gp.SCALE);
@@ -26,17 +27,13 @@ public class OfficeMenu extends SuperMenu{
         setUpBtns();
         setUpActionBtns();
 
-        for (JButton j : btns) {
-            if (j != null) {
-                j.setBorder(null);
-                j.setContentAreaFilled(false);
-                menu.add(j, Integer.valueOf(1)); 
-            }
-        }
+        workBtn.setBorder(null);
+        workBtn.setContentAreaFilled(false);
+        menu.add(workBtn, Integer.valueOf(1));
     }
 
     private void setUpActionBtns() {
-        btns[0].addMouseListener(new MouseListener() {
+        workBtn.addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
                 if (gp.getPlayer().getCanWork()) {
                     gp.getEarth().increaseTime(60);
@@ -44,16 +41,16 @@ public class OfficeMenu extends SuperMenu{
                     gp.player.setPlayerCoin(50);
                 }
                 else {
-                    btns[0].setEnabled(false);
+                    workBtn.setEnabled(false);
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working_hover.png")));
-                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
+                workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
             }
             public void mouseExited(MouseEvent e) {
-                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working.png")));
-                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+                workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -61,9 +58,9 @@ public class OfficeMenu extends SuperMenu{
     }
 
     private void setUpBtns() {
-        btns[0] = new JButton();
-        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_office_working.png")));
-        btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
-        btns[0].setLocation(550, menuHeight-200);
+        workBtn = new JButton();
+        workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+        workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
+        workBtn.setLocation(550, menuHeight-200);
     }
 }
