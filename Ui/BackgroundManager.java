@@ -58,7 +58,7 @@ public class BackgroundManager {
         if (obj[index] == null) { 
             obj[index] = new JLabel();
         }
-        
+
         obj[index].setBounds(x, y, objWidth, objHeight);
         ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
         Image originalImage = originalIcon.getImage();
@@ -77,7 +77,6 @@ public class BackgroundManager {
         Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
         build[index] = new ImageIcon(resizedImage);
         
-    
         obj[index].setIcon(build[index]);
         gp.add(obj[index]);
     }
