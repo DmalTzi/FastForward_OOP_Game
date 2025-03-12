@@ -27,29 +27,29 @@ public class OfficeMenu extends SuperMenu{
         setUpBtns();
         setUpActionBtns();
 
-        workBtn.setBorder(null);
-        workBtn.setContentAreaFilled(false);
-        menu.add(workBtn, Integer.valueOf(1));
+        btns[0].setBorder(null);
+        btns[0].setContentAreaFilled(false);
+        menu.add(btns[0], Integer.valueOf(1));
     }
 
     private void setUpActionBtns() {
-        workBtn.addMouseListener(new MouseListener() {
+        btns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
                 if (gp.getPlayer().getCanWork()) {
                     gp.getPlayer().work("Office");
                 }
                 else {
-                    workBtn.setEnabled(false);
+                    btns[0].setEnabled(false);
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
-                workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
             }
             public void mouseExited(MouseEvent e) {
-                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
-                workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+                btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -57,9 +57,9 @@ public class OfficeMenu extends SuperMenu{
     }
 
     private void setUpBtns() {
-        workBtn = new JButton();
-        workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
-        workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
-        workBtn.setLocation(550, menuHeight-200);
+        btns[0] = new JButton();
+        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+        btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+        btns[0].setLocation(550, menuHeight-200);
     }
 }

@@ -57,6 +57,10 @@ public class Earth {
         return location;
     }
 
+    public void increaseDay(int day) {
+        Day++;
+    }
+
     public int[][] getBusLocation() {
         return busLocation;
     }   

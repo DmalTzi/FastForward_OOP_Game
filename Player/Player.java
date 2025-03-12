@@ -156,7 +156,8 @@ public class Player {
                 increasePlayerEmo(activityHome.get(n)[0]);
                 gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                 setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().time = 360 ;
+                    gp.getEarth().increasDay(1);
+                    gp.getEarth().time = 360 ;
             }
         }else{
             if (activityHome.get(n)[2] <= getCoin()) {
@@ -165,6 +166,7 @@ public class Player {
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                     setPlayerCoin((activityHome.get(n)[2]));
                     gp.getEarth().time = 360 ;
+                    gp.getEarth().increasDay(1);
                 }
                 else if(n.equals("Movie")){
                     increasePlayerEmo(activityHome.get(n)[0]);
