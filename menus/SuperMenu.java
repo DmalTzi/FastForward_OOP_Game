@@ -50,6 +50,7 @@ public abstract class SuperMenu {
                     selectBtns[0].setVisible(true);
                     selectBtns[1].setVisible(true);
                 }
+                workBtn.setVisible(false);
             }
             public void mouseExited(MouseEvent e) {
                 buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));
