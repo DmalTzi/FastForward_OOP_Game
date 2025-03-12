@@ -20,6 +20,7 @@ public class BackgroundManager {
     public ImageIcon[] build = new ImageIcon[10];
     GamePanel gp;
     Earth ev;
+    Graphics2D g2;
 
     int indexBack;
     public Image[] backg; 
@@ -40,10 +41,10 @@ public class BackgroundManager {
     }
 
     public void draw(Graphics2D g2){
-        if(gp.getgameState() == GameState.Endgame){
+        if (gp.getgameState() == GameState.Endgame) {
             g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
-        }else{
-
+        }
+        else {
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
             // drawTextworld(g2);
         }
@@ -86,15 +87,18 @@ public class BackgroundManager {
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
         loadBackground(2, "end.png");
+        loadBackground(3, "summary_bg.png");
     }
 
     // TEST
     public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
     public JLabel[] getObj() {
         return obj;
+    }
+
+    public Image getImage(int ind) {
+        return backg[ind];
     }
 }

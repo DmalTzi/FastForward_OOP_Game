@@ -117,6 +117,8 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        // sum.draw(g2);
+
         if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
         }
@@ -130,10 +132,10 @@ public class GamePanel extends JPanel implements Runnable{
             showEvent = false;
             backg.draw(g2);
         }
-        // else if (gamest == GameState.Summary) {
-        //     showEvent = false;
-        //     sum.draw(g2);
-        // }
+        else if (gamest == GameState.Summary) {
+            showEvent = false;
+            sum.draw(g2);
+        }
     
     }
 
@@ -204,5 +206,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public Player getPlayer() {
         return player;
+    }
+
+    public BackgroundManager getBackgroundManager() {
+        return backg;
     }
 }

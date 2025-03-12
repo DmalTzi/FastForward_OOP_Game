@@ -16,7 +16,7 @@ import menus.SuperMenu;
 
 public class Player {
     GamePanel gp;
-    public BufferedImage playerIm,playerIm1,playerIm2,playerIm3, remem;
+    public BufferedImage playerIm, playerIm1, playerIm2, playerIm3, remem;
     public int x ;
     public int y;
     private int coin;
@@ -78,16 +78,15 @@ public class Player {
     }
 
     public void loadPlayer(){
-
-         try{
+        try {
             playerIm = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset_78.png")); //happy
             playerIm1 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 76.png"));//min
             playerIm2 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 75.png"));//medium
             playerIm3= ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 77.png")); //verysad
 
             
-        }catch(IOException e){
-  
+        }
+        catch(IOException e) {
             e.printStackTrace();
         }
     }
@@ -97,7 +96,7 @@ public class Player {
     public void draw(Graphics2D g2){ // วาดตัวละคร
         if(emotion > 75){
             remem = playerIm;
-        }else if (emotion >51){
+        }else if (emotion > 51){
             remem = playerIm1;
         }else if( emotion > 26){
             remem = playerIm2;
@@ -116,6 +115,7 @@ public class Player {
             Arrays.asList(gp.getAllEvent()).forEach(e -> {if (e != null) e.setMenuVisible(false);});
         }
     }
+    
     public void MoveTo(){
         x = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(currentPosition))[0];
         y = gp.getEarth().getPlayerLocation(Arrays.asList(gp.getEarth().getLocation()).indexOf(currentPosition))[1];
