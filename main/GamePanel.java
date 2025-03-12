@@ -37,7 +37,6 @@ public class GamePanel extends JPanel implements Runnable{
     //set up 
     private Earth earth = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
-    ActionHandler aHandler = new ActionHandler(this) ;
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
     public Title title = new Title(this);

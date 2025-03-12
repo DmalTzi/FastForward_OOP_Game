@@ -35,6 +35,7 @@ public class Earth {
         min = getTime()%60;
         hour = getTime()/60;
         if(hour == 24) {
+            gp.player.setWorkHr();
             increasDay(1);
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
                 gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));

@@ -32,6 +32,7 @@ public class Player {
     private Map<String, int[]> activityMarket = new HashMap<>();
     private Map<String, int[]> activitySuper = new HashMap<>();
     private Map<String, int[]> work = new HashMap<>();
+    
 
     public Player(GamePanel gp) {
         this.gp = gp;
@@ -40,8 +41,8 @@ public class Player {
     }
 
     public void update() { // walk check bulid
-
-        if (workHr >= 8 * 60)
+    
+        if (workHr >= 8 )
             canWork = false;
         MoveTo();
         emotioncheck();
@@ -143,21 +144,27 @@ public class Player {
     }
 
     public void work(String n) {
-        if (n.equals("Market")) {
-            increasePlayerEmo(work.get(n)[0]);
-            gp.getEarth().setEarthCO2((work.get(n)[1]));
-            setPlayerCoin((work.get(n)[2]));
-            gp.getEarth().increaseTime(work.get(n)[3]);
-        } else if (n.equals("Super")) {
-            increasePlayerEmo(work.get(n)[0]);
-            gp.getEarth().setEarthCO2((work.get(n)[1]));
-            setPlayerCoin((work.get(n)[2]));
-            gp.getEarth().increaseTime(work.get(n)[3]);
-        } else if (n.equals("Office")) {
-            increasePlayerEmo(work.get(n)[0]);
-            gp.getEarth().setEarthCO2((work.get(n)[1]));
-            setPlayerCoin((work.get(n)[2]));
-            gp.getEarth().increaseTime(work.get(n)[3]);
+        if(canWork){
+
+            if (n.equals("Market")) {
+                increasWorkHr();
+                increasePlayerEmo(work.get(n)[0]);
+                gp.getEarth().setEarthCO2((work.get(n)[1]));
+                setPlayerCoin((work.get(n)[2]));
+                gp.getEarth().increaseTime(work.get(n)[3]);
+            } else if (n.equals("Super")) {
+                increasWorkHr();
+                increasePlayerEmo(work.get(n)[0]);
+                gp.getEarth().setEarthCO2((work.get(n)[1]));
+                setPlayerCoin((work.get(n)[2]));
+                gp.getEarth().increaseTime(work.get(n)[3]);
+            } else if (n.equals("Office")) {
+                increasWorkHr();
+                increasePlayerEmo(work.get(n)[0]);
+                gp.getEarth().setEarthCO2((work.get(n)[1]));
+                setPlayerCoin((work.get(n)[2]));
+                gp.getEarth().increaseTime(work.get(n)[3]);
+            }
         }
     }
 
@@ -167,9 +174,10 @@ public class Player {
 
     public void activity(String n) {
         if (getCoin() <= 0) {
-            if (gp.getEarth().time >= 19 * 60) {
+            if (gp.getEarth().time >= 19 * 60  || gp.getEarth().time <= 5 *60) {
                 
                 if (n.equals("Sleep")) {
+                    setWorkHr();
                     increasePlayerEmo(activityHome.get(n)[0]);
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                     setPlayerCoin((activityHome.get(n)[2]));
@@ -180,8 +188,9 @@ public class Player {
         } else {
             if (-(activityHome.get(n)[2]) <= getCoin()) {
 
-                if (gp.getEarth().time >= 19 * 60) {
+                if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 *60) {
                     if (n.equals("Sleep")) {
+                        setWorkHr();
                         increasePlayerEmo(activityHome.get(n)[0]);
                         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                         setPlayerCoin((activityHome.get(n)[2]));
@@ -269,7 +278,12 @@ public class Player {
     public int getWorkHr() {
         return workHr;
     }
-
+    public void  increasWorkHr(){
+        workHr ++;
+    }
+    public void  setWorkHr(){
+        workHr = 0;
+    }
     public int getPlayerCoin() {
         return this.coin;
     }
