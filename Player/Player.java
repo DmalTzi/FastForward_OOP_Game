@@ -155,7 +155,7 @@ public class Player {
     }
     
     public void activity(String n){
-        if(getCoin() <= 0 ){
+        if(getCoin() <= 0){
             if(n.equals("Sleep")){
                 increasePlayerEmo(activityHome.get(n)[0]);
                 gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
@@ -163,37 +163,39 @@ public class Player {
                 gp.getEarth().time = 360 ;
             }
         }else{
-            if(n.equals("Sleep")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().time = 360 ;
-            }
-            else if(n.equals("Movie")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().increaseTime(activityHome.get(n)[3]);
-            }else if(n.equals("Exercise")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().increaseTime(activityHome.get(n)[3]);
-            }else if(n.equals("Game")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().increaseTime(activityHome.get(n)[3]);
-            }else if(n.equals("Plante")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().increaseTime(activityHome.get(n)[3]);
-            }else if(n.equals("ReadBk")){
-                increasePlayerEmo(activityHome.get(n)[0]);
-                gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
-                setPlayerCoin((activityHome.get(n)[2]));
-                gp.getEarth().increaseTime(activityHome.get(n)[3]);
+            if (activityHome.get(n)[2] >= getCoin()) {
+                if(n.equals("Sleep")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().time = 360 ;
+                }
+                else if(n.equals("Movie")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().increaseTime(activityHome.get(n)[3]);
+                }else if(n.equals("Exercise")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().increaseTime(activityHome.get(n)[3]);
+                }else if(n.equals("Game")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().increaseTime(activityHome.get(n)[3]);
+                }else if(n.equals("Plante")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().increaseTime(activityHome.get(n)[3]);
+                }else if(n.equals("ReadBk")){
+                    increasePlayerEmo(activityHome.get(n)[0]);
+                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    setPlayerCoin((activityHome.get(n)[2]));
+                    gp.getEarth().increaseTime(activityHome.get(n)[3]);
+                }
             }
         }
         
