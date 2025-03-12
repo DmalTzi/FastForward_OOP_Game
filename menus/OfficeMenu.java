@@ -41,9 +41,9 @@ public class OfficeMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 System.out.println("Working 1hr+");
                 gp.player.work("Office");
-                if (gp.player.getWorkHr() < 8) {
+                if (gp.player.getWorkHr() < 6) {
                     gp.player.setWorkHr(1);
-                    gp.player.setPlayerCoin(50);
+   
                 }
                 else {
                     System.out.println("work hours reached the limit.");
