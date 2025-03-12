@@ -21,6 +21,7 @@ public abstract class SuperMenu {
     protected JButton btns[] = new JButton[10];
     protected JButton selectBtns[] = new JButton[2];
     protected JButton workBtn;
+    protected JButton backWard;
     ImageIcon defaultBg;
 
     public SuperMenu(GamePanel gp) {

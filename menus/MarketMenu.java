@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import main.GamePanel;
@@ -31,6 +33,11 @@ public class MarketMenu extends SuperMenu{
         workBtn.setVisible(false);
         menu.add(workBtn, Integer.valueOf(1));
 
+        backWard.setBorder(null);
+        backWard.setContentAreaFilled(false);
+        backWard.setVisible(false);
+        menu.add(backWard, Integer.valueOf(1));
+
         for (JButton j : btns) {
             if (j != null) {
                 j.setBorder(null);
@@ -51,6 +58,10 @@ public class MarketMenu extends SuperMenu{
     private void setUpActionBtns() {
         selectBtns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
+                bg.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop.png")));
+                selectBtns[0].setVisible(false);
+                selectBtns[1].setVisible(false);
+                backWard.setVisible(true);
             }
             public void mouseEntered(MouseEvent e) {
                 selectBtns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_eat_hover.png")));
@@ -68,6 +79,7 @@ public class MarketMenu extends SuperMenu{
                 selectBtns[0].setVisible(false);
                 selectBtns[1].setVisible(false);
                 workBtn.setVisible(true);
+                backWard.setVisible(true);
             }
             public void mouseEntered(MouseEvent e) {
                 selectBtns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_work_hover.png")));
@@ -82,14 +94,37 @@ public class MarketMenu extends SuperMenu{
 
         workBtn.addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                // gp.getPlayer().work();
+                if (gp.getPlayer().getCanWork()) {
+                    gp.getPlayer().work("Market");
+                }
+                else {
+                    btns[0].setEnabled(false);
+                }
             }
             public void mouseEntered(MouseEvent e) {
-                selectBtns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_work_hover.png")));
+                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
 
             }
             public void mouseExited(MouseEvent e) {
-                selectBtns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_work.png")));
+                workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        backWard.addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                bg.setIcon(defaultBg);
+                workBtn.setVisible(false);
+                backWard.setVisible(false);
+                selectBtns[0].setVisible(true);
+                selectBtns[1].setVisible(true);
+            }
+            public void mouseEntered(MouseEvent e) {
+                backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward.png")));
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -111,5 +146,13 @@ public class MarketMenu extends SuperMenu{
         workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
         workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
         workBtn.setLocation(550, menuHeight-200);
+
+        backWard = new JButton();
+        backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward.png")));
+        backWard.setSize(backWard.getIcon().getIconWidth(), backWard.getIcon().getIconHeight());
+        backWard.setLocation(100, 165);
+
+        
+
     }
 }
