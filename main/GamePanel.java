@@ -114,7 +114,6 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
-        
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 

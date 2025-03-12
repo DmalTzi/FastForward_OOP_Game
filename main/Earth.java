@@ -39,7 +39,7 @@ public class Earth {
             time  = 0;
             hour = 0;
             min = 0 ;
-        } 
+        }
     }
     // fucking getters setters
   

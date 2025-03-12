@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import main.GamePanel;
 
 public class Summary {
-    GamePanel gp = new GamePanel();
+    GamePanel gp;
     // Font Bauhaus = new Font("Bauhaus 93", Font.PLAIN, 50);
     Font fontTitle;
     String textTitle;
