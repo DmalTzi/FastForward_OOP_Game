@@ -8,6 +8,8 @@ import main.GamePanel;
 
 public class Title{
     GamePanel gp ; 
+        
+    Font Bauhaus =new Font("Bauhaus 93",Font.PLAIN, 50);
     int commandNum =  0 ; 
     public Title(GamePanel gp){
         this.gp = gp;
@@ -18,7 +20,7 @@ public class Title{
         g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
 
-        g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,50F));
+        g2.setFont(Bauhaus);
         String text = "No time to see you because i have project ";
         int x  =  gettextcenter(text,g2); //สร้างไม่ได้ ใส่เข้าไปแม่งเลย ทำให้มันอยู่กลาง
         int y =  100; 
@@ -51,7 +53,9 @@ public class Title{
         }
          
     }
-
+    public Font getFont(){
+        return Bauhaus;
+    }
     public int gettextcenter(String text,Graphics2D g2){
         int length = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
         int x = gp.screenWidth/2 - length/2;

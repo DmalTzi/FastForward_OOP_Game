@@ -38,10 +38,11 @@ public class OfficeMenu extends SuperMenu{
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
+                System.out.println("Working 1hr+");
+                gp.player.work("Office");
                 if (gp.getPlayer().getCanWork()) {
-                    gp.getEarth().increaseTime(60);
-                    gp.player.work(60);
-                    gp.player.setPlayerCoin(50);
+                    gp.getPlayer().work("Office");
+   
                 }
                 else {
                     btns[0].setEnabled(false);

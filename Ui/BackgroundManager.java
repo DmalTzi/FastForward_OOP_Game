@@ -1,5 +1,6 @@
 package Ui;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
@@ -42,7 +43,9 @@ public class BackgroundManager {
         if(gp.getgameState() == GameState.Endgame){
             g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
         }else{
+
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
+            drawTextworld(g2);
         }
     }
 
@@ -101,5 +104,40 @@ public class BackgroundManager {
 
     public JLabel[] getObj() {
         return obj;
+    }
+   
+    public void drawTextworld(Graphics2D g2){
+        Font B = gp.title.getFont();
+        String text = "";
+        int x = 0 ;
+        int y = 0 ;
+        g2.setFont(B);
+        text = " " +(int)(gp.player.getCoin()) +" P"; 
+        x  =  800;
+        y= 60;
+        g2.drawString(text, x, y);
+
+        Font Bauhaus =new Font("Bauhaus 93",Font.PLAIN, 35); // ขี้เกียจคิดละเขียนไปก่อน
+        g2.setFont(Bauhaus);
+        if(gp.getEarth().getHour() >= 12){
+            text = gp.getEarth().getHour() +" :" + (gp.getEarth().getMin() <= 9 ? "0":"") +gp.getEarth().getMin() +"pm."; 
+            x  =  1130;
+            y= 100;
+            g2.drawString(text, x, y);
+        }else{
+            text = gp.getEarth().getHour() +" :" + (gp.getEarth().getMin() <= 9 ? "0":"") +gp.getEarth().getMin() +"am."; 
+            x  =  1130;
+            y= 100;
+            g2.drawString(text, x, y);
+        }
+        Bauhaus =new Font("Bauhaus 93",Font.PLAIN, 60);
+        g2.setFont(Bauhaus);
+
+        text = "Day " +(gp.getEarth().getDay() <= 9 ? "0":"") + gp.getEarth().getDay(); 
+        x  =  1000;
+        y= 55;
+        g2.drawString(text, x, y);
+
+
     }
 }

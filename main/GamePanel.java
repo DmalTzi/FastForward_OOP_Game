@@ -188,6 +188,7 @@ public class GamePanel extends JPanel implements Runnable{
         return eventManager;
     }
 
+
     public Player getPlayer() {
         return player;
     }
