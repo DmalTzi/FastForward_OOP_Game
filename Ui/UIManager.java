@@ -54,7 +54,7 @@ public class UIManager extends BackgroundManager {
             text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
-            if(gp.getEarth().getHour() >= 18){
+            if(gp.getEarth().getHour() > 18){
                 g2.setColor(Color.white);
             }else{
                 g2.setColor(Color.BLACK);
