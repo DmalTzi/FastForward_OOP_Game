@@ -21,6 +21,7 @@ public abstract class SuperMenu {
     protected JButton btns[] = new JButton[10];
     protected JButton selectBtns[] = new JButton[2];
     protected JButton workBtn;
+    protected boolean isShopping = false;
     protected JButton backWard;
     ImageIcon defaultBg;
 
@@ -51,11 +52,23 @@ public abstract class SuperMenu {
                     selectBtns[0].setVisible(true);
                     selectBtns[1].setVisible(true);
                 }
-                if (workBtn != null)
+
+                if (isShopping) {
                     workBtn.setVisible(false);
-                for (JButton j : btns) {
-                    if (j != null) j.setVisible(false);
+                    backWard.setVisible(false);
+                    for (JButton j : btns) {
+                        if (j != null) {
+                            j.setVisible(false);
+                        }
+                    }
+                }else {
+                    for (JButton j : btns) {
+                        if (j != null) {
+                            j.setVisible(true);
+                        }
+                    }
                 }
+                isShopping = false;
             }
             public void mouseExited(MouseEvent e) {
                 buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));
@@ -75,6 +88,10 @@ public abstract class SuperMenu {
 
     public JLayeredPane getMenu() {
         return menu;
+    }
+
+    public JButton[] getButtons() {
+        return btns;
     }
 
 }

@@ -43,13 +43,13 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
-    UIManager uiMng = new UIManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
     Summary sum = new Summary(this);
+    UIManager uiMng = new UIManager(this);
 
     // flexible 
-    int FPS = 60;
+    int FPS = 240;
     private boolean showEvent = true;
     GameState gamest = GameState.Title; //เปลี่ยน state
 

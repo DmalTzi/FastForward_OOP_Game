@@ -61,6 +61,7 @@ public class SuperMarketMenu extends SuperMenu{
                 selectBtns[0].setVisible(false);
                 selectBtns[1].setVisible(false);
                 backWard.setVisible(true);
+                isShopping = true;
                 for (JButton j : btns) {
                     if (j != null) j.setVisible(true);
                 }
@@ -121,6 +122,7 @@ public class SuperMarketMenu extends SuperMenu{
                 backWard.setVisible(false);
                 selectBtns[0].setVisible(true);
                 selectBtns[1].setVisible(true);
+                isShopping = false;
                 for (JButton j : btns) {
                     if (j != null) j.setVisible(false);
                 }

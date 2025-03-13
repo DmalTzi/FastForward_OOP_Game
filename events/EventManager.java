@@ -35,6 +35,7 @@ public class EventManager {
             gp.getPlayer().increasePlayerEmo(travels.get(moveBy)[0]);
             gp.getEarth().setEarthCO2((travels.get(moveBy)[1]));
             gp.getPlayer().setPlayerCoin((travels.get(moveBy)[2]));
+            gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[next]);
             switch (moveBy) {
                 case "bus":
                     time = paths[cur][next];
