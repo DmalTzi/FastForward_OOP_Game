@@ -31,26 +31,33 @@ public class Title{
     
         //Menu
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT,45F));
-        g2.setColor(Color.white);
+        g2.setColor(new Color(64,64,64));
         text = "PLAY GAME" ; 
         x  =  gettextcenter(text,g2);
         y+= 100;
         g2.drawString(text, x, y);
-        g2.setColor(Color.BLACK);
+        g2.setColor(new Color(153,204,255));
         g2.drawString(text, x-5, y);
         if(commandNum == 0){
+            g2.setColor(new Color(64,64,64));
             g2.drawString(">", x-35, y);
+            g2.setColor(new Color(204,229,255));
+          g2.drawString(">", x-42,y);
         }
 
         text = "EXIT GAME" ; 
         x  =  gettextcenter(text,g2);
         y+= 90;
-        g2.setColor(Color.white);
+        g2.setColor(new Color(64,64,64));
         g2.drawString(text, x, y);
-        g2.setColor(Color.BLACK);
+        g2.setColor(new Color(153,204,255));
         g2.drawString(text, x-5, y);
         if(commandNum == 1){
+            g2.setColor(new Color(64,64,64));
             g2.drawString(">", x-35, y);
+            g2.setColor(new Color(204,229,255));
+          g2.drawString(">", x-42,y);
+
 
         }
          

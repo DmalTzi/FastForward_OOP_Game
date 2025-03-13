@@ -42,7 +42,7 @@ public class Player {
     }
 
     public void update() { // walk check bulid
-    
+        System.out.println(emotion);
         if (workHr >= 8 )
             canWork = false;
         MoveTo();
