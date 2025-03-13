@@ -173,7 +173,7 @@ public class UIManager extends BackgroundManager {
     public void loadingBar() {
         if(gp.getEarth().getEarthHeat() >132){
 
-            progressbar.setForeground(new Color(258,0,0)); 
+            progressbar.setForeground(new Color(255,0,0)); 
         }else if(gp.getEarth().getEarthHeat()> 65){
             progressbar.setForeground(new Color(255,94,0)); 
         }else{
