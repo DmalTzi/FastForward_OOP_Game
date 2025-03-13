@@ -53,7 +53,7 @@ public class UIManager extends BackgroundManager {
     
         if (gp.getEarth().getHour() >= 12) {
             
-            text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
+            text = (gp.getEarth().getHour() == 12 ? "12":(gp.getEarth().getHour()-12))+ " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
             if(gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5){
@@ -65,7 +65,7 @@ public class UIManager extends BackgroundManager {
         }
         else {
           
-            text = gp.getEarth().getHour() + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
+            text =(gp.getEarth().getHour() == 0 ? "12":(gp.getEarth().getHour()))+ " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
             x = 1100;
             y = 110;
             g2.drawString(text, x, y);
