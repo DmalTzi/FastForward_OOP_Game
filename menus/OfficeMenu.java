@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.Graphics2D;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 
 import main.GamePanel;
@@ -28,6 +29,9 @@ public class OfficeMenu extends SuperMenu{
         setUpBtns();
         setUpActionBtns();
 
+        time.setVisible(true);
+        menu.add(time, Integer.valueOf(1));
+
         btns[0].setBorder(null);
         btns[0].setContentAreaFilled(false);
         menu.add(btns[0], Integer.valueOf(1));
@@ -36,13 +40,8 @@ public class OfficeMenu extends SuperMenu{
     private void setUpActionBtns() {
         btns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-              
-                if (gp.getPlayer().getCanWork()) {
-                    gp.getPlayer().work("Office");
-                }
-                else {
-                    btns[0].setEnabled(false);
-                }
+                gp.getPlayer().work("Office");
+                time.setText(Integer.toString(gp.getPlayer().getWorkHr()));
             }
             public void mouseEntered(MouseEvent e) {
 
@@ -63,6 +62,12 @@ public class OfficeMenu extends SuperMenu{
         btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
         btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
         btns[0].setLocation(550, menuHeight-200);
+
+        time = new JLabel();
+        time.setFont(LoadSave.GetFont(200));
+        time.setText(Integer.toString(gp.getPlayer().getWorkHr()));
+        time.setSize(200, 210);
+        time.setLocation(btns[0].getLocation().x+270, btns[0].getLocation().y-230);
     }
 
     public void draw(Graphics2D g2){

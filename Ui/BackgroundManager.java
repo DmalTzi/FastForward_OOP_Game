@@ -42,16 +42,23 @@ public class BackgroundManager {
     }
 
     public void draw(Graphics2D g2){
-        if(gp.getgameState() == GameState.Endgame){
+        if (gp.getgameState() == GameState.Endgame){
             g2.drawImage(backg[3], 0, 0, gp.screenWidth, gp.screenHeight, null);
-        }else if(gp.getgameState()  == GameState.Gameplay){
-
+            gp.getUiManager().getRestartButton();
+            gp.getUiManager().setRestartVisible(true);
+        }
+        else if (gp.getgameState()  == GameState.Gameplay){
             g2.drawImage(backg[indexBack], 0, 0, gp.screenWidth, gp.screenHeight, null);
-        
-        }else if(gp.getgameState() == GameState.Endgame_2){
+        }
+        else if (gp.getgameState() == GameState.Endgame_2){
             g2.drawImage(backg[2], 0, 0, gp.screenWidth, gp.screenHeight, null);
-        }else if(gp.getgameState() == GameState.GoodEnd){
+            gp.getUiManager().getRestartButton();
+            gp.getUiManager().setRestartVisible(true);
+        }
+        else if (gp.getgameState() == GameState.GoodEnd){
             g2.drawImage(backg[4],  0, 0, gp.screenWidth, gp.screenHeight, null);
+            gp.getUiManager().getRestartButton();
+            gp.getUiManager().setRestartVisible(true);
         }
 
     }
@@ -61,6 +68,7 @@ public class BackgroundManager {
             obj[index] = new JLabel();
         }
 
+        obj[index].setLayout(null);
         obj[index].setBounds(x, y, objWidth, objHeight);
         ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
         Image originalImage = originalIcon.getImage();

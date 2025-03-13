@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Arrays;
 
+import javax.swing.JButton;
+
 import main.GamePanel;
 
 public class SuperMarketEvent extends SuperEvents {
@@ -25,6 +27,11 @@ public class SuperMarketEvent extends SuperEvents {
                 gp.getPlayer().setCurrentPosition(title);
                 gp.setShowEvent(false);
                 setMenuVisible(true);
+                for (JButton j : getSuperMenu().getButtons()) {
+                    if (j != null)
+                        j.setVisible(false);
+                }
+
             }
             public void mouseEntered(MouseEvent e) {
                 setIcon("events", "event_supermarket_hover.png");

@@ -25,7 +25,7 @@ public class HomeMenu extends SuperMenu{
         buttonExit.setLocation((menuWidth-150)*gp.SCALE, 175*gp.SCALE);
 
         setUpBtns();
-        setUpActionBtns();
+        setUpActionBtns();  
 
         for (JButton j : btns) {
             if (j != null) {

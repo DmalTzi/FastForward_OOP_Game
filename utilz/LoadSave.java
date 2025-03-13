@@ -34,4 +34,16 @@ public class LoadSave {
 		}
 		return font;
 	}
+
+	public static Font GetFont(float size) {
+		Font font = null;
+		try {
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(String.format("%s/res/%s/%s", path, "font", "Bauhaus 93 Regular.ttf")));
+			return font.deriveFont(Font.TRUETYPE_FONT, size);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Font("Arial", Font.PLAIN, (int)size); // Fallback
+		}
+	}
+	
 }

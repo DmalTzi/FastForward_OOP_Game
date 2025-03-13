@@ -3,31 +3,77 @@ package Ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 import main.GamePanel;
+import main.GameState;
 import utilz.LoadSave;
 
 public class Summary extends BackgroundManager {
     Font font;
     String textTitle = "", textEmo = "", textEarn = "", textCO2 = "";
+    JButton exit;
     
     public Summary(GamePanel gp) {
         super(gp);
+        exit = new JButton();
+        exit.setVisible(false);
+        exit.setBorder(null);
+        exit.setContentAreaFilled(false);
+        exit.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "sum_ok.png")));
+        exit.setSize(exit.getIcon().getIconWidth(), exit.getIcon().getIconHeight());
+        exit.setLocation(1130, 530);
+        gp.add(exit);
+    
+        exit.addMouseListener(new MouseListener() {
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                exit.setVisible(false);
+                gp.setShowEvent(true);
+                gp.setgameState(GameState.Gameplay);
+                gp.playMu =true ;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                exit.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "sum_ok_hover.png")));
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                exit.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "sum_ok.png")));
+            }
+    
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+            
+        });
     }
     
     public void draw(Graphics2D g2) {
         g2.drawImage(gp.getBackgroundManager().getImage(5), 0, 0, gp.screenWidth, gp.screenHeight, null);
-        
+        // g2.add(exit, Integer.valueOf(1));
         summaryObj(g2);
-
+        
         textTitle = "Summary of Day " + (gp.getEarth().getDay() <= 9 ? "0":"") + gp.getEarth().getDay();
         font = LoadSave.GetFont();
+        g2.setColor(new Color(125, 125, 169));
         g2.setFont(font);
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,48));
+        g2.drawString(textTitle, 690+1, 157+2);
+        g2.setColor(new Color(0, 0, 102));
         g2.drawString(textTitle, 690, 157);
         
         if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
@@ -42,19 +88,28 @@ public class Summary extends BackgroundManager {
         else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
             textEmo = "Breaking Point!";
         }
+        g2.setColor(new Color(0, 0, 102));
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+        g2.drawString(textEmo, 835+4, 300+3);
+        g2.setColor(Color.WHITE);
         g2.drawString(textEmo, 835, 300);
-
+        
         textCO2 = gp.getEarth().getEarthHeat() + " pts.";
+        g2.setColor(new Color(0, 0, 102));
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+        g2.drawString(textCO2, 880+4, 455+3);
+        g2.setColor(Color.WHITE);
         g2.drawString(textCO2, 880, 455);
-
+        
         textEarn = gp.player.getDailyEarn() + " c.";
+        g2.setColor(new Color(0, 0, 102));
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+        g2.drawString(textEarn, 900+4, 615+3);
+        g2.setColor(Color.WHITE);
         g2.drawString(textEarn, 900, 615);
-
+        
     }
-
+    
     public int getXCenterPos(String text, Graphics2D g2) {
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - length/2;
@@ -97,5 +152,9 @@ public class Summary extends BackgroundManager {
         }
 
         return player;
+    }
+
+    public void setOKButton(boolean bool) {
+        exit.setVisible(bool);
     }
 }

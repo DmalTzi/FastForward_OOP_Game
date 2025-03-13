@@ -14,7 +14,7 @@ import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Summary;
 import Ui.Title;
-import Ui.UIManagers;
+import Ui.UIManager;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import inputs.MouseHandler;
 import menus.SuperMenu;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -46,14 +45,16 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
-    UIManagers uiMng = new UIManagers(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    Summary sum = new Summary(this);
+    private UIManager uiMng = new UIManager(this);
+    private Summary sum = new Summary(this);
+
+    // flexible 
+    int FPS = 240;
     
 
     // flexible 
-    int FPS = 120;
     private boolean showEvent = true;
     GameState gamest = GameState.Title; //เปลี่ยน state
 
@@ -126,7 +127,8 @@ public class GamePanel extends JPanel implements Runnable{
         
         if (gamest == GameState.Title){ 
             //เข็คสภานะเกมส์
-            if(playMu && getgameState() == GameState.Title){
+            if(playMu ){
+               
                 playMu =false;
                 playmusic(0);
             }
@@ -137,7 +139,6 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Gameplay){
             if(playMu){
                 stopmusic();
-        
                 playMu = false ;
                 playmusicS(2);
             }
@@ -147,13 +148,17 @@ public class GamePanel extends JPanel implements Runnable{
             uiMng.draw(g2);
         }
         else if (gamest == GameState.Endgame){
+            stopmusic();
+
             showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.Endgame_2){
-            showEvent =false;
+            stopmusic();
+            showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.GoodEnd){
-            showEvent =false;
+            
+            showEvent = false;
             backg.draw(g2);
         }
         else if (gamest == GameState.Summary) {
@@ -171,6 +176,7 @@ public class GamePanel extends JPanel implements Runnable{
         backg.updateblackground();
         player.update();
         backg.checkObj(showEvent);
+
         uiMng.checkObj(showEvent);
         earth.Checkworld();
         // ============ This part should have lived in player ==============
@@ -222,7 +228,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setgameState(GameState s){
-       gamest =  s;
+       gamest = s;
     }
 
     public Earth getEarth() {
@@ -242,6 +248,14 @@ public class GamePanel extends JPanel implements Runnable{
         return backg;
     }
 
+    public Summary getSummary() {
+        return this.sum;
+    }
+
+    public UIManager getUiManager() {
+        return this.uiMng;
+    }
+    
     public void playmusic(int i){
         sound.setFile(i);
         sound.play();

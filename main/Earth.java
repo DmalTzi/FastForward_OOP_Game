@@ -15,12 +15,10 @@ public class Earth {
     private int[][] playerLocation = {{590, 540}, {320, 420}, {720, 300}, {1159, 530}};
     private int worldHeat = 0;
     int min = 0,hour = 0 ; 
-    int Day = 0 ;
+    int Day = 1 ;
     // set currentpostion
     private String currentPosition = "home";
     private String moveWith = "legs";
-
-  
 
     public Earth(GamePanel gp){
         this.gp = gp;
@@ -53,7 +51,10 @@ public class Earth {
     // fucking getters setters
     public void Checkworld(){
         // System.out.println(worldHeat);
-        if(worldHeat > 200){
+        if(worldHeat < 0 ){
+            worldHeat = 0;
+        }
+        if (worldHeat > 200){
             gp.setgameState(GameState.Endgame_2);
              Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
@@ -61,7 +62,7 @@ public class Earth {
             });
         }
 
-        if(Day >= 7){
+        if (Day >= 7){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
@@ -119,5 +120,13 @@ public class Earth {
     }
     public int getDay(){
         return Day;
+    }
+
+    public void earthReset() {
+        this.Day = 1;
+        this.worldHeat = 0;
+        this.time = 6*60;
+        this.hour = 0;
+        this.min = 0;
     }
 }
