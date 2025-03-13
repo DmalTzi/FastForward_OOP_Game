@@ -24,6 +24,7 @@ public class OfficeEvent extends SuperEvents {
                                 .indexOf(title), gp.getPlayer().getMoveWith()));
                 gp.getPlayer().setCurrentPosition(title);
                 gp.setShowEvent(false);
+                getSuperMenu().getTime().setVisible(true);
                 setMenuVisible(true);
             }
             public void mouseEntered(MouseEvent e) {

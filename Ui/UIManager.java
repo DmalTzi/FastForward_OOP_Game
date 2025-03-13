@@ -13,11 +13,11 @@ public class UIManager extends BackgroundManager {
 
     public UIManager(GamePanel gp) {
         super(gp);
+        UIObj();
     }
     
     public void draw(Graphics2D g2) {
         drawTextworld(g2);
-        UIObj(g2);
     }
 
     public void checkObj(boolean show) {
@@ -44,7 +44,7 @@ public class UIManager extends BackgroundManager {
         }else{
             g2.setColor(Color.BLACK);
         }
-        text = " " + (int)(gp.player.getCoin()) + " P"; 
+        text = " " + (int)(gp.getPlayer().getCoin()) + " P"; 
         x = 800;
         y = 60;
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT, 35));
@@ -81,31 +81,27 @@ public class UIManager extends BackgroundManager {
         g2.drawString(text, x, y);
     }
 
-    public void UIObj(Graphics2D g2) {
-        g2.drawImage(LoadSave.GetSprite("ui", "coin_c.png"), 745, 15, 59, 59, null);
+    public void UIObj() {
+        // g2.drawImage(LoadSave.GetSprite("ui", "coin_c.png"), 745, 15, 59, 59, null);
         // createObject(0, 745, 15 , 59, 59, "ui", "coin_c.png");
         // g2.drawImage(LoadSave.GetSprite("ui", "earth_val.png"), 377, 19, 303, 64, null);
+        createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
+        createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
         createObject(1, 377, 19, 303, 64, "ui", "earth_val.png");
         createObject(2, 310, -3, 95, 94, "ui", "earth.png");
         createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
-        if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
+        if (gp.getPlayer().getPlayerEmo() >= 76 && gp.getPlayer().getPlayerEmo() <= 100) {
             createObject(4, 13, 220, 118, 117, "ui", "face1.png");
         }
-        else if (gp.player.getPlayerEmo() >= 49 && gp.player.getPlayerEmo() <= 75) {
+        else if (gp.getPlayer().getPlayerEmo() >= 49 && gp.getPlayer().getPlayerEmo() <= 75) {
             createObject(4, 13, 220, 118, 117, "ui", "face2.png");
         }
-        else if (gp.player.getPlayerEmo() >= 26 && gp.player.getPlayerEmo() <= 50) {
+        else if (gp.getPlayer().getPlayerEmo() >= 26 && gp.getPlayer().getPlayerEmo() <= 50) {
             createObject(4, 13, 220, 118, 117, "ui", "face3.png");
         }
-        else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
+        else if (gp.getPlayer().getPlayerEmo() >= 1 && gp.getPlayer().getPlayerEmo() <= 25) {
             createObject(4, 13, 220, 118, 117, "ui", "face4.png");
         }
-        createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
-
-
-        createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
-       
-
     }
 
     void loadUIAsset() {

@@ -50,19 +50,20 @@ public class BusMenu extends SuperMenu{
         // set all possible btn
         allPossible[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                gp.getEarth().increaseTime(gp.getEventManager()
+                int time = gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[0]), "bus"));
-
+                                .indexOf(gp.getEarth().getLocation()[0]), "bus");
+                if (time > 0) {
+                    menu.setVisible(false);
+                    gp.getEarth().increaseTime(time);
+                    gp.setShowEvent(true);
+                }
                 // after you select location where you want to go
                 // set new position to current position
-                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[0]);
                 // disable menu
-                menu.setVisible(false);
                 // show all locatin aka. event
-                gp.setShowEvent(true);
             }
             public void mouseEntered(MouseEvent e) {
                 // hover
@@ -79,15 +80,16 @@ public class BusMenu extends SuperMenu{
         // repeat
         allPossible[1].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                gp.getEarth().increaseTime(gp.getEventManager()
+                int time = gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[1]), "bus"));
-
-                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[1]);
-                menu.setVisible(false);
-                gp.setShowEvent(true);
+                                .indexOf(gp.getEarth().getLocation()[1]), "bus");
+                if (time > 0) {
+                    menu.setVisible(false);
+                    gp.getEarth().increaseTime(time);
+                    gp.setShowEvent(true);
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[1] + "_hover.png")));
@@ -103,15 +105,16 @@ public class BusMenu extends SuperMenu{
 
         allPossible[2].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                gp.getEarth().increaseTime(gp.getEventManager()
+                int time = gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[2]), "bus"));
-
-                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[2]);
-                menu.setVisible(false);
-                gp.setShowEvent(true);
+                                .indexOf(gp.getEarth().getLocation()[2]), "bus");
+                if (time > 0) {
+                    menu.setVisible(false);
+                    gp.getEarth().increaseTime(time);
+                    gp.setShowEvent(true);
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[2] + "_hover.png")));
@@ -127,14 +130,16 @@ public class BusMenu extends SuperMenu{
 
         allPossible[3].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                gp.getEarth().increaseTime(gp.getEventManager()
+                int time = gp.getEventManager()
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[3]), "bus"));
-                gp.getPlayer().setCurrentPosition(gp.getEarth().getLocation()[3]);
-                gp.setShowEvent(true);
-                menu.setVisible(false);
+                                .indexOf(gp.getEarth().getLocation()[3]), "bus");
+                if (time > 0) {
+                    menu.setVisible(false);
+                    gp.getEarth().increaseTime(time);
+                    gp.setShowEvent(true);
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[3] + "_hover.png")));
