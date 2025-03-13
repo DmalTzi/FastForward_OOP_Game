@@ -185,7 +185,7 @@ public class UIManager extends BackgroundManager {
 
         }
 
-        progressbar.setBackground(Color.LIGHT_GRAY);
+        progressbar.setBackground(new Color(232,232,232));
         progressbar.setBorderPainted(false);
         progressbar.setBounds(410, 32, 300, 28);
         int target = gp.getEarth().getEarthHeat();
@@ -201,7 +201,7 @@ public class UIManager extends BackgroundManager {
 
 
         progressbar1.setForeground(new Color(102,178,255)); 
-        progressbar1.setBackground(Color.LIGHT_GRAY);
+        progressbar1.setBackground(new Color(232,232,232));
         progressbar1.setBorderPainted(false);
         progressbar1.setBounds(41, 32, 50, 300);
         int emo = gp.getPlayer().getPlayerEmo();

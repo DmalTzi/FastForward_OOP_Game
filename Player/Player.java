@@ -102,6 +102,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
+        System.out.println(emotion);
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
@@ -172,7 +173,7 @@ public class Player {
 
     public void activity(String n) {
         if (getCoin() <= 0) {
-            if (gp.getEarth().time >= 19 * 60  || gp.getEarth().time <= 5 *60) {
+            // if (gp.getEarth().time >= 19 * 60  || gp.getEarth().time <= 5 *60) {
                 
                 if (n.equals("Sleep")) {
                     setWorkHr();
@@ -186,11 +187,11 @@ public class Player {
                     gp.setShowEvent(false);
                     Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                 }
-            }
+            // }
         } else {
             if (-(activityHome.get(n)[2]) <= getCoin()) {
 
-                if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
+                // if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
                     if (n.equals("Sleep")) {
                         gp.setgameState(GameState.Summary);
                         gp.getSummary().setOKButton(true);
@@ -204,7 +205,7 @@ public class Player {
                         gp.setShowEvent(false);
                         Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                     }
-                }
+                // }
 
                 if (n.equals("Movie")) {
                     increasePlayerEmo(activityHome.get(n)[0]);
