@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import inputs.MouseHandler;
 import menus.SuperMenu;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -46,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
     UIManager uiMng = new UIManager(this);
-    Summary sum = new Summary(this);
+    private Summary sum = new Summary(this);
 
     // flexible 
     int FPS = 60;
@@ -117,30 +116,31 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        if (gamest == GameState.Title){ //เข็คสภานะเกมส์
-            title.draw(g2);
+        setgameState(GameState.Endgame);
+        // if (gamest == GameState.Title){ //เข็คสภานะเกมส์
+        //     title.draw(g2);
+        //     showEvent = false;
+        // }
+        // else if (gamest == GameState.Gameplay){
+        //     backg.draw(g2);
+        //     earth.draw(g2);
+        //     uiMng.draw(g2);
+        //     player.draw(g2);
+        // }
+        // else if (gamest == GameState.Endgame){
             showEvent = false;
-        }
-        else if (gamest == GameState.Gameplay){
             backg.draw(g2);
-            earth.draw(g2);
-            uiMng.draw(g2);
-            player.draw(g2);
-        }
-        else if (gamest == GameState.Endgame){
-            showEvent = false;
-            backg.draw(g2);
-        }else if(gamest == GameState.Endgame_2){
-            showEvent =false;
-            backg.draw(g2);
-        }else if(gamest == GameState.GoodEnd){
-            showEvent =false;
-            backg.draw(g2);
-        }
-        else if (gamest == GameState.Summary) {
-            showEvent = false;
-            sum.draw(g2);
-        }
+        // }else if(gamest == GameState.Endgame_2){
+        //     showEvent = false;
+        //     backg.draw(g2);
+        // }else if(gamest == GameState.GoodEnd){
+        //     showEvent = false;
+        //     backg.draw(g2);
+        // }
+        // else if (gamest == GameState.Summary) {
+        //     showEvent = false;
+        //     sum.draw(g2);
+        // }
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
@@ -198,7 +198,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setgameState(GameState s){
-       gamest =  s;
+       gamest = s;
     }
 
     public Earth getEarth() {
@@ -216,5 +216,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public BackgroundManager getBackgroundManager() {
         return backg;
+    }
+
+    public Summary getSummary() {
+        return this.sum;
     }
 }
