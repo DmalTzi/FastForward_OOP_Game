@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
         loadEventAsset();
-    }
+    }   
 
     public void setStart() {
         showEvent = true;
@@ -124,8 +124,8 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Gameplay){
             backg.draw(g2);
             earth.draw(g2);
-            uiMng.draw(g2);
             player.draw(g2);
+            uiMng.draw(g2);
         }
         else if (gamest == GameState.Endgame){
             showEvent = false;
