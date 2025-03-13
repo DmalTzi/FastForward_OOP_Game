@@ -66,7 +66,7 @@ public class Player {
     }
 
     public void loadAsset() {
-        activityHome.put("Movie", new int[] { 20, 25, -60, 120 }); // emo 1 c02 2 coin
+        activityHome.put("Movie", new int[] { 20, 25, -60, 120 }); //  0 emo 1 c02 2 coin
         activityHome.put("Exercise", new int[] { 10, 15, -10, 30 });
         activityHome.put("Game", new int[] { 20, 30, -50, 60 });
         activityHome.put("Plante", new int[] { 25, -20, -5, 30 });
@@ -201,10 +201,10 @@ public class Player {
             }
         }
         if (activitySuper.containsKey(foodname)) {
-            if (getCoin() >= -activitySuper.get(foodname)[2]){
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
+            if (getCoin() >= -(activitySuper.get(foodname)[2])){
+                increasePlayerEmo(activitySuper.get(foodname)[0]);
+                gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
+                setPlayerCoin((activitySuper.get(foodname)[2]));
             }
         }
     }

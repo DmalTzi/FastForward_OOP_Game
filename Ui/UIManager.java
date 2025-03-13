@@ -55,6 +55,7 @@ public class UIManager extends BackgroundManager {
                 gp.getEarth().earthReset();
                 gp.setgameState(GameState.Title);
                 gp.getBagEvents(0).getBag().setVisible(false);
+                gp.stopmusic();
                 gp.playMu = true;
                 for (int i = 0; i < 2; i++) {
                     String name = gp.getPlayer().getInventory(i);
