@@ -23,6 +23,7 @@ public abstract class SuperMenu {
     protected JButton workBtn;
     protected boolean isShopping = false;
     protected JButton backWard;
+    protected JLabel time;
     ImageIcon defaultBg;
 
     public SuperMenu(GamePanel gp) {
@@ -53,9 +54,13 @@ public abstract class SuperMenu {
                     selectBtns[1].setVisible(true);
                 }
 
+                if (workBtn != null)
+                workBtn.setVisible(false);
+                if (backWard != null)
+                backWard.setVisible(false);
+                if (time != null) 
+                time.setVisible(false);
                 if (isShopping) {
-                    workBtn.setVisible(false);
-                    backWard.setVisible(false);
                     for (JButton j : btns) {
                         if (j != null) {
                             j.setVisible(false);
@@ -92,6 +97,10 @@ public abstract class SuperMenu {
 
     public JButton[] getButtons() {
         return btns;
+    }
+
+    public JLabel getTime() {
+        return time;
     }
 
 }

@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import main.GamePanel;
@@ -36,6 +38,9 @@ public class SuperMarketMenu extends SuperMenu{
         backWard.setContentAreaFilled(false);
         backWard.setVisible(false);
         menu.add(backWard, Integer.valueOf(1));
+
+        time.setVisible(false);
+        menu.add(time, Integer.valueOf(1));
 
 
         for (JButton j : btns) {
@@ -83,6 +88,8 @@ public class SuperMarketMenu extends SuperMenu{
                 selectBtns[1].setVisible(false);
                 workBtn.setVisible(true);
                 backWard.setVisible(true);
+                time.setVisible(true);
+                time.setText(Integer.toString(gp.getPlayer().getWorkHr()));
             }
             public void mouseEntered(MouseEvent e) {
                 selectBtns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_work_hover.png")));
@@ -97,12 +104,8 @@ public class SuperMarketMenu extends SuperMenu{
 
         workBtn.addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
-                if (gp.getPlayer().getCanWork()) {
-                    gp.getPlayer().work("Super");
-                }
-                else {
-                    btns[0].setEnabled(false);
-                }
+                gp.getPlayer().work("Super");
+                time.setText(Integer.toString(gp.getPlayer().getWorkHr()));
             }
             public void mouseEntered(MouseEvent e) {
                 workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working_hover.png")));
@@ -123,6 +126,7 @@ public class SuperMarketMenu extends SuperMenu{
                 selectBtns[0].setVisible(true);
                 selectBtns[1].setVisible(true);
                 isShopping = false;
+                time.setVisible(false);
                 for (JButton j : btns) {
                     if (j != null) j.setVisible(false);
                 }
@@ -226,6 +230,12 @@ public class SuperMarketMenu extends SuperMenu{
         workBtn.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_working.png")));
         workBtn.setSize(workBtn.getIcon().getIconWidth(), workBtn.getIcon().getIconHeight());
         workBtn.setLocation(550, menuHeight-200);
+
+        time = new JLabel();
+        time.setFont(LoadSave.GetFont(200));
+        time.setText(Integer.toString(gp.getPlayer().getWorkHr()));
+        time.setSize(200, 210);
+        time.setLocation(workBtn.getLocation().x+280, workBtn.getLocation().y-230);
 
         backWard = new JButton();
         backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward.png")));

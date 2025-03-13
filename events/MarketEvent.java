@@ -28,7 +28,8 @@ public class MarketEvent extends SuperEvents {
                 gp.setShowEvent(false);
                 setMenuVisible(true);
                 for (JButton j : getSuperMenu().getButtons()) {
-                    j.setVisible(false);
+                    if (j != null)
+                        j.setVisible(false);
                 }
             }
             public void mouseEntered(MouseEvent e) {
