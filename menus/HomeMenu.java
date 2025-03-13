@@ -121,7 +121,7 @@ public class HomeMenu extends SuperMenu{
             public void mouseReleased(MouseEvent e) {
                 gp.getPlayer().activity("Sleep");
                 gp.getSummary().setOKButton(true);
-                
+                gp.playMu = true;
             }
             public void mouseEntered(MouseEvent e) {
                 btns[5].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_home_sleep_hover.png")));

@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import main.GamePanel;
 import main.GameState;
@@ -59,6 +60,8 @@ public class UIManager extends BackgroundManager {
     
     public void draw(Graphics2D g2) {
         drawTextworld(g2);
+        UIObj();
+        loadingBar();
     }
 
     public void checkObj(boolean show) {
@@ -92,7 +95,8 @@ public class UIManager extends BackgroundManager {
         g2.drawString(text, x, y);
 
         if (gp.getEarth().getHour() >= 12) {
-            text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
+            
+            text = (gp.getEarth().getHour() == 12 ? "12":(gp.getEarth().getHour()-12))+ " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
             if (gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5) {
@@ -104,7 +108,8 @@ public class UIManager extends BackgroundManager {
             g2.drawString(text, x, y);
         }
         else {
-            text = gp.getEarth().getHour() + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
+          
+            text =(gp.getEarth().getHour() == 0 ? "12":(gp.getEarth().getHour()))+ " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
             x = 1100;
             y = 110;
             g2.drawString(text, x, y);
@@ -141,6 +146,39 @@ public class UIManager extends BackgroundManager {
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
         createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
     }
+    boolean add =  true;
+
+    public void loadingBar() {
+        progressbar = new JProgressBar();
+        progressbar.setBounds(390, 32, 350, 28);
+        // progressbar.setStringPainted(true);
+     
+        //int i = 1;
+        int target = gp.getEarth().getEarthHeat();
+        System.out.println(target/2);
+        if(add){
+            add = false;
+            gp.add(progressbar);
+        }
+        progressbar.setValue(target);
+        // while (i < target) {
+        //     progressbar.setValue(i);
+        //     System.out.println(i);
+        //     i++;
+
+        //     try {
+        //         Thread.sleep(1000);
+        //     } catch (Exception ex) {
+
+        //     }
+            
+        // }
+        // progressbar.setVisible(false);
+        // progressbar.setString("");
+        //g2.add(progressbar);
+
+    }
+    
 
     public JButton getRestartButton() {
         return this.restart;

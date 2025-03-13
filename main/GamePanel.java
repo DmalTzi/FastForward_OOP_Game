@@ -29,12 +29,15 @@ public class GamePanel extends JPanel implements Runnable{
 
     public final int screenWidth = 1280;
     public final int screenHeight = 720;
-
+   
     ImageIcon background;
+    Sound sound = new Sound();
+
     Thread gameThread;
     // ActionHandler aHandler = new ActionHandler(this);
     
     //set up 
+  
     private Earth earth = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
     private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
@@ -49,6 +52,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     // flexible 
     int FPS = 240;
+    
+
+    // flexible 
     private boolean showEvent = true;
     GameState gamest = GameState.Title; //เปลี่ยน state
 
@@ -111,17 +117,29 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
     }
+    public boolean  playMu = true;
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        // setgameState(GameState.GoodEnd);
-        if (gamest == GameState.Title){ //เข็คสภานะเกมส์
+        if (gamest == GameState.Title){ 
+            //เข็คสภานะเกมส์
+            if(playMu && getgameState() == GameState.Title){
+                playMu =false;
+                playmusic(0);
+            }
             title.draw(g2);
+           
             showEvent = false;
         }
         else if (gamest == GameState.Gameplay){
+            if(playMu){
+                stopmusic();
+        
+                playMu = false ;
+                playmusicS(2);
+            }
             backg.draw(g2);
             earth.draw(g2);
             player.draw(g2);
@@ -138,6 +156,11 @@ public class GamePanel extends JPanel implements Runnable{
             backg.draw(g2);
         }
         else if (gamest == GameState.Summary) {
+            if(playMu){
+                stopmusic();
+                playMu = false;
+                playmusic(1);
+            }
             showEvent = false;
             sum.draw(g2);
         }
@@ -224,5 +247,19 @@ public class GamePanel extends JPanel implements Runnable{
 
     public UIManager getUiManager() {
         return this.uiMng;
+    }
+    
+    public void playmusic(int i){
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopmusic(){
+        sound.stop();
+    }
+    public void playmusicS(int i){ //with our loop
+        sound.setFile(i);
+        sound.play();
     }
 }
