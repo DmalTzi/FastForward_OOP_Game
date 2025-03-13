@@ -9,10 +9,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import main.GamePanel;
@@ -115,6 +117,8 @@ public class UIManager extends BackgroundManager {
         if (gp.getgameState() == GameState.Gameplay) {
             progressbar.setVisible(true);
             progressbar1.setVisible(true);
+            // progressbar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, false));
+
 
         } else {
             progressbar.setVisible(false);
@@ -180,7 +184,7 @@ public class UIManager extends BackgroundManager {
     public void loadingBar() {
         if(gp.getEarth().getEarthHeat() >132){
 
-            progressbar.setForeground(new Color(258,0,0)); 
+            progressbar.setForeground(new Color(255,0,0)); 
         }else if(gp.getEarth().getEarthHeat()> 65){
             progressbar.setForeground(new Color(255,94,0)); 
         }else{
@@ -188,12 +192,15 @@ public class UIManager extends BackgroundManager {
 
         }
 
-        progressbar.setBackground(Color.LIGHT_GRAY);
+        progressbar.setBackground(new Color(232,232,232));
+        progressbar.setBorderPainted(false);
         progressbar.setBounds(410, 32, 300, 28);
         int target = gp.getEarth().getEarthHeat();
         progressbar.setMaximum(200);
         progressbar.setMinimum(0);
-        System.out.println(target);
+        // System.out.println(target);
+        progressbar.setUI(new RoundedProgressBarUI());
+        progressbar.setOpaque(false); 
         progressbar.setValue(target);
 
         
@@ -201,12 +208,14 @@ public class UIManager extends BackgroundManager {
 
 
         progressbar1.setForeground(new Color(102,178,255)); 
-        progressbar1.setBackground(Color.LIGHT_GRAY);
+        progressbar1.setBackground(new Color(232,232,232));
+        progressbar1.setBorderPainted(false);
         progressbar1.setBounds(41, 32, 50, 300);
         int emo = gp.getPlayer().getPlayerEmo();
         progressbar1.setMaximum(100);
         progressbar1.setMinimum(0);
-        // System.out.println(target);
+        progressbar1.setOpaque(false); 
+        progressbar1.setUI(new VerticalRoundedProgressBarUI());
         progressbar1.setValue(emo);
         
         

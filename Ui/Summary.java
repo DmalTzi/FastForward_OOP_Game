@@ -82,18 +82,26 @@ public class Summary extends BackgroundManager {
         
         if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
             textEmo = "Happy ^^";
+            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+
         }
         else if (gp.player.getPlayerEmo() >= 49 && gp.player.getPlayerEmo() <= 75) {
             textEmo = "Unhappy :(";
+            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,40));
+
         }
         else if (gp.player.getPlayerEmo() >= 26 && gp.player.getPlayerEmo() <= 50) {
             textEmo = "Anxious!";
+            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+
         }
         else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
             textEmo = "Breaking Point!";
+            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,25));
+
         }
         g2.setColor(new Color(0, 0, 102));
-        g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
+      
         g2.drawString(textEmo, 835+4, 300+3);
         g2.setColor(Color.WHITE);
         g2.drawString(textEmo, 835, 300);
