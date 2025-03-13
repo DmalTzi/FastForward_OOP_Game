@@ -14,7 +14,7 @@ import Ui.BackgroundManager;
 import Ui.KeyHandler;
 import Ui.Summary;
 import Ui.Title;
-import Ui.UIManager;
+import Ui.UIManagers;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
-    UIManager uiMng = new UIManager(this);
+    UIManagers uiMng = new UIManagers(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
     Summary sum = new Summary(this);
@@ -66,6 +66,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
         loadEventAsset();
+
     }   
 
     public void setStart() {
@@ -119,9 +120,10 @@ public class GamePanel extends JPanel implements Runnable{
     public boolean  playMu = true;
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
 
+        super.paintComponent(g);
+       Graphics2D g2 = (Graphics2D) g;
+        
         if (gamest == GameState.Title){ 
             //เข็คสภานะเกมส์
             if(playMu && getgameState() == GameState.Title){
