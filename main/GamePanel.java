@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import inputs.MouseHandler;
 import menus.SuperMenu;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -45,8 +44,8 @@ public class GamePanel extends JPanel implements Runnable{
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    Summary sum = new Summary(this);
-    UIManager uiMng = new UIManager(this);
+    private UIManager uiMng = new UIManager(this);
+    private Summary sum = new Summary(this);
 
     // flexible 
     int FPS = 240;
@@ -117,6 +116,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        // setgameState(GameState.GoodEnd);
         if (gamest == GameState.Title){ //เข็คสภานะเกมส์
             title.draw(g2);
             showEvent = false;
@@ -131,10 +131,10 @@ public class GamePanel extends JPanel implements Runnable{
             showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.Endgame_2){
-            showEvent =false;
+            showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.GoodEnd){
-            showEvent =false;
+            showEvent = false;
             backg.draw(g2);
         }
         else if (gamest == GameState.Summary) {
@@ -198,7 +198,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void setgameState(GameState s){
-       gamest =  s;
+       gamest = s;
     }
 
     public Earth getEarth() {
@@ -216,5 +216,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     public BackgroundManager getBackgroundManager() {
         return backg;
+    }
+
+    public Summary getSummary() {
+        return this.sum;
+    }
+
+    public UIManager getUiManager() {
+        return this.uiMng;
     }
 }

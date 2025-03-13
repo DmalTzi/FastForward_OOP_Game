@@ -3,17 +3,58 @@ package Ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import main.GamePanel;
+import main.GameState;
 import utilz.LoadSave;
 
 public class UIManager extends BackgroundManager {
+    JButton restart;
 
     public UIManager(GamePanel gp) {
         super(gp);
-        UIObj();
+        restart = new JButton();
+        restart.setVisible(false);
+        restart.setBorder(null);
+        restart.setContentAreaFilled(false);
+        restart.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "restart.png")));
+        restart.setSize(restart.getIcon().getIconWidth(), restart.getIcon().getIconHeight());
+        restart.setLocation(1150, 620);
+        gp.add(restart);
+        restart.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                restart.setVisible(false);
+                gp.setShowEvent(false);
+                gp.player.playerReset();
+                gp.getEarth().earthReset();
+                gp.setgameState(GameState.Title);
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                restart.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "restart_hover.png")));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                restart.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "restart.png")));
+            }
+        });
     }
     
     public void draw(Graphics2D g2) {
@@ -50,31 +91,26 @@ public class UIManager extends BackgroundManager {
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT, 35));
         g2.drawString(text, x, y);
 
-    
         if (gp.getEarth().getHour() >= 12) {
-            
             text = (gp.getEarth().getHour()-12) + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() + " PM."; 
             x = 1100;
             y = 110;
-            if(gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5){
+            if (gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5) {
                 g2.setColor(Color.white);
-            }else{
+            }
+            else {
                 g2.setColor(Color.BLACK);
             }
             g2.drawString(text, x, y);
         }
         else {
-          
             text = gp.getEarth().getHour() + " :" + (gp.getEarth().getMin() <= 9 ? "0":"") + gp.getEarth().getMin() +" AM."; 
             x = 1100;
             y = 110;
             g2.drawString(text, x, y);
         }
 
-
-
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT, 60));
-
         text = "Day " + (gp.getEarth().getDay() <= 9 ? "0":"") + gp.getEarth().getDay(); 
         x = 1055;
         y = 60;
@@ -102,9 +138,15 @@ public class UIManager extends BackgroundManager {
         else if (gp.getPlayer().getPlayerEmo() >= 1 && gp.getPlayer().getPlayerEmo() <= 25) {
             createObject(4, 13, 220, 118, 117, "ui", "face4.png");
         }
+        createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
+        createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
     }
 
-    void loadUIAsset() {
-        
+    public JButton getRestartButton() {
+        return this.restart;
+    }
+
+    public void setRestartVisible(boolean bool) {
+        this.restart.setVisible(bool);
     }
 }

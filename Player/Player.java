@@ -19,7 +19,7 @@ public class Player {
     public BufferedImage playerIm, playerIm1, playerIm2, playerIm3, remem;
     public int x;
     public int y;
-    private int coin;
+    private int coin = 0;
     private int emotion = 100;
     private int workHr = 0;
     private boolean canWork = true;
@@ -33,7 +33,6 @@ public class Player {
     private Map<String, int[]> activityMarket = new HashMap<>();
     private Map<String, int[]> activitySuper = new HashMap<>();
     private Map<String, int[]> work = new HashMap<>();
-    
 
     public Player(GamePanel gp) {
         this.gp = gp;
@@ -42,7 +41,6 @@ public class Player {
     }
 
     public void update() { // walk check bulid
-        System.out.println(emotion);
         if (workHr >= 8 )
             canWork = false;
         MoveTo();
@@ -54,14 +52,13 @@ public class Player {
             if (i == pos)
                 gp.getEvents(i).getBtn().setEnabled(true);
             // all of else is diable
-
-            else
+            else {
                 gp.getEvents(i).getBtn().setEnabled(false);
+            }
         }
         if (getPlayerEmo() > 100) { // ไม่ให้เกิน 100
             setPlayerEmo(100);
         }
-
         emotionalDamage = (200 - gp.getEarth().getEarthHeat()) + emotion;
     }
 
@@ -91,21 +88,19 @@ public class Player {
     }
 
     public void loadPlayer() {
-
         try {
             playerIm = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset_78.png")); // happy
             playerIm1 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 76.png"));// min
             playerIm2 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 75.png"));// medium
             playerIm3 = ImageIO.read(getClass().getResourceAsStream("/res/player/Asset 77.png")); // verysad
 
-        } catch (IOException e) {
-
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
-
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
@@ -282,7 +277,6 @@ public class Player {
                 }
             }
         }
-
     }
 
     public int getWorkHr() {
@@ -342,5 +336,15 @@ public class Player {
     }
     public void  increaseDailyEarn(int dailyearn) {
         this.dailyEarn += dailyearn;
+    }
+
+    public void playerReset() {
+        this.coin = 0;
+        this.emotion = 100;
+        this.emotionalDamage = (200 - gp.getEarth().getEarthHeat()) + emotion;
+        this.workHr = 0;
+        this.dailyEarn = 0;
+        this.currentPosition = "home";
+        this.moveWith = "legs";
     }
 }
