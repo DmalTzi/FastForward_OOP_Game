@@ -20,8 +20,8 @@ public class EventManager {
 
     public EventManager(GamePanel gp) {
         this.gp = gp;
-        travels.put("bus", new int[] { -5, 15, -10 });
-        travels.put("legs", new int[] { -10, 0, 0 });
+        travels.put("bus", new int[] { 0, 15, -10 });
+        travels.put("legs", new int[] { -5, 0, 0 });
         travels.put("car", new int[] { 0, 5, 0 });
         travels.put("bike", new int[] { 0, 0, 0 });
 

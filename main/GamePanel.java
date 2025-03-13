@@ -43,9 +43,9 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
+    UIManager uiMng = new UIManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    UIManager uiMng = new UIManager(this);
     Summary sum = new Summary(this);
 
     // flexible 
