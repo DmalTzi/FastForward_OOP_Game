@@ -146,7 +146,7 @@ public class GamePanel extends JPanel implements Runnable{
                 stopmusic();
                 playMu = false ;
                 playmusicS(2);
-                sound.mute(-15.0f);
+                sound.mute(-20.0f);
             }
             backg.draw(g2);
             earth.draw(g2);
@@ -263,15 +263,15 @@ public class GamePanel extends JPanel implements Runnable{
     
     public void playmusic(int i){
         sound.setFile(i);
-        // sound.play();
-        // sound.loop();
+        sound.play();
+        sound.loop();
     }
 
     public void stopmusic(){
-        // sound.stop();
+        sound.stop();
     }
     public void playmusicS(int i){ //with our loop
         sound.setFile(i);
-        // sound.play();
+        sound.play();
     }
 }
