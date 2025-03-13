@@ -33,7 +33,7 @@ public class Earth {
     public void draw(Graphics2D g2){
         min = getTime()%60;
         hour = getTime()/60;
-        if(hour == 24) {
+        if(hour >= 24) {
             gp.playMu =true;
             gp.player.setWorkHr();
             increasDay(1);
