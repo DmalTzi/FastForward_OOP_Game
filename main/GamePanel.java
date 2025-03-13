@@ -15,6 +15,7 @@ import Ui.KeyHandler;
 import Ui.Summary;
 import Ui.Title;
 import Ui.UIManager;
+import events.BagEvent;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -40,8 +41,9 @@ public class GamePanel extends JPanel implements Runnable{
   
     private Earth earth = new Earth(this);
     BackgroundManager backg = new BackgroundManager(this);
-    private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
+    private SuperMenu[] menus = new SuperMenu[25]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
+    private BagEvent[] bagEvents = new BagEvent[1];
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
@@ -72,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setStart() {
         showEvent = true;
+        bagEvents[0].getBag().setVisible(true);
     }
 
     public void loadEventAsset() {
@@ -81,6 +84,12 @@ public class GamePanel extends JPanel implements Runnable{
                 this.add(events[i].getMenu());
             }
         }
+
+        this.add(bagEvents[0].getBag());
+        this.add(bagEvents[0].getBagMenu().getVehicleMenu(0).getMenu());
+        this.add(bagEvents[0].getBagMenu().getVehicleMenu(1).getMenu());
+        this.add(bagEvents[0].getBagMenu().getMenu());
+
         uiMng.loadAsset();
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
@@ -273,5 +282,12 @@ public class GamePanel extends JPanel implements Runnable{
     public void playmusicS(int i){ //with our loop
         sound.setFile(i);
         sound.play();
+    }
+    public void addBag(int i, BagEvent b) {
+        bagEvents[i] = b;
+    }
+
+    public BagEvent getBagEvents(int i) {
+        return bagEvents[i];
     }
 }

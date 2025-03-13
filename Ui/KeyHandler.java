@@ -33,7 +33,7 @@ public class KeyHandler implements KeyListener  {
                 if(gp.title.commandNum  == 0){
                     gp.setgameState(GameState.Gameplay);
                     gp.playMu = true;
-                    gp.setShowEvent(true);
+                    gp.setStart();
                 }else if(gp.title.commandNum  == 1){
                     System.exit(0);
                 }

@@ -188,6 +188,7 @@ public class SuperMarketMenu extends SuperMenu{
 
         btns[3].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buyCar("car", 0);
             }
             public void mouseEntered(MouseEvent e) {
                 btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_car_hover.png")));
@@ -202,6 +203,7 @@ public class SuperMarketMenu extends SuperMenu{
 
         btns[4].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buyCar("bike", 1);
             }
             public void mouseEntered(MouseEvent e) {
                 btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_bike_hover.png")));

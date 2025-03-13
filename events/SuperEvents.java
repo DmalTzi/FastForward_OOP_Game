@@ -3,8 +3,10 @@ package events;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
+import javax.swing.JToggleButton;
 
 import main.GamePanel;
+import menus.BagMenu;
 import menus.SuperMenu;
 import utilz.LoadSave;
 
@@ -12,7 +14,9 @@ public abstract class SuperEvents {
     protected GamePanel gp;
     protected JButton btn;
     protected SuperMenu menu;
+    protected BagMenu bagMenu;
     protected String title;
+    protected JToggleButton bag;
 
     public SuperEvents(GamePanel gp) {
         this.gp = gp;
@@ -36,6 +40,10 @@ public abstract class SuperEvents {
         this.menu = menu;
     }
 
+    public void addBag(BagMenu bagMenu) {
+        this.bagMenu = bagMenu;
+    }
+
     public SuperMenu getSuperMenu() {
         return menu;
     }
@@ -44,11 +52,19 @@ public abstract class SuperEvents {
         return menu.getMenu();
     }
 
+    public BagMenu getBagMenu() {
+        return bagMenu;
+    }
+
     public void setMenuVisible(boolean v) {
         menu.setMenuVisible(v);
     }
 
     public JButton getBtn() {
         return btn;
+    }
+
+    public JToggleButton getBag() {
+        return bag;
     }
 }

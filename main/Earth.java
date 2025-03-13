@@ -56,7 +56,7 @@ public class Earth {
             });
         }
 
-        if (Day >= 2){
+        if (Day >= 7){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
@@ -66,7 +66,7 @@ public class Earth {
     }
 
     public void increaseTime(int t) {
-        System.out.println("Time increase : " + t);
+        // System.out.println("Time increase : " + t);
         time += t;
     }
 

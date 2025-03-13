@@ -8,11 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 import events.SuperEvents;
 import main.GamePanel;
 import main.GameState;
 import menus.SuperMenu;
+import utilz.LoadSave;
 
 public class Player {
     GamePanel gp;
@@ -31,6 +33,7 @@ public class Player {
     private Map<String, int[]> activityHome = new HashMap<>();
     private Map<String, int[]> activityMarket = new HashMap<>();
     private Map<String, int[]> activitySuper = new HashMap<>();
+    private Map<String, Integer> activityVehicle = new HashMap<>();
     private Map<String, int[]> work = new HashMap<>();
 
     public Player(GamePanel gp) {
@@ -82,6 +85,9 @@ public class Player {
         activitySuper.put("Car", new int[] { 30, 20, -1200 });
         activitySuper.put("Jakayan", new int[] { 25, 5, -500 });
 
+        activityVehicle.put("car", -1_200);
+        activityVehicle.put("bike", -500);
+
         work.put("Market", new int[] { -5, 5, 30, 60 });
         work.put("Super", new int[] { -10, 10, 40, 60 });
         work.put("Office", new int[] { -15, 15, 50, 60 });
@@ -101,7 +107,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
-        System.out.println(emotion);
+        // System.out.println(emotion);
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
@@ -138,6 +144,11 @@ public class Player {
 
     public void buyCar(String name, int index) {
         inventory[index] = name;
+        setPlayerCoin((activityVehicle.get(name)));
+        gp.getBagEvents(0)
+        .getBagMenu()
+        .getBtn(index)
+        .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_%s.png", name))));
     }
 
     public void equip(String vehicle){
@@ -148,8 +159,8 @@ public class Player {
             increasWorkHr();
             increasePlayerEmo(work.get(n)[0]);
             gp.getEarth().setEarthCO2((work.get(n)[1]));
-            setPlayerCoin((work.get(n)[2]));
             gp.getEarth().increaseTime(work.get(n)[3]);
+            setPlayerCoin((work.get(n)[2]));
             increaseDailyEarn((work.get(n)[2]));
         }
     }
@@ -259,13 +270,16 @@ public class Player {
     }
 
     public void playerReset() {
-        this.coin = 0;
+        this.coin = 20;
+        gp.stopmusic();
         this.emotion = 100;
+        this.inventory = new String[2];
         this.emotionalDamage = (200 - gp.getEarth().getEarthHeat()) + emotion;
         this.workHr = 0;
         this.dailyEarn = 0;
         this.currentPosition = "home";
         this.moveWith = "legs";
+        
     }
 
     public int getEmotionalDamage() {
@@ -275,8 +289,6 @@ public class Player {
     public void sleep(String n) {
         gp.setgameState(GameState.Summary);
         gp.getSummary().setOKButton(true);
-
-        
 
         increasePlayerEmo(activityHome.get(n)[0]);
         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
@@ -288,5 +300,9 @@ public class Player {
     
     public Map<String, int[]> getactiveHome(){
         return activityHome;
+    }
+
+    public String getInventory(int index) {
+        return inventory[index];
     }
 }

@@ -16,13 +16,14 @@ public class BusMenu extends SuperMenu{
     private JButton allPossible[] = new JButton[4];
     // every busstop have own location
     private String location;
+    private String vName;
 
-    public BusMenu(GamePanel gp, String location) {
+    public BusMenu(GamePanel gp, String location, String vName) {
         super(gp);
-
+        this.vName = vName;
         this.location = location;
-
-        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_bus.png"));
+        System.out.println("menu_" + ((vName.equals("bus")) ? vName : location) + ".png");
+        defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_" + ((vName.equals("bus")) ? vName : location) + ".png"));
         bg.setIcon(defaultBg);
         // setup menuwidth and height
         menuWidth = bg.getIcon().getIconWidth();
@@ -54,7 +55,7 @@ public class BusMenu extends SuperMenu{
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[0]), "bus");
+                                .indexOf(gp.getEarth().getLocation()[0]), vName);
                 if (time > 0) {
                     menu.setVisible(false);
                     gp.getEarth().increaseTime(time);
@@ -67,11 +68,11 @@ public class BusMenu extends SuperMenu{
             }
             public void mouseEntered(MouseEvent e) {
                 // hover
-                allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[0] + "_hover.png")));
+                allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + "_hover.png")));
             }
             public void mouseExited(MouseEvent e) {
                 // not hover
-                allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[0] + ".png")));
+                allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + ".png")));
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -84,7 +85,7 @@ public class BusMenu extends SuperMenu{
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[1]), "bus");
+                                .indexOf(gp.getEarth().getLocation()[1]), vName);
                 if (time > 0) {
                     menu.setVisible(false);
                     gp.getEarth().increaseTime(time);
@@ -92,11 +93,11 @@ public class BusMenu extends SuperMenu{
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[1] + "_hover.png")));
+                allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[1] + "_hover.png")));
                 allPossible[1].setSize(allPossible[1].getIcon().getIconWidth(), allPossible[1].getIcon().getIconHeight());
             }
             public void mouseExited(MouseEvent e) {
-                allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[1] + ".png")));
+                allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[1] + ".png")));
                 allPossible[1].setSize(allPossible[1].getIcon().getIconWidth(), allPossible[1].getIcon().getIconHeight());
             }
             public void mouseClicked(MouseEvent e) {}
@@ -109,7 +110,7 @@ public class BusMenu extends SuperMenu{
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[2]), "bus");
+                                .indexOf(gp.getEarth().getLocation()[2]), vName);
                 if (time > 0) {
                     menu.setVisible(false);
                     gp.getEarth().increaseTime(time);
@@ -117,11 +118,11 @@ public class BusMenu extends SuperMenu{
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[2] + "_hover.png")));
+                allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[2] + "_hover.png")));
                 allPossible[2].setSize(allPossible[2].getIcon().getIconWidth(), allPossible[2].getIcon().getIconHeight());
             }
             public void mouseExited(MouseEvent e) {
-                allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[2] + ".png")));
+                allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[2] + ".png")));
                 allPossible[2].setSize(allPossible[2].getIcon().getIconWidth(), allPossible[2].getIcon().getIconHeight());
             }
             public void mouseClicked(MouseEvent e) {}
@@ -134,7 +135,7 @@ public class BusMenu extends SuperMenu{
                 .goToNextEvent(Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(gp.getPlayer().getCurrentPosition()), 
                                 Arrays.asList(gp.getEarth().getLocation())
-                                .indexOf(gp.getEarth().getLocation()[3]), "bus");
+                                .indexOf(gp.getEarth().getLocation()[3]), vName);
                 if (time > 0) {
                     menu.setVisible(false);
                     gp.getEarth().increaseTime(time);
@@ -142,11 +143,11 @@ public class BusMenu extends SuperMenu{
                 }
             }
             public void mouseEntered(MouseEvent e) {
-                allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[3] + "_hover.png")));
+                allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[3] + "_hover.png")));
                 allPossible[3].setSize(allPossible[3].getIcon().getIconWidth(), allPossible[3].getIcon().getIconHeight());
             }
             public void mouseExited(MouseEvent e) {
-                allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[3] + ".png")));
+                allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[3] + ".png")));
                 allPossible[3].setSize(allPossible[3].getIcon().getIconWidth(), allPossible[3].getIcon().getIconHeight());
             }
             public void mouseClicked(MouseEvent e) {}
@@ -162,29 +163,31 @@ public class BusMenu extends SuperMenu{
 
         // create all allPossible event
         allPossible[0] = new JButton();
-        allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[0] + ".png")));
+        System.out.println("menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + ".png");
+        allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + ".png")));
         allPossible[0].setSize(allPossible[0].getIcon().getIconWidth(), allPossible[0].getIcon().getIconHeight());
 
         allPossible[1] = new JButton();
-        allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[1] + ".png")));
+        allPossible[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[1] + ".png")));
         allPossible[1].setSize(allPossible[1].getIcon().getIconWidth(), allPossible[1].getIcon().getIconHeight());
 
         allPossible[2] = new JButton();
-        allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[2] + ".png")));
+        allPossible[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[2] + ".png")));
         allPossible[2].setSize(allPossible[2].getIcon().getIconWidth(), allPossible[2].getIcon().getIconHeight());
 
         allPossible[3] = new JButton();
-        allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus_" + gp.getEarth().getLocation()[3] + ".png")));
+        allPossible[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_" + gp.getEarth().getLocation()[3] + ".png")));
         allPossible[3].setSize(allPossible[3].getIcon().getIconWidth(), allPossible[3].getIcon().getIconHeight());
 
         // start loop
-        while (checkEach < 4) {
+        while (checkEach <  4)   {
             // if location in list is 4 == this location
-            if (gp.getEarth().getLocation()[checkEach].equals(location)) {
-                // after we found it, we will skip location that in allpossible
-                checkEach++;
-                continue;
-            }
+                if (gp.getEarth().getLocation()[checkEach].equals(location)) {
+                    // after we found it, we will skip location that in allpossible
+                    System.out.println(location + "in");
+                    checkEach++;
+                    continue;
+                }
             
             // push allpossible into btns
             btns[useCheck] = allPossible[checkEach];
