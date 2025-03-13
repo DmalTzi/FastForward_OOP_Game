@@ -43,9 +43,9 @@ public class GamePanel extends JPanel implements Runnable{
     public Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
+    UIManager uiMng = new UIManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    UIManager uiMng = new UIManager(this);
     Summary sum = new Summary(this);
 
     // flexible 
@@ -124,8 +124,8 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Gameplay){
             backg.draw(g2);
             earth.draw(g2);
-            uiMng.draw(g2);
             player.draw(g2);
+            uiMng.draw(g2);
         }
         else if (gamest == GameState.Endgame){
             showEvent = false;
