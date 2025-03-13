@@ -267,6 +267,10 @@ public class Player {
         this.moveWith = "legs";
     }
 
+    public int getEmotionalDamage() {
+        return emotionalDamage;
+    }
+    
     public void sleep(String n) {
         gp.setgameState(GameState.Summary);
         gp.getSummary().setOKButton(true);

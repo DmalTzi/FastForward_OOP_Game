@@ -91,6 +91,10 @@ public class BackgroundManager {
         gp.add(obj[index]);
     }
 
+    public void setImageObj(int i) {
+        obj[0].setIcon(build[i]);
+    }
+
     public void updateblackground(){ //เปลี่ยนพื้นหลังตามเวลา
         if(gp.getEarth().getTime() > 18*60 || gp.getEarth().getTime() <= 5*60 ){
             indexBack = 1;
