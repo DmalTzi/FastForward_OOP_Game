@@ -36,12 +36,14 @@ public class Earth {
         min = getTime()%60;
         hour = getTime()/60;
         if(hour == 24) {
+            gp.playMu =true;
             gp.player.setWorkHr();
             increasDay(1);
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
                 gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
                 gp.player.setPlayerEmo((int)(Math.random()*20)); 
             }
+            gp.setgameState(GameState.Summary);
             time  = 0;
             hour = 0;
             min = 0 ;

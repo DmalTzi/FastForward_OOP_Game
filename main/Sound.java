@@ -15,7 +15,7 @@ public class Sound {
     public Sound(){
 
         soundURL[0] = getClass().getResource("/res/sound/TitleSou.wav");
-        // soundURL[1] = getClass().getResource("res/Sound/Result.mp3");
+        soundURL[1] = getClass().getResource("/res/Sound/Result.wav");
         soundURL[2] = getClass().getResource("/res/Sound/Gameplay.wav");
 
     }

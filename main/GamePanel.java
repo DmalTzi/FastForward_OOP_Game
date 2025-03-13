@@ -135,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Gameplay){
             if(playMu){
                 stopmusic();
-                System.out.println("Dddd");
+        
                 playMu = false ;
                 playmusicS(2);
             }
@@ -155,6 +155,11 @@ public class GamePanel extends JPanel implements Runnable{
             backg.draw(g2);
         }
         else if (gamest == GameState.Summary) {
+            if(playMu){
+                stopmusic();
+                playMu = false;
+                playmusic(1);
+            }
             showEvent = false;
             sum.draw(g2);
         }
