@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import inputs.MouseHandler;
+
 import main.Earth;
 import main.GamePanel;
 import main.GameState;
