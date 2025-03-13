@@ -47,11 +47,11 @@ public class GamePanel extends JPanel implements Runnable{
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    private UIManager uiMng = new UIManager(this);
     private Summary sum = new Summary(this);
+    private UIManager uiMng = new UIManager(this);
 
     // flexible 
-    int FPS = 240;
+    int FPS = 120;
     
 
     // flexible 
@@ -79,6 +79,11 @@ public class GamePanel extends JPanel implements Runnable{
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
                 this.add(events[i].getMenu());
+            }
+        }
+        uiMng.loadAsset();
+        for (int i = 0; i < 10; i++) {
+            if (events[i] != null) {
                 this.add(events[i].getBtn());
             }
         }
@@ -176,7 +181,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
         backg.updateblackground();
         player.update();
-        backg.checkObj(showEvent);
+        // backg.checkObj(showEvent);
 
         uiMng.checkObj(showEvent);
         earth.Checkworld();
@@ -239,7 +244,6 @@ public class GamePanel extends JPanel implements Runnable{
     public EventManager getEventManager() {
         return eventManager;
     }
-
 
     public Player getPlayer() {
         return player;
