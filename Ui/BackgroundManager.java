@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+import javax.swing.JProgressBar;
 
 import main.Earth;
 import main.GamePanel;
@@ -24,6 +24,7 @@ public class BackgroundManager {
 
     int indexBack;
     public Image[] backg; 
+    JProgressBar progressbar;
 
     public BackgroundManager(GamePanel gp){
         this.gp = gp;
@@ -103,12 +104,15 @@ public class BackgroundManager {
     }
 
     public void generateScreen(){ //สร้าง object สถานที่และ bg
+        
         loadBackground(0, "menu_background_morning.png");
         loadBackground(1, "menu_background_night.png");
         loadBackground(2, "end.png");
         loadBackground(3, "emoend.png");
         loadBackground(4, "goodend.png");
         loadBackground(5, "summary_bg.png");
+
+
     }
 
     // TEST

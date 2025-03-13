@@ -102,6 +102,7 @@ public class Earth {
     }
 
     public int getEarthHeat() {
+      
         return this.worldHeat;
     }
     public void setEarthCO2(double co2) {

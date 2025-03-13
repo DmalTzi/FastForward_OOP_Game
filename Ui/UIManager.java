@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import main.GamePanel;
 import utilz.LoadSave;
@@ -18,6 +19,7 @@ public class UIManager extends BackgroundManager {
     public void draw(Graphics2D g2) {
         drawTextworld(g2);
         UIObj(g2);
+        loadingBar();
     }
 
     public void checkObj(boolean show) {
@@ -107,6 +109,39 @@ public class UIManager extends BackgroundManager {
        
 
     }
+    boolean add =  true;
+
+    public void loadingBar() {
+        progressbar = new JProgressBar();
+        progressbar.setBounds(390, 32, 350, 28);
+        // progressbar.setStringPainted(true);
+     
+        //int i = 1;
+        int target = gp.getEarth().getEarthHeat();
+        System.out.println(target/2);
+        if(add){
+            add = false;
+            gp.add(progressbar);
+        }
+        progressbar.setValue(target);
+        // while (i < target) {
+        //     progressbar.setValue(i);
+        //     System.out.println(i);
+        //     i++;
+
+        //     try {
+        //         Thread.sleep(1000);
+        //     } catch (Exception ex) {
+
+        //     }
+            
+        // }
+        // progressbar.setVisible(false);
+        // progressbar.setString("");
+        //g2.add(progressbar);
+
+    }
+    
 
     void loadUIAsset() {
         
