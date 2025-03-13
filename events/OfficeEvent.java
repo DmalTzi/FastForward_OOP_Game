@@ -23,6 +23,7 @@ public class OfficeEvent extends SuperEvents {
                                 Arrays.asList(gp.getEarth().getLocation())
                                 .indexOf(title), gp.getPlayer().getMoveWith()));
                 gp.getPlayer().setCurrentPosition(title);
+                getSuperMenu().getTime().setText(Integer.toString(gp.getPlayer().getWorkHr()));
                 gp.setShowEvent(false);
                 getSuperMenu().getTime().setVisible(true);
                 setMenuVisible(true);

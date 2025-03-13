@@ -33,19 +33,13 @@ public class Earth {
     public void draw(Graphics2D g2){
         min = getTime()%60;
         hour = getTime()/60;
-        if(hour == 24) {
-            gp.playMu =true;
-            gp.player.setWorkHr();
-            increasDay(1);
+        if(getTime() >= 24*60) {
+            gp.getPlayer().sleep("Sleep");
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
                 gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
                 gp.player.setPlayerEmo((int)(Math.random()*20)); 
             }
-            gp.setgameState(GameState.Summary);
-            time  = 0;
-            hour = 0;
-            min = 0 ;
-            gp.player.setDailyEarn(0);
+            
         }
     }
     // fucking getters setters
@@ -62,7 +56,7 @@ public class Earth {
             });
         }
 
-        if (Day >= 7){
+        if (Day >= 2){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
