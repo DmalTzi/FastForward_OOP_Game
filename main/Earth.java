@@ -14,7 +14,7 @@ public class Earth {
     private int[][] busLocation = {{564, 594}, {174, 448}, {720, 275}, {1089, 520}};
     private int[][] playerLocation = {{590, 540}, {320, 420}, {720, 300}, {1159, 530}};
     private int worldHeat = 0;
-    int min=0,hour=0 ; 
+    int min = 0,hour = 0 ; 
     int Day = 0 ;
     // set currentpostion
     private String currentPosition = "home";
@@ -45,6 +45,7 @@ public class Earth {
             time  = 0;
             hour = 0;
             min = 0 ;
+            gp.player.setDailyEarn(0);
         }
     }
     // fucking getters setters

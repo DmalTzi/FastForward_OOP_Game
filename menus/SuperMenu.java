@@ -21,6 +21,7 @@ public abstract class SuperMenu {
     protected JButton btns[] = new JButton[10];
     protected JButton selectBtns[] = new JButton[2];
     protected JButton workBtn;
+    protected JButton backWard;
     ImageIcon defaultBg;
 
     public SuperMenu(GamePanel gp) {
@@ -52,6 +53,9 @@ public abstract class SuperMenu {
                 }
                 if (workBtn != null)
                     workBtn.setVisible(false);
+                for (JButton j : btns) {
+                    if (j != null) j.setVisible(false);
+                }
             }
             public void mouseExited(MouseEvent e) {
                 buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));
