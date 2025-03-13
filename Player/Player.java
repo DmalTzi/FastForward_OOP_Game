@@ -19,7 +19,7 @@ public class Player {
     public BufferedImage playerIm, playerIm1, playerIm2, playerIm3, remem;
     public int x;
     public int y;
-    private int coin = 0;
+    private int coin = 20;
     private int emotion = 100;
     private int workHr = 0;
     private boolean canWork = true;
