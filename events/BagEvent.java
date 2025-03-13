@@ -23,11 +23,9 @@ public class BagEvent extends SuperEvents {
         bag.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent itemEvent) {
                 if (itemEvent.getStateChange() == ItemEvent.SELECTED) {
-                    System.out.println("Enable");
                     bagMenu.getMenu().setVisible(true);
                 }
                 else {
-                    System.out.println("Disable");
                     bagMenu.getMenu().setVisible(false);
                 }
             }

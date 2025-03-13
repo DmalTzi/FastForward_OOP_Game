@@ -59,7 +59,6 @@ public class UIManager extends BackgroundManager {
                 gp.playMu = true;
                 for (int i = 0; i < 2; i++) {
                     String name = gp.getPlayer().getInventory(i);
-                    System.out.println(name);
                     if (name != null)
                     gp.getBagEvents(0)
                     .getBagMenu()

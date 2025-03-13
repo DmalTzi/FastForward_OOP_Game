@@ -22,7 +22,6 @@ public class BusMenu extends SuperMenu{
         super(gp);
         this.vName = vName;
         this.location = location;
-        System.out.println("menu_" + ((vName.equals("bus")) ? vName : location) + ".png");
         defaultBg = new ImageIcon(LoadSave.GetSprite("menus", "menu_" + ((vName.equals("bus")) ? vName : location) + ".png"));
         bg.setIcon(defaultBg);
         // setup menuwidth and height
@@ -163,7 +162,6 @@ public class BusMenu extends SuperMenu{
 
         // create all allPossible event
         allPossible[0] = new JButton();
-        System.out.println("menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + ".png");
         allPossible[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_bus" + ((vName.equals("bus")) ? "" : "_"+location) + "_"  + gp.getEarth().getLocation()[0] + ".png")));
         allPossible[0].setSize(allPossible[0].getIcon().getIconWidth(), allPossible[0].getIcon().getIconHeight());
 
