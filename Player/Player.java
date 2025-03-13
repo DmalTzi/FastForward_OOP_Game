@@ -173,13 +173,12 @@ public class Player {
 
     public void activity(String n) {
         if (getCoin() <= 0) {
-            // if (gp.getEarth().time >= 19 * 60  || gp.getEarth().time <= 5 *60) {
+            if (gp.getEarth().time >= 19 * 60  || gp.getEarth().time <= 5 *60) {
                 
                 if (n.equals("Sleep")) {
                     setWorkHr();
                     gp.getSummary().setOKButton(true);
-                    increasePlayerEmo(activityHome.get(n)[0]);
-                    gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                    gp.getEarth().setEarthCO2((gp.getPlayer().getactiveHome().get("Sleep")[1]));
                     setPlayerCoin((activityHome.get(n)[2]));
                     gp.getEarth().increasDay(1);
                     gp.setgameState(GameState.Summary);
@@ -187,25 +186,24 @@ public class Player {
                     gp.setShowEvent(false);
                     Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                 }
-            // }
+            }
         } else {
             if (-(activityHome.get(n)[2]) <= getCoin()) {
 
-                // if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
+                if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
                     if (n.equals("Sleep")) {
                         gp.setgameState(GameState.Summary);
                         gp.getSummary().setOKButton(true);
-
                         setWorkHr();
-                        increasePlayerEmo(activityHome.get(n)[0]);
-                        gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
+                 
+                        gp.getEarth().setEarthCO2((gp.getPlayer().getactiveHome().get("Sleep")[1]));
                         setPlayerCoin((activityHome.get(n)[2]));
                         gp.getEarth().increasDay(1);
                         gp.getEarth().time = 360;
                         gp.setShowEvent(false);
                         Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
                     }
-                // }
+                }
 
                 if (n.equals("Movie")) {
                     increasePlayerEmo(activityHome.get(n)[0]);
@@ -352,5 +350,10 @@ public class Player {
         this.dailyEarn = 0;
         this.currentPosition = "home";
         this.moveWith = "legs";
+    }
+
+
+    public Map<String, int[]> getactiveHome(){
+        return activityHome;
     }
 }
