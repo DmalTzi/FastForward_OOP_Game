@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
     public Player player = new Player(this);
-    UIManager uiMng = new UIManager(this);
+    private UIManager uiMng = new UIManager(this);
     private Summary sum = new Summary(this);
 
     // flexible 
@@ -116,31 +116,31 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        setgameState(GameState.Endgame);
-        // if (gamest == GameState.Title){ //เข็คสภานะเกมส์
-        //     title.draw(g2);
-        //     showEvent = false;
-        // }
-        // else if (gamest == GameState.Gameplay){
-        //     backg.draw(g2);
-        //     earth.draw(g2);
-        //     uiMng.draw(g2);
-        //     player.draw(g2);
-        // }
-        // else if (gamest == GameState.Endgame){
+        // setgameState(GameState.GoodEnd);
+        if (gamest == GameState.Title){ //เข็คสภานะเกมส์
+            title.draw(g2);
+            showEvent = false;
+        }
+        else if (gamest == GameState.Gameplay){
+            backg.draw(g2);
+            earth.draw(g2);
+            uiMng.draw(g2);
+            player.draw(g2);
+        }
+        else if (gamest == GameState.Endgame){
             showEvent = false;
             backg.draw(g2);
-        // }else if(gamest == GameState.Endgame_2){
-        //     showEvent = false;
-        //     backg.draw(g2);
-        // }else if(gamest == GameState.GoodEnd){
-        //     showEvent = false;
-        //     backg.draw(g2);
-        // }
-        // else if (gamest == GameState.Summary) {
-        //     showEvent = false;
-        //     sum.draw(g2);
-        // }
+        }else if(gamest == GameState.Endgame_2){
+            showEvent = false;
+            backg.draw(g2);
+        }else if(gamest == GameState.GoodEnd){
+            showEvent = false;
+            backg.draw(g2);
+        }
+        else if (gamest == GameState.Summary) {
+            showEvent = false;
+            sum.draw(g2);
+        }
     }
 
     public void update() { // อะไรที่ต้องการเช็คตลอดเวลา ควรใช้อันนี้
@@ -220,5 +220,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public Summary getSummary() {
         return this.sum;
+    }
+
+    public UIManager getUiManager() {
+        return this.uiMng;
     }
 }

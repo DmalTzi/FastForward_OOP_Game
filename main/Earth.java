@@ -20,8 +20,6 @@ public class Earth {
     private String currentPosition = "home";
     private String moveWith = "legs";
 
-  
-
     public Earth(GamePanel gp){
         this.gp = gp;
     }
@@ -116,5 +114,13 @@ public class Earth {
     }
     public int getDay(){
         return Day;
+    }
+
+    public void earthReset() {
+        this.Day = 1;
+        this.worldHeat = 0;
+        this.time = 6*60;
+        this.hour = 0;
+        this.min = 0;
     }
 }
