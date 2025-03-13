@@ -55,6 +55,7 @@ public class UIManager extends BackgroundManager {
                 gp.player.playerReset();
                 gp.getEarth().earthReset();
                 gp.setgameState(GameState.Title);
+                gp.stopmusic();
                 gp.playMu = true;
             }
             

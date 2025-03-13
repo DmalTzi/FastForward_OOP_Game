@@ -44,6 +44,7 @@ public class Summary extends BackgroundManager {
                 gp.getEarth().time = 6*60;
                 gp.player.setDailyEarn(0);
                 gp.playMu =true ;
+                
                 gp.getPlayer().increasePlayerEmo(gp.getPlayer().getactiveHome().get("Sleep")[0]);
                 
             }
