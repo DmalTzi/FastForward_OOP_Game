@@ -146,7 +146,7 @@ public class GamePanel extends JPanel implements Runnable{
                 stopmusic();
                 playMu = false ;
                 playmusicS(2);
-                sound.mute(-15.0f);
+                sound.mute(-20.0f);
             }
             backg.draw(g2);
             earth.draw(g2);
