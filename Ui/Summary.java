@@ -44,6 +44,8 @@ public class Summary extends BackgroundManager {
                 gp.getEarth().time = 6*60;
                 gp.player.setDailyEarn(0);
                 gp.playMu =true ;
+                gp.getPlayer().increasePlayerEmo(gp.getPlayer().getactiveHome().get("Sleep")[0]);
+                
             }
             
             @Override
@@ -97,7 +99,7 @@ public class Summary extends BackgroundManager {
         }
         else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
             textEmo = "Breaking Point!";
-            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,25));
+            g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,33));
 
         }
         g2.setColor(new Color(0, 0, 102));

@@ -285,4 +285,8 @@ public class Player {
         gp.playMu =true;
         Arrays.asList(gp.getAllEvents()).forEach(e1 -> {if (e1 != null) e1.setMenuVisible(false);});
     }
+    
+    public Map<String, int[]> getactiveHome(){
+        return activityHome;
+    }
 }
