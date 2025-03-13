@@ -291,6 +291,7 @@ public class Player {
     }
     public void  setWorkHr(){
         workHr = 0;
+        canWork =true;
     }
     public int getPlayerCoin() {
         return this.coin;
@@ -300,7 +301,7 @@ public class Player {
         this.coin += coin;
     }
 
-    public double getPlayerEmo() {
+    public int getPlayerEmo() {
         return this.emotion;
     }
 

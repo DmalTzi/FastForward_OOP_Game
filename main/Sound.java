@@ -5,6 +5,7 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
 import utilz.LoadSave;
 
@@ -44,4 +45,12 @@ public class Sound {
         clip.stop();
     }
 
+    public void mute(float n){
+        FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            
+        // Reduce volume (range: -80.0 to 6.0 dB)
+        float volume = n; // Lower is quieter (e.g., -20.0 is very soft)
+        volumeControl.setValue(volume);
+
+    }
 }   

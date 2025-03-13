@@ -29,6 +29,7 @@ public class UIManager extends BackgroundManager {
         restart.setSize(restart.getIcon().getIconWidth(), restart.getIcon().getIconHeight());
         restart.setLocation(1150, 620);
         gp.add(restart);
+        UIObj();
         restart.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -63,7 +64,7 @@ public class UIManager extends BackgroundManager {
     public void draw(Graphics2D g2) {
         drawTextworld(g2);
         loadingBar();
-        UIObj();
+       
     }
 
     public void checkObj(boolean show) {
@@ -77,8 +78,12 @@ public class UIManager extends BackgroundManager {
         }
         if (gp.getgameState() == GameState.Gameplay) {
             progressbar.setVisible(true);
+            progressbar1.setVisible(true);
+
         } else {
             progressbar.setVisible(false);
+            progressbar1.setVisible(false);
+
         }
 
     }
@@ -104,8 +109,13 @@ public class UIManager extends BackgroundManager {
 
         if (gp.getEarth().getHour() >= 12) {
 
-            text = (gp.getEarth().getHour() == 12 ? "12" : (gp.getEarth().getHour() - 12)) + " :"
-                    + (gp.getEarth().getMin() <= 9 ? "0" : "") + gp.getEarth().getMin() + " PM.";
+            if(gp.getEarth().getHour() == 12){
+                text = (gp.getEarth().getHour() == 12 ? "12" : (gp.getEarth().getHour() - 12)) + " :"
+                + (gp.getEarth().getMin() <= 9 ? "0" : "") + gp.getEarth().getMin() + " PM.";
+            }else{
+                text = (gp.getEarth().getHour() - 12) + " :"
+                + (gp.getEarth().getMin() <= 9 ? "0" : "") + gp.getEarth().getMin() + " PM.";
+            }
             x = 1100;
             y = 110;
             if (gp.getEarth().getHour() > 18 || gp.getEarth().getHour() <= 5) {
@@ -137,9 +147,9 @@ public class UIManager extends BackgroundManager {
         // g2.drawImage(LoadSave.GetSprite("ui", "earth_val.png"), 377, 19, 303, 64, null);
         createObject(6,745, 15, 60, 60, "ui", "Asset 163.png");
         createObject(5, 130, 20, 64, 72, "ui", "bag1.png");
-        createObject(1, 377, 19, 303, 64, "ui", "earth_val.png");
+        // createObject(1, 377, 19, 303, 64, "ui", "earth_val.png");
         createObject(2, 310, -3, 95, 94, "ui", "earth.png");
-        createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
+        // createObject(3, 30, -1, 74, 244, "ui", "emo_val.png");
         if (gp.getPlayer().getPlayerEmo() >= 76 && gp.getPlayer().getPlayerEmo() <= 100) {
             createObject(4, 13, 220, 118, 117, "ui", "face1.png");
         }
@@ -157,11 +167,22 @@ public class UIManager extends BackgroundManager {
     }
 
     JProgressBar progressbar = new JProgressBar();
+    JProgressBar progressbar1 = new JProgressBar(JProgressBar.VERTICAL, 0, 100);
+
 
     public void loadingBar() {
-        progressbar.setForeground(Color.BLUE); 
+        if(gp.getEarth().getEarthHeat() >132){
+
+            progressbar.setForeground(new Color(258,0,0)); 
+        }else if(gp.getEarth().getEarthHeat()> 65){
+            progressbar.setForeground(new Color(255,94,0)); 
+        }else{
+            progressbar.setForeground(new Color(133,198,76)); 
+
+        }
+
         progressbar.setBackground(Color.LIGHT_GRAY);
-        progressbar.setBounds(390, 32, 300, 28);
+        progressbar.setBounds(410, 32, 300, 28);
         int target = gp.getEarth().getEarthHeat();
         progressbar.setMaximum(200);
         progressbar.setMinimum(0);
@@ -169,7 +190,19 @@ public class UIManager extends BackgroundManager {
         progressbar.setValue(target);
 
         
-    
+
+
+
+        progressbar1.setForeground(new Color(102,178,255)); 
+        progressbar1.setBackground(Color.LIGHT_GRAY);
+        progressbar1.setBounds(41, 32, 50, 300);
+        int emo = gp.getPlayer().getPlayerEmo();
+        progressbar1.setMaximum(100);
+        progressbar1.setMinimum(0);
+        // System.out.println(target);
+        progressbar1.setValue(emo);
+        
+        gp.add(progressbar1);
         gp.add(progressbar);
 
     }
