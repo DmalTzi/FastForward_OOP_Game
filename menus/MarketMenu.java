@@ -62,6 +62,9 @@ public class MarketMenu extends SuperMenu{
                 selectBtns[0].setVisible(false);
                 selectBtns[1].setVisible(false);
                 backWard.setVisible(true);
+                for (JButton j : btns) {
+                    if (j != null) j.setVisible(true);
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 selectBtns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_eat_hover.png")));
@@ -119,12 +122,85 @@ public class MarketMenu extends SuperMenu{
                 backWard.setVisible(false);
                 selectBtns[0].setVisible(true);
                 selectBtns[1].setVisible(true);
+                for (JButton j : btns) {
+                    if (j != null) j.setVisible(false);
+                }
             }
             public void mouseEntered(MouseEvent e) {
                 backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward_hover.png")));
             }
             public void mouseExited(MouseEvent e) {
                 backWard.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_backward.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[0].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Apple");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_apple_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_apple.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[1].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Coke");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_cola_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_cola.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[2].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Water");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_water_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_water.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[3].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Mama");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_noodle_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_noodle.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[4].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Egg_fried");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_egg_fire_hover.png")));
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_egg_fire.png")));
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}
@@ -152,7 +228,29 @@ public class MarketMenu extends SuperMenu{
         backWard.setSize(backWard.getIcon().getIconWidth(), backWard.getIcon().getIconHeight());
         backWard.setLocation(100, 165);
 
-        
+        btns[0] = new JButton();
+        btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_apple.png")));
+        btns[0].setSize(btns[0].getIcon().getIconWidth(), btns[0].getIcon().getIconHeight());
+        btns[0].setLocation(500, 300);
 
+        btns[1] = new JButton();
+        btns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_cola.png")));
+        btns[1].setSize(btns[1].getIcon().getIconWidth(), btns[1].getIcon().getIconHeight());
+        btns[1].setLocation(50 + btns[0].getWidth() + btns[0].getLocation().x, 300);
+
+        btns[2] = new JButton();
+        btns[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_water.png")));
+        btns[2].setSize(btns[2].getIcon().getIconWidth(), btns[2].getIcon().getIconHeight());
+        btns[2].setLocation(50 + btns[1].getWidth() + btns[1].getLocation().x, 300);
+
+        btns[3] = new JButton();
+        btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_noodle.png")));
+        btns[3].setSize(btns[3].getIcon().getIconWidth(), btns[3].getIcon().getIconHeight());
+        btns[3].setLocation(550, 50+btns[0].getHeight() + btns[0].getLocation().y);
+
+        btns[4] = new JButton();
+        btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_market_shop_egg_fire.png")));
+        btns[4].setSize(btns[4].getIcon().getIconWidth(), btns[4].getIcon().getIconHeight());
+        btns[4].setLocation(50 + btns[3].getWidth() + btns[3].getLocation().x, 50 + btns[0].getHeight() + btns[0].getLocation().y);
     }
 }

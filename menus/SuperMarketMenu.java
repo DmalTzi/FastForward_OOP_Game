@@ -137,6 +137,7 @@ public class SuperMarketMenu extends SuperMenu{
 
         btns[0].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Pizza");
             }
             public void mouseEntered(MouseEvent e) {
                 btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_pizza_hover.png")));
@@ -144,6 +145,64 @@ public class SuperMarketMenu extends SuperMenu{
             }
             public void mouseExited(MouseEvent e) {
                 btns[0].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_pizza.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[1].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Fried");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_ff_hover.png")));
+
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[1].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_ff.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[2].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+                gp.getPlayer().buy("Hamburger");
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_burger_hover.png")));
+
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[2].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_burger.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[3].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_car_hover.png")));
+
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[3].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_car.png")));
+            }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+        });
+
+        btns[4].addMouseListener(new MouseListener() {
+            public void mouseReleased(MouseEvent e) {
+            }
+            public void mouseEntered(MouseEvent e) {
+                btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_bike_hover.png")));
+
+            }
+            public void mouseExited(MouseEvent e) {
+                btns[4].setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_supermarket_shop_bike.png")));
             }
             public void mouseClicked(MouseEvent e) {}
             public void mousePressed(MouseEvent e) {}

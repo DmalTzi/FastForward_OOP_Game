@@ -53,6 +53,9 @@ public abstract class SuperMenu {
                 }
                 if (workBtn != null)
                     workBtn.setVisible(false);
+                for (JButton j : btns) {
+                    if (j != null) j.setVisible(false);
+                }
             }
             public void mouseExited(MouseEvent e) {
                 buttonExit.setIcon(new ImageIcon(LoadSave.GetSprite("menus", "menu_exit.png")));

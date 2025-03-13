@@ -238,46 +238,48 @@ public class Player {
 
     }
 
-    public void buy(String foodname, int amount) {
+    public void buy(String foodname) {
 
-        if (getCoin() >= activityMarket.get(foodname)[2] && activityMarket.containsKey(foodname)) {
-
-            if (foodname.equals("Apple")) {
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
-            } else if (foodname.equals("Water")) {
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
-            } else if (foodname.equals("Coke")) {
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
-            } else if (foodname.equals("Mama")) {
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
-            } else if (foodname.equals("Egg_fried")) {
-                increasePlayerEmo(activityMarket.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
-                setPlayerCoin((activityMarket.get(foodname)[2]));
-
+        if (activityMarket.containsKey(foodname)) {
+            if (getCoin() >= -activityMarket.get(foodname)[2]) {
+                if (foodname.equals("Apple")) {
+                    increasePlayerEmo(activityMarket.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
+                    setPlayerCoin((activityMarket.get(foodname)[2]));
+                } else if (foodname.equals("Water")) {
+                    increasePlayerEmo(activityMarket.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
+                    setPlayerCoin((activityMarket.get(foodname)[2]));
+                } else if (foodname.equals("Coke")) {
+                    increasePlayerEmo(activityMarket.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
+                    setPlayerCoin((activityMarket.get(foodname)[2]));
+                } else if (foodname.equals("Mama")) {
+                    increasePlayerEmo(activityMarket.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
+                    setPlayerCoin((activityMarket.get(foodname)[2]));
+                } else if (foodname.equals("Egg_fried")) {
+                    increasePlayerEmo(activityMarket.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
+                    setPlayerCoin((activityMarket.get(foodname)[2]));
+                }
             }
         }
-        if (getCoin() >= activitySuper.get(foodname)[2] && activitySuper.containsKey(foodname)) {
-            if (foodname.equals("Pizza")) {
-                increasePlayerEmo(activitySuper.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
-                setPlayerCoin((activitySuper.get(foodname)[2]));
-            } else if (foodname.equals("Hamburger")) {
-                increasePlayerEmo(activitySuper.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
-                setPlayerCoin((activitySuper.get(foodname)[2]));
-            } else if (foodname.equals("Fried")) {
-                increasePlayerEmo(activitySuper.get(foodname)[0]);
-                gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
-                setPlayerCoin(activitySuper.get(foodname)[2]);
+        if (activitySuper.containsKey(foodname)) {
+            if (getCoin() >= -activitySuper.get(foodname)[2]){
+                if (foodname.equals("Pizza")) {
+                    increasePlayerEmo(activitySuper.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
+                    setPlayerCoin((activitySuper.get(foodname)[2]));
+                } else if (foodname.equals("Hamburger")) {
+                    increasePlayerEmo(activitySuper.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
+                    setPlayerCoin((activitySuper.get(foodname)[2]));
+                } else if (foodname.equals("Fried")) {
+                    increasePlayerEmo(activitySuper.get(foodname)[0]);
+                    gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
+                    setPlayerCoin(activitySuper.get(foodname)[2]);
+                }
             }
         }
 
