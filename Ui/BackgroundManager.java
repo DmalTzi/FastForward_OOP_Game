@@ -68,6 +68,7 @@ public class BackgroundManager {
             obj[index] = new JLabel();
         }
 
+        obj[index].setLayout(null);
         obj[index].setBounds(x, y, objWidth, objHeight);
         ImageIcon originalIcon = new ImageIcon(LoadSave.GetSprite(des, fileName));
         Image originalImage = originalIcon.getImage();

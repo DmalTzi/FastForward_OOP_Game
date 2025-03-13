@@ -67,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.setFocusable(true);
         loadEventAsset();
+
     }   
 
     public void setStart() {
@@ -120,12 +121,14 @@ public class GamePanel extends JPanel implements Runnable{
     public boolean  playMu = true;
 
     public void paintComponent(Graphics g) { // วาดตลาดเวลา ไม่ต้องห่วง
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
 
+        super.paintComponent(g);
+       Graphics2D g2 = (Graphics2D) g;
+        
         if (gamest == GameState.Title){ 
             //เข็คสภานะเกมส์
-            if(playMu && getgameState() == GameState.Title){
+            if(playMu ){
+               
                 playMu =false;
                 playmusic(0);
             }
@@ -136,7 +139,6 @@ public class GamePanel extends JPanel implements Runnable{
         else if (gamest == GameState.Gameplay){
             if(playMu){
                 stopmusic();
-        
                 playMu = false ;
                 playmusicS(2);
             }
@@ -146,12 +148,16 @@ public class GamePanel extends JPanel implements Runnable{
             uiMng.draw(g2);
         }
         else if (gamest == GameState.Endgame){
+            stopmusic();
+
             showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.Endgame_2){
+            stopmusic();
             showEvent = false;
             backg.draw(g2);
         }else if(gamest == GameState.GoodEnd){
+            
             showEvent = false;
             backg.draw(g2);
         }
@@ -170,6 +176,7 @@ public class GamePanel extends JPanel implements Runnable{
         backg.updateblackground();
         player.update();
         backg.checkObj(showEvent);
+
         uiMng.checkObj(showEvent);
         earth.Checkworld();
         // ============ This part should have lived in player ==============

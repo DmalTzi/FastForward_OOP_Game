@@ -176,6 +176,7 @@ public class Player {
                 
                 if (n.equals("Sleep")) {
                     setWorkHr();
+                    gp.getSummary().setOKButton(true);
                     increasePlayerEmo(activityHome.get(n)[0]);
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                     setPlayerCoin((activityHome.get(n)[2]));
@@ -192,6 +193,8 @@ public class Player {
                 if (gp.getEarth().time >= 19 * 60 || gp.getEarth().time <= 5 * 60) {
                     if (n.equals("Sleep")) {
                         gp.setgameState(GameState.Summary);
+                        gp.getSummary().setOKButton(true);
+
                         setWorkHr();
                         increasePlayerEmo(activityHome.get(n)[0]);
                         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));

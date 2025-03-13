@@ -39,6 +39,7 @@ public class Summary extends BackgroundManager {
                 exit.setVisible(false);
                 gp.setShowEvent(true);
                 gp.setgameState(GameState.Gameplay);
+                gp.playMu =true ;
             }
             
             @Override

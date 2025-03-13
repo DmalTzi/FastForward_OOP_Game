@@ -51,6 +51,9 @@ public class Earth {
     // fucking getters setters
     public void Checkworld(){
         // System.out.println(worldHeat);
+        if(worldHeat < 0 ){
+            worldHeat = 0;
+        }
         if (worldHeat > 200){
             gp.setgameState(GameState.Endgame_2);
              Arrays.asList(gp.getAllEvents()).forEach(e -> {

@@ -120,7 +120,6 @@ public class HomeMenu extends SuperMenu{
         btns[5].addMouseListener(new MouseListener() {
             public void mouseReleased(MouseEvent e) {
                 gp.getPlayer().activity("Sleep");
-                gp.getSummary().setOKButton(true);
                 gp.playMu = true;
             }
             public void mouseEntered(MouseEvent e) {
