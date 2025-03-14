@@ -27,7 +27,6 @@ public class UIManager extends BackgroundManager {
     JProgressBar progressbar1;
     public BufferedImage playerIm, playerIm1, playerIm2, playerIm3, remem;
 
-
     public UIManager(GamePanel gp) {
         super(gp);
 
@@ -41,21 +40,25 @@ public class UIManager extends BackgroundManager {
         gp.add(restart);
         restart.addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
             public void mouseReleased(MouseEvent e) {
                 restart.setVisible(false);
                 gp.setShowEvent(false);
-                gp.player.playerReset();
                 gp.getEarth().earthReset();
                 gp.setgameState(GameState.Title);
+                gp.getBagEvents(0).getBag().setVisible(false);
+                gp.getPlayer().setDailyUesed(0);
+                gp.getPlayer().setDailyEarn(0);
+                gp.stopmusic();
                 gp.playMu = true;
+                for (int i = 0; i < 2; i++) {
+                    String name = gp.getPlayer().getInventory(i);
+                    if (name != null)
+                    gp.getBagEvents(0)
+                    .getBagMenu()
+                    .getBtn(i)
+                    .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_disable_%s.png", name))));
+                }
+                gp.getPlayer().playerReset();
             }
             
             @Override
@@ -66,6 +69,13 @@ public class UIManager extends BackgroundManager {
             @Override
             public void mouseExited(MouseEvent e) {
                 restart.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "restart.png")));
+            }
+            
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
             }
         });
     }
@@ -91,16 +101,13 @@ public class UIManager extends BackgroundManager {
     public void draw(Graphics2D g2) {
         drawTextworld(g2);
         loadingBar();
-        if (gp.getPlayer().getPlayerEmo() >= 76 && gp.getPlayer().getPlayerEmo() <= 100) {
+        if (gp.getPlayer().getEmotionalDamage() > 225) {
             setImageObj(0);
-        }
-        else if (gp.getPlayer().getPlayerEmo() >= 49 && gp.getPlayer().getPlayerEmo() <= 75) {
+        } else if (gp.getPlayer().getEmotionalDamage() > 150) {
             setImageObj(1);
-        }
-        else if (gp.getPlayer().getPlayerEmo() >= 26 && gp.getPlayer().getPlayerEmo() <= 50) {
+        } else if (gp.getPlayer().getEmotionalDamage() > 75) {
             setImageObj(2);
-        }
-        else if (gp.getPlayer().getPlayerEmo() >= 1 && gp.getPlayer().getPlayerEmo() <= 25) {
+        } else {
             setImageObj(3);
         }
     }
@@ -129,7 +136,7 @@ public class UIManager extends BackgroundManager {
     }
 
     public void drawTextworld(Graphics2D g2) {
-        Font B = gp.title.getFont();
+        Font B = gp.getTitle().getFont();
         String text = "";
         Font Bauhaus = LoadSave.GetFont();
         g2.setFont(Bauhaus);
@@ -182,14 +189,14 @@ public class UIManager extends BackgroundManager {
     }
 
     public void loadingBar() {
-        if(gp.getEarth().getEarthHeat() >132){
-
+        if (gp.getEarth().getEarthHeat() > 132){
             progressbar.setForeground(new Color(255,0,0)); 
-        }else if(gp.getEarth().getEarthHeat()> 65){
+        }
+        else if (gp.getEarth().getEarthHeat() > 65){
             progressbar.setForeground(new Color(255,94,0)); 
-        }else{
+        }
+        else {
             progressbar.setForeground(new Color(133,198,76)); 
-
         }
 
         progressbar.setBackground(new Color(232,232,232));
@@ -202,7 +209,6 @@ public class UIManager extends BackgroundManager {
         progressbar.setUI(new RoundedProgressBarUI());
         progressbar.setOpaque(false); 
         progressbar.setValue(target);
-
         
 
 
@@ -221,9 +227,6 @@ public class UIManager extends BackgroundManager {
         
 
     }
-
-
-
 
     public JButton getRestartButton() {
         return this.restart;

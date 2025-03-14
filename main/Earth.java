@@ -36,10 +36,9 @@ public class Earth {
         if(getTime() >= 24*60) {
             gp.getPlayer().sleep("Sleep");
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
-                gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
-                gp.player.setPlayerEmo((int)(Math.random()*20)); 
+                gp.getPlayer().setPlayerCoin((int)(Math.random()*gp.getPlayer().getPlayerCoin()));
+                gp.getPlayer().setPlayerEmo((int)(Math.random()*20)); 
             }
-            
         }
     }
     // fucking getters setters
@@ -56,7 +55,7 @@ public class Earth {
             });
         }
 
-        if (Day >= 2){
+        if (Day >= 7){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
@@ -66,7 +65,7 @@ public class Earth {
     }
 
     public void increaseTime(int t) {
-        System.out.println("Time increase : " + t);
+        // System.out.println("Time increase : " + t);
         time += t;
     }
 
@@ -97,12 +96,12 @@ public class Earth {
     }
 
     public int getEarthHeat() {
-      
         return this.worldHeat;
     }
     public void setEarthCO2(double co2) {
         this.worldHeat += co2;
     }
+
     public int getMin(){
         return min ; 
     }

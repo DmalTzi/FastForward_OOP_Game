@@ -42,7 +42,8 @@ public class Summary extends BackgroundManager {
                 gp.getPlayer().setWorkHr();
                 gp.getEarth().increasDay(1);
                 gp.getEarth().time = 6*60;
-                gp.player.setDailyEarn(0);
+                gp.getPlayer().setDailyEarn(0);
+                gp.getPlayer().setDailyUesed(0);
                 gp.playMu =true ;
                 gp.getPlayer().increasePlayerEmo(gp.getPlayer().getactiveHome().get("Sleep")[0]);
                 
@@ -70,7 +71,6 @@ public class Summary extends BackgroundManager {
     
     public void draw(Graphics2D g2) {
         g2.drawImage(gp.getBackgroundManager().getImage(5), 0, 0, gp.screenWidth, gp.screenHeight, null);
-        // g2.add(exit, Integer.valueOf(1));
         summaryObj(g2);
         
         textTitle = "Summary of Day " + (gp.getEarth().getDay() <= 9 ? "0":"") + gp.getEarth().getDay();
@@ -82,25 +82,22 @@ public class Summary extends BackgroundManager {
         g2.setColor(new Color(0, 0, 102));
         g2.drawString(textTitle, 690, 157);
         
-        if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
+        if (gp.getPlayer().getPlayerEmo() >= 76 && gp.getPlayer().getPlayerEmo() <= 100) {
             textEmo = "Happy ^^";
             g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
-
         }
-        else if (gp.player.getPlayerEmo() >= 49 && gp.player.getPlayerEmo() <= 75) {
+        else if (gp.getPlayer().getPlayerEmo() >= 49 && gp.getPlayer().getPlayerEmo() <= 75) {
             textEmo = "Unhappy :(";
             g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,40));
-
         }
-        else if (gp.player.getPlayerEmo() >= 26 && gp.player.getPlayerEmo() <= 50) {
+        else if (gp.getPlayer().getPlayerEmo() >= 26 && gp.getPlayer().getPlayerEmo() <= 50) {
             textEmo = "Anxious!";
             g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
 
         }
-        else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
+        else if (gp.getPlayer().getPlayerEmo() >= 1 && gp.getPlayer().getPlayerEmo() <= 25) {
             textEmo = "Breaking Point!";
             g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,33));
-
         }
         g2.setColor(new Color(0, 0, 102));
       
@@ -115,7 +112,7 @@ public class Summary extends BackgroundManager {
         g2.setColor(Color.WHITE);
         g2.drawString(textCO2, 880, 455);
         
-        textEarn = gp.player.getDailyEarn() + " c.";
+        textEarn = (gp.getPlayer().getDailyEarn() - gp.getPlayer().getDailyUesed()) + " c.";
         g2.setColor(new Color(0, 0, 102));
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
         g2.drawString(textEarn, 900+4, 615+3);
@@ -152,16 +149,16 @@ public class Summary extends BackgroundManager {
             e.printStackTrace();
         }
 
-        if (gp.player.getPlayerEmo() >= 76 && gp.player.getPlayerEmo() <= 100) {
+        if (gp.getPlayer().getPlayerEmo() >= 76 && gp.getPlayer().getPlayerEmo() <= 100) {
             player = player1;
         }
-        else if (gp.player.getPlayerEmo() >= 49 && gp.player.getPlayerEmo() <= 75) {
+        else if (gp.getPlayer().getPlayerEmo() >= 49 && gp.getPlayer().getPlayerEmo() <= 75) {
             player = player2;
         }
-        else if (gp.player.getPlayerEmo() >= 26 && gp.player.getPlayerEmo() <= 50) {
+        else if (gp.getPlayer().getPlayerEmo() >= 26 && gp.getPlayer().getPlayerEmo() <= 50) {
             player = player3;
         }
-        else if (gp.player.getPlayerEmo() >= 1 && gp.player.getPlayerEmo() <= 25) {
+        else if (gp.getPlayer().getPlayerEmo() >= 1 && gp.getPlayer().getPlayerEmo() <= 25) {
             player = player4;
         }
 

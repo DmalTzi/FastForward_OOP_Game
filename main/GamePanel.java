@@ -15,6 +15,7 @@ import Ui.KeyHandler;
 import Ui.Summary;
 import Ui.Title;
 import Ui.UIManager;
+import events.BagEvent;
 import events.EventManager;
 import events.SuperEvents;
 
@@ -34,25 +35,23 @@ public class GamePanel extends JPanel implements Runnable{
     Sound sound = new Sound();
 
     Thread gameThread;
-    // ActionHandler aHandler = new ActionHandler(this);
-    
+
     //set up 
-  
     private Earth earth = new Earth(this);
-    BackgroundManager backg = new BackgroundManager(this);
-    private SuperMenu[] menus = new SuperMenu[10]; // Push Menu in to this
+    private BackgroundManager backg = new BackgroundManager(this);
+    private SuperMenu[] menus = new SuperMenu[25]; // Push Menu in to this
     private SuperEvents[] events = new SuperEvents[10];
-    public Title title = new Title(this);
+    private BagEvent[] bagEvents = new BagEvent[1];
+    private Title title = new Title(this);
     private EventSetter eventSetter = new EventSetter(this);
     private EventManager eventManager = new EventManager(this);
     private KeyHandler keyH = new KeyHandler(this);
-    public Player player = new Player(this);
+    private Player player = new Player(this);
     private Summary sum = new Summary(this);
     private UIManager uiMng = new UIManager(this);
 
     // flexible 
     int FPS = 120;
-    
 
     // flexible 
     private boolean showEvent = true;
@@ -72,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setStart() {
         showEvent = true;
+        bagEvents[0].getBag().setVisible(true);
     }
 
     public void loadEventAsset() {
@@ -81,6 +81,12 @@ public class GamePanel extends JPanel implements Runnable{
                 this.add(events[i].getMenu());
             }
         }
+
+        this.add(bagEvents[0].getBag());
+        this.add(bagEvents[0].getBagMenu().getVehicleMenu(0).getMenu());
+        this.add(bagEvents[0].getBagMenu().getVehicleMenu(1).getMenu());
+        this.add(bagEvents[0].getBagMenu().getMenu());
+
         uiMng.loadAsset();
         for (int i = 0; i < 10; i++) {
             if (events[i] != null) {
@@ -133,19 +139,17 @@ public class GamePanel extends JPanel implements Runnable{
         if (gamest == GameState.Title){ 
             //เข็คสภานะเกมส์
             if(playMu ){
-               
                 playMu =false;
                 playmusic(0);
             }
             title.draw(g2);
-           
             showEvent = false;
         }
         else if (gamest == GameState.Gameplay){
             if(playMu){
                 stopmusic();
                 playMu = false ;
-                playmusicS(2);
+                playmusic(2);
                 sound.mute(-20.0f);
             }
             backg.draw(g2);
@@ -155,15 +159,15 @@ public class GamePanel extends JPanel implements Runnable{
         }
         else if (gamest == GameState.Endgame){
             stopmusic();
-            
             showEvent = false;
             backg.draw(g2);
-        }else if(gamest == GameState.Endgame_2){
+        }
+        else if(gamest == GameState.Endgame_2){
             stopmusic();
             showEvent = false;
             backg.draw(g2);
-        }else if(gamest == GameState.GoodEnd){
-            
+        }
+        else if(gamest == GameState.GoodEnd){
             showEvent = false;
             backg.draw(g2);
         }
@@ -205,11 +209,9 @@ public class GamePanel extends JPanel implements Runnable{
     public GamePanel getGamePanel(){
         return this;
     }
-
     public void addMenus(int i, SuperMenu m) {
         menus[i] = m;
     }
-
     public SuperMenu getMenus(int i) {
         return menus[i];
     }
@@ -217,22 +219,19 @@ public class GamePanel extends JPanel implements Runnable{
     public void addEvents(int i, SuperEvents e) {
         events[i] = e;
     }
-
     public SuperEvents getEvents(int i) {
         return events[i];
     }
-
     public SuperEvents[] getAllEvents() {
         return events;
     }
-
     public void setShowEvent(boolean showEvent) {
         this.showEvent = showEvent;
     }
+
     public GameState getgameState(){
         return gamest ; 
     }
-
     public void setgameState(GameState s){
        gamest = s;
     }
@@ -260,6 +259,10 @@ public class GamePanel extends JPanel implements Runnable{
     public UIManager getUiManager() {
         return this.uiMng;
     }
+
+    public Title getTitle() {
+        return this.title;
+    }
     
     public void playmusic(int i){
         sound.setFile(i);
@@ -273,5 +276,12 @@ public class GamePanel extends JPanel implements Runnable{
     public void playmusicS(int i){ //with our loop
         sound.setFile(i);
         sound.play();
+    }
+    public void addBag(int i, BagEvent b) {
+        bagEvents[i] = b;
+    }
+
+    public BagEvent getBagEvents(int i) {
+        return bagEvents[i];
     }
 }

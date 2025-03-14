@@ -48,4 +48,6 @@ public class BusEvent extends SuperEvents {
             public void mousePressed(MouseEvent e) {}
         });
     }
+
+    public void busCheckker() {}
 }
