@@ -111,8 +111,9 @@ public class Summary extends BackgroundManager {
         g2.drawString(textCO2, 880+4, 455+3);
         g2.setColor(Color.WHITE);
         g2.drawString(textCO2, 880, 455);
+
         
-        textEarn = (gp.getPlayer().getDailyEarn() - gp.getPlayer().getDailyUesed()) + " c.";
+        textEarn = (gp.getPlayer().getDailyEarn() - gp.getPlayer().getDaillyUesed()) + " c.";
         g2.setColor(new Color(0, 0, 102));
         g2.setFont(g2.getFont().deriveFont(Font.TRUETYPE_FONT,50));
         g2.drawString(textEarn, 900+4, 615+3);

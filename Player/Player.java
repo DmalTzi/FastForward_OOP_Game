@@ -26,7 +26,8 @@ public class Player {
     private int workHr = 0;
     private boolean canWork = true;
     private int dailyEarn = 0;
-    private int dailyUesed = 0 ;
+    private int dailyUesed = 0;
+
     private String[] inventory = new String[2];
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -108,7 +109,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
-        // System.out.println(emotion);
+        System.out.println(dailyUesed);
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
@@ -135,6 +136,7 @@ public class Player {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
         }
     }
 
@@ -144,12 +146,14 @@ public class Player {
     }
 
     public void buyCar(String name, int index) {
-        inventory[index] = name;
-        setPlayerCoin((activityVehicle.get(name)));
-        gp.getBagEvents(0)
-        .getBagMenu()
-        .getBtn(index)
-        .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_%s.png", name))));
+        if (-(activityVehicle.get(name)) <= getCoin()) {
+            inventory[index] = name;
+            setPlayerCoin((activityVehicle.get(name)));
+            gp.getBagEvents(0)
+            .getBagMenu()
+            .getBtn(index)
+            .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_%s.png", name))));
+        }
     }
 
     public void equip(String vehicle){
@@ -186,7 +190,7 @@ public class Player {
                     gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
                     gp.getPlayer().setPlayerCoin((activityHome.get(n)[2]));
                     gp.getEarth().increaseTime((activityHome.get(n)[3]));
-                    dailyUesed += (-activityHome.get(n)[2]);
+                    dailyUesed +=(-activityHome.get(n)[2]);
 
                 }
             }
@@ -201,7 +205,8 @@ public class Player {
                 increasePlayerEmo(activityMarket.get(foodname)[0]);
                 gp.getEarth().setEarthCO2((activityMarket.get(foodname)[1]));
                 setPlayerCoin((activityMarket.get(foodname)[2]));
-                dailyUesed += (-activityMarket.get(foodname)[2]);
+                dailyUesed +=(-activityMarket.get(foodname)[2]);
+
             }
         }
         if (activitySuper.containsKey(foodname)) {
@@ -209,7 +214,8 @@ public class Player {
                 increasePlayerEmo(activitySuper.get(foodname)[0]);
                 gp.getEarth().setEarthCO2((activitySuper.get(foodname)[1]));
                 setPlayerCoin((activitySuper.get(foodname)[2]));
-                dailyUesed += (-activityMarket.get(foodname)[2]);
+                dailyUesed +=(-activitySuper.get(foodname)[2]);
+    
 
             }
         }
@@ -294,6 +300,7 @@ public class Player {
     public void sleep(String n) {
         gp.setgameState(GameState.Summary);
         gp.getSummary().setOKButton(true);
+        gp.getBagEvents(0).getBag().setVisible(false);
 
         increasePlayerEmo(activityHome.get(n)[0]);
         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
@@ -306,14 +313,19 @@ public class Player {
     public Map<String, int[]> getactiveHome(){
         return activityHome;
     }
-    public void setDailyUesed(int i ){
-        dailyUesed = i ;
-    }
 
     public int getDailyUesed(){
         return dailyUesed;
     }
     public String getInventory(int index) {
         return inventory[index];
+    }
+
+    public void setDailyUesed(int i ){
+        dailyUesed = i ;
+    }
+
+    public int getDaillyUesed(){
+        return dailyUesed;
     }
 }

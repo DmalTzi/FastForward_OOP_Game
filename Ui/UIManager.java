@@ -45,6 +45,8 @@ public class UIManager extends BackgroundManager {
                 gp.setShowEvent(false);
                 gp.getEarth().earthReset();
                 gp.setgameState(GameState.Title);
+                gp.getPlayer().setDailyUesed(0);
+                gp.getPlayer().setDailyEarn(0);
                 gp.getBagEvents(0).getBag().setVisible(false);
                 gp.getPlayer().setDailyUesed(0);
                 gp.getPlayer().setDailyEarn(0);
