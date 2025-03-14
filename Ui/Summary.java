@@ -39,6 +39,7 @@ public class Summary extends BackgroundManager {
                 exit.setVisible(false);
                 gp.setShowEvent(true);
                 gp.setgameState(GameState.Gameplay);
+                gp.getBagEvents(0).getBag().setVisible(true);
                 gp.getPlayer().setWorkHr();
                 gp.getEarth().increasDay(1);
                 gp.getEarth().time = 6*60;

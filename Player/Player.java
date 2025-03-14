@@ -137,7 +137,8 @@ public class Player {
                     e.setMenuVisible(false);
             });
             gp.getBagEvents(0).getBag().setVisible(false);
-        }
+            gp.getBagEvents(0).getBagMenu().getMenu().setVisible(false);
+    }
     }
 
     public void MoveTo() {
@@ -301,6 +302,7 @@ public class Player {
         gp.setgameState(GameState.Summary);
         gp.getSummary().setOKButton(true);
         gp.getBagEvents(0).getBag().setVisible(false);
+        gp.getBagEvents(0).getBagMenu().getMenu().setVisible(false);
 
         increasePlayerEmo(activityHome.get(n)[0]);
         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));

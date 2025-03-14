@@ -55,7 +55,7 @@ public class Earth {
                     e.setMenuVisible(false);
             });
             gp.getBagEvents(0).getBag().setVisible(false);
-
+            gp.getBagEvents(0).getBagMenu().getMenu().setVisible(false);
         }
 
         if (Day >= dayFinish){
@@ -65,6 +65,7 @@ public class Earth {
                     e.setMenuVisible(false);
             });
             gp.getBagEvents(0).getBag().setVisible(false);
+            gp.getBagEvents(0).getBagMenu().getMenu().setVisible(false);
         }
     }
 
