@@ -19,22 +19,22 @@ public class KeyHandler implements KeyListener  {
       int code = e.getKeyCode();
        if(gp.getgameState() == GameState.Title){
             if(code ==KeyEvent.VK_W){
-                gp.title.commandNum --;
+                gp.getTitle().commandNum --;
             } if(code ==KeyEvent.VK_S){
-                gp.title.commandNum ++;
+                gp.getTitle().commandNum ++;
             }
-            if(gp.title.commandNum > 1 ){
-                gp.title.commandNum = 0 ;
-            }else if(gp.title.commandNum < 0){
-                gp.title.commandNum = 1 ;
+            if(gp.getTitle().commandNum > 1 ){
+                gp.getTitle().commandNum = 0 ;
+            }else if(gp.getTitle().commandNum < 0){
+                gp.getTitle().commandNum = 1 ;
             }
 
             if(code == KeyEvent.VK_ENTER){
-                if(gp.title.commandNum  == 0){
+                if(gp.getTitle().commandNum  == 0){
                     gp.setgameState(GameState.Gameplay);
                     gp.playMu = true;
-                    gp.setShowEvent(true);
-                }else if(gp.title.commandNum  == 1){
+                    gp.setStart();
+                }else if(gp.getTitle().commandNum  == 1){
                     System.exit(0);
                 }
             }

@@ -16,6 +16,7 @@ public class Earth {
     private int worldHeat = 0;
     int min = 0,hour = 0 ; 
     int Day = 1 ;
+    int dayFinish = 7;
     // set currentpostion
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -36,10 +37,9 @@ public class Earth {
         if(getTime() >= 24*60) {
             gp.getPlayer().sleep("Sleep");
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
-                gp.player.setPlayerCoin((int)(Math.random()*gp.player.getPlayerCoin()));
-                gp.player.setPlayerEmo((int)(Math.random()*20)); 
+                gp.getPlayer().setPlayerCoin((int)(Math.random()*gp.getPlayer().getPlayerCoin()));
+                gp.getPlayer().setPlayerEmo((int)(Math.random()*20)); 
             }
-            
         }
     }
     // fucking getters setters
@@ -54,19 +54,22 @@ public class Earth {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
+
         }
 
-        if (Day >= 7){
+        if (Day >= dayFinish){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
         }
     }
 
     public void increaseTime(int t) {
-        System.out.println("Time increase : " + t);
+        // System.out.println("Time increase : " + t);
         time += t;
     }
 
@@ -97,12 +100,12 @@ public class Earth {
     }
 
     public int getEarthHeat() {
-      
         return this.worldHeat;
     }
     public void setEarthCO2(double co2) {
         this.worldHeat += co2;
     }
+
     public int getMin(){
         return min ; 
     }
