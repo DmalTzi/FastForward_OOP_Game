@@ -16,6 +16,7 @@ public class Earth {
     private int worldHeat = 0;
     int min = 0,hour = 0 ; 
     int Day = 1 ;
+    int dayFinish = 7;
     // set currentpostion
     private String currentPosition = "home";
     private String moveWith = "legs";
@@ -53,14 +54,17 @@ public class Earth {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
+
         }
 
-        if (Day >= 7){
+        if (Day >= dayFinish){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
         }
     }
 

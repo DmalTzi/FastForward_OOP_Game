@@ -134,6 +134,7 @@ public class Player {
                 if (e != null)
                     e.setMenuVisible(false);
             });
+            gp.getBagEvents(0).getBag().setVisible(false);
         }
     }
 
@@ -143,12 +144,14 @@ public class Player {
     }
 
     public void buyCar(String name, int index) {
-        inventory[index] = name;
-        setPlayerCoin((activityVehicle.get(name)));
-        gp.getBagEvents(0)
-        .getBagMenu()
-        .getBtn(index)
-        .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_%s.png", name))));
+        if (-(activityVehicle.get(name)) <= getCoin()) {
+            inventory[index] = name;
+            setPlayerCoin((activityVehicle.get(name)));
+            gp.getBagEvents(0)
+            .getBagMenu()
+            .getBtn(index)
+            .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_%s.png", name))));
+        }
     }
 
     public void equip(String vehicle){
@@ -288,6 +291,7 @@ public class Player {
     public void sleep(String n) {
         gp.setgameState(GameState.Summary);
         gp.getSummary().setOKButton(true);
+        gp.getBagEvents(0).getBag().setVisible(false);
 
         increasePlayerEmo(activityHome.get(n)[0]);
         gp.getEarth().setEarthCO2((activityHome.get(n)[1]));
