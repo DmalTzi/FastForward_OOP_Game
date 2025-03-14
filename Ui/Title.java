@@ -14,8 +14,8 @@ public class Title {
     Image pic;
     Font Bauhaus = LoadSave.GetFont();
     int commandNum = 0;
-    int pop = 0 ;
-    
+    int pop = 0;
+
     public Title(GamePanel gp) {
         this.gp = gp;
         loadBackground();
@@ -31,7 +31,6 @@ public class Title {
         String text = "";
         int x = 0; // สร้างไม่ได้ ใส่เข้าไปแม่งเลย ทำให้มันอยู่กลาง
         int y = 440;
-        
 
         // Menu
         g2.setFont(g2.getFont().deriveFont(Font.TYPE1_FONT, 45F));
@@ -64,25 +63,24 @@ public class Title {
 
         }
         text = "";
-        g2.setColor(new Color(64,64,64));
-        if(pop == 0){
+        g2.setColor(new Color(64, 64, 64));
+        if (pop == 0) {
             text = "Code form my logic";
-        }else if (pop == 1 ){
+        } else if (pop == 1) {
             text = "Code is mine";
-        }else if(pop == 2 ){
-            text ="Suntana SuSu";
-        }else if(pop ==3){
+        } else if (pop == 2) {
+            text = "Suntana SuSu";
+        } else if (pop == 3) {
             text = "Boobie is mine XD";
-        }else if(pop == 4){
+        } else if (pop == 4) {
             text = "No time to Sleep  ZZ";
         }
 
         AffineTransform original = g2.getTransform();
-        g2.rotate(-Math.toRadians(18),860,180);
+        g2.rotate(-Math.toRadians(18), 860, 180);
         g2.drawString(text, 860, 180);
         g2.setColor(Color.yellow);
         g2.drawString(text, 855, 175);
-
 
         g2.setTransform(original);
 

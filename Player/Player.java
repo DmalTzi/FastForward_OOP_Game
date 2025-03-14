@@ -45,7 +45,7 @@ public class Player {
     }
 
     public void update() { // walk check bulid
-        System.out.println(dailyUesed);
+        // System.out.println(dailyUesed);
         if (workHr >= 8 )
             canWork = false;
         MoveTo();
@@ -109,7 +109,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
-        System.out.println(dailyUesed);
+        // System.out.println(dailyUesed);
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
