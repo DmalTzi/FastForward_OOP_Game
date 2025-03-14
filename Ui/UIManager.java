@@ -50,6 +50,7 @@ public class UIManager extends BackgroundManager {
                 gp.getBagEvents(0).getBag().setVisible(false);
                 gp.getPlayer().setDailyUesed(0);
                 gp.getPlayer().setDailyEarn(0);
+                gp.getTitle().loadpop();
                 gp.stopmusic();
                 gp.playMu = true;
                 for (int i = 0; i < 2; i++) {
