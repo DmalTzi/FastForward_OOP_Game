@@ -129,10 +129,10 @@ public class Player {
     }
 
     private void emotioncheck() {
-        // System.out.println(emotion);
         if (emotion <= 0) {
             gp.setgameState(GameState.Endgame);
-            Arrays.asList(gp.getAllEvents()).forEach(e -> {
+            Arrays.asList(gp.getAllEvents()).forEach
+            (e -> {
                 if (e != null)
                     e.setMenuVisible(false);
             });
