@@ -239,6 +239,9 @@ public class Player {
     public void setPlayerCoin(int coin) {
         this.coin += coin;
     }
+    public void setPlayerCoinss(int coin){
+        this.coin = coin;
+    }
 
     public int getPlayerEmo() {
         return this.emotion;

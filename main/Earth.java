@@ -18,7 +18,6 @@ public class Earth {
     int Day = 1 ;
     int dayFinish = 7;
     // set currentpostion
-    private String currentPosition = "home";
     private String moveWith = "legs";
 
     public Earth(GamePanel gp){
@@ -37,8 +36,9 @@ public class Earth {
         if(getTime() >= 24*60) {
             gp.getPlayer().sleep("Sleep");
             if(!gp.getPlayer().getCurrentPosition().equals("home")){ //ถ้าไม่อยู่บ้าน
-                gp.getPlayer().setPlayerCoin((int)(Math.random()*gp.getPlayer().getPlayerCoin()));
+                gp.getPlayer().setPlayerCoinss((int)(Math.random()*gp.getPlayer().getPlayerCoin()));
                 gp.getPlayer().setPlayerEmo((int)(Math.random()*20)); 
+                gp.getPlayer().setCurrentPosition("home");
             }
         }
     }
@@ -91,9 +91,6 @@ public class Earth {
     }   
     public int[] getPlayerLocation(int i){
         return playerLocation[i];
-    }
-    public String getCurrentPosition() {
-        return currentPosition;
     }
 
     public String getMoveWith() {
