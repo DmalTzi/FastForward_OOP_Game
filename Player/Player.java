@@ -101,7 +101,7 @@ public class Player {
     }
 
     public void draw(Graphics2D g2) { // วาดตัวละคร
-        System.out.println(emotion);
+        // System.out.println(emotion);
         if (emotionalDamage > 225) {
             remem = playerIm;
         } else if (emotionalDamage > 150) {
