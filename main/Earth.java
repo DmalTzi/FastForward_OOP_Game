@@ -58,7 +58,7 @@ public class Earth {
             gp.getBagEvents(0).getBagMenu().getMenu().setVisible(false);
         }
 
-        if (Day >= dayFinish){
+        if (Day >= 2){
             gp.setgameState(GameState.GoodEnd);
             Arrays.asList(gp.getAllEvents()).forEach(e -> {
                 if (e != null)
