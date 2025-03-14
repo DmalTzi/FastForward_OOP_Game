@@ -71,6 +71,6 @@ public class OfficeMenu extends SuperMenu{
     }
 
     public void draw(Graphics2D g2){
-        g2.drawString(""+gp.player.getWorkHr(), menuWidth/2, menuHeight/2);
+        g2.drawString("" + gp.getPlayer().getWorkHr(), menuWidth/2, menuHeight/2);
     }
 }

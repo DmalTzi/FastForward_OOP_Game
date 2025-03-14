@@ -27,7 +27,6 @@ public class UIManager extends BackgroundManager {
     JProgressBar progressbar1;
     public BufferedImage playerIm, playerIm1, playerIm2, playerIm3, remem;
 
-
     public UIManager(GamePanel gp) {
         super(gp);
 
@@ -40,14 +39,6 @@ public class UIManager extends BackgroundManager {
         restart.setLocation(1150, 620);
         gp.add(restart);
         restart.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
             @Override
             public void mouseReleased(MouseEvent e) {
                 restart.setVisible(false);
@@ -65,7 +56,7 @@ public class UIManager extends BackgroundManager {
                     .getBtn(i)
                     .setIcon(new ImageIcon(LoadSave.GetSprite("menus", String.format("menu_bag_disable_%s.png", name))));
                 }
-                gp.player.playerReset();
+                gp.getPlayer().playerReset();
             }
             
             @Override
@@ -76,6 +67,13 @@ public class UIManager extends BackgroundManager {
             @Override
             public void mouseExited(MouseEvent e) {
                 restart.setIcon(new ImageIcon(LoadSave.GetSprite("ui", "restart.png")));
+            }
+            
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
             }
         });
     }
@@ -136,7 +134,7 @@ public class UIManager extends BackgroundManager {
     }
 
     public void drawTextworld(Graphics2D g2) {
-        Font B = gp.title.getFont();
+        Font B = gp.getTitle().getFont();
         String text = "";
         Font Bauhaus = LoadSave.GetFont();
         g2.setFont(Bauhaus);
@@ -189,14 +187,14 @@ public class UIManager extends BackgroundManager {
     }
 
     public void loadingBar() {
-        if(gp.getEarth().getEarthHeat() >132){
-
+        if (gp.getEarth().getEarthHeat() > 132){
             progressbar.setForeground(new Color(255,0,0)); 
-        }else if(gp.getEarth().getEarthHeat()> 65){
+        }
+        else if (gp.getEarth().getEarthHeat() > 65){
             progressbar.setForeground(new Color(255,94,0)); 
-        }else{
+        }
+        else {
             progressbar.setForeground(new Color(133,198,76)); 
-
         }
 
         progressbar.setBackground(new Color(232,232,232));
@@ -209,7 +207,6 @@ public class UIManager extends BackgroundManager {
         progressbar.setUI(new RoundedProgressBarUI());
         progressbar.setOpaque(false); 
         progressbar.setValue(target);
-
         
 
 

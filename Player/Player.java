@@ -279,7 +279,6 @@ public class Player {
         this.dailyEarn = 0;
         this.currentPosition = "home";
         this.moveWith = "legs";
-        
     }
 
     public int getEmotionalDamage() {
