@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable{
     private UIManager uiMng = new UIManager(this);
 
     // flexible 
-    int FPS = 120;
+    int FPS = 250;
 
     // flexible 
     private boolean showEvent = true;
